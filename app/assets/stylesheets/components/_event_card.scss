@@ -25,7 +25,7 @@
   bottom: 10px;
   left: 10px;
 }
-.card-description h2 {
+.card-description h3 {
   font-size: 24px;
 }
 .card-description p {
@@ -46,4 +46,19 @@
 
 .card-link:hover {
   opacity: 0.1;
+}
+
+.description-hidden-event {
+  color: transparent;
+  position: absolute;
+  background: transparent;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 15px 25px;
+  &:hover {
+    color: black;
+    background: white;
+  }
 }

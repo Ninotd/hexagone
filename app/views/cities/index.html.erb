@@ -4,6 +4,18 @@
 
 
 <div class="container">
+  
+        <% @best_events.each do |event| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first, crop: :fill %>');">
+            <div class="description-hidden-event">
+              <p><%=  event.description %></p>
+              <%= link_to "", root_path, class: "card-link" %>
+            </div>
+            <div class="card-category"><%= event.category %></div>
+            <div class="card-description">
+              <h3><%= event.name %></h3>
+              <p><%= event.shop.name %></p>
 
 
 
@@ -24,6 +36,7 @@
             <div class="reviews">
             </div>
             <div class="offer">
+
             </div>
           </div>
         </div>
@@ -38,5 +51,7 @@
   </div>
 
 </div>
+
+
 
 
