@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :shop
+  has_many :event_photos, dependent: :destroy
 
   EVENTS = ["Bon plan", "Nouveauté", "Evènement"]
 
