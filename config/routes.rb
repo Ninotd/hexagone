@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :city do
+  resources :cities do
     resources :shops, only: [:index] do
       resources :events, only: [:new, :create, :delete, :edit]
     end
