@@ -1,7 +1,14 @@
 <%= simple_form_for([@shop]) do |f| %>
-  <% cities = City.all.map do |city|
+  <%
+  array = City.all.map do |city|
     city.name
-  end %>
+  end
+  cities = array.uniq
+  array_2 = Shop.all.map do |shop|
+    shop.category
+    end
+  categories = array_2.uniq%>
+
 
   <div class="form-group">
     <%= f.input :name, label: "Nom de votre commerce", label_html: { class: 'labels' }%>
@@ -16,9 +23,15 @@
     <%= f.input :description, label: "Décrivez votre commerce en quelques mots"%>
   </div>
 
+
   <div class="form-group submit">
     <%= f.label "Votre ville"%>
     <%= f.select :city, cities %>
+  </div>
+
+  <div class="form-group submit">
+    <%= f.label "Catégorie de magasin"%>
+    <%= f.select :category, categories %>
   </div>
 
 
