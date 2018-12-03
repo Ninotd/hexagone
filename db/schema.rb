@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_154132) do
+ActiveRecord::Schema.define(version: 2018_12_03_162320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2018_12_03_154132) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "event_photos", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_photos_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -31,6 +39,14 @@ ActiveRecord::Schema.define(version: 2018_12_03_154132) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_events_on_shop_id"
+  end
+
+  create_table "shop_photos", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_shop_photos_on_shop_id"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -62,7 +78,9 @@ ActiveRecord::Schema.define(version: 2018_12_03_154132) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "event_photos", "events"
   add_foreign_key "events", "shops"
+  add_foreign_key "shop_photos", "shops"
   add_foreign_key "shops", "cities"
   add_foreign_key "shops", "users"
 end
