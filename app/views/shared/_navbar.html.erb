@@ -12,11 +12,11 @@
       <!-- Links when logged in -->
       <%= link_to "Ma ville", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <% if current_user.shops != nil  %>
+      <% if current_user.shops != []  %>
       <%= link_to "Mon magasin", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
 
-      <% end %>
+
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">

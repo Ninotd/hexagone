@@ -5,8 +5,17 @@ class ShopsController < ApplicationController
   end
 
   def create
+    city = city_params[:city]
+    city = City.find_by(name: city)
     @shop = Shop.new(shop_params)
-    @shop.city = City.find_by(name: params[:name])
+    @shop.user = current_user
+    @shop.city = city
+    if @shop.save
+      redirect_to root_path
+    else
+      raise
+      render :new
+    end
   end
 
   private
@@ -16,7 +25,10 @@ class ShopsController < ApplicationController
   end
 
   def shop_params
-    params.require(:shop_review).permit(:name, :address, :description, :phone_number, city )
+    params.require(:shop).permit(:name, :address, :description, :phone_number, :category)
   end
 
+  def city_params
+    params.require(:shop).permit(:city)
+  end
 end

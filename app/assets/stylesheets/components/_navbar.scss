@@ -8,6 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: transparent;
+  transition: 0.5s background-color ease;
 }
 
 /* Logo */
@@ -41,7 +43,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: $main;
   text-decoration: none;
 }
 
@@ -74,4 +76,23 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.navbar-wagon-white {
+  background-color: white;
+  a, .fa-plus-circle {
+    color: $main;
+  }
+}
+
+.navbar-wagon-white-fix {
+  background-color: white;
+  a, .fa-plus-circle {
+    color: $main;
+
+    &:hover {
+      color: $main;
+      opacity: 0.6;
+    }
+  }
 }
