@@ -7,4 +7,10 @@ class Event < ApplicationRecord
   validates :category, presence: true
   validates :description, presence: true
   validates :category, inclusion: {in: EVENTS}
+
+  include AlgoliaSearch
+
+  algoliasearch do
+    attribute :name, :category, :description
+  end
 end

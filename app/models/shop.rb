@@ -10,5 +10,9 @@ class Shop < ApplicationRecord
   validates :description, presence: true
   validates :category, inclusion: {in: CATEGORIES}
 
+  include AlgoliaSearch
 
+  algoliasearch do
+    attribute :name, :category, :description
+  end
 end
