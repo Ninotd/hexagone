@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :city do
     resources :shops, only: [:index, :show] do
-      resources :events, only: [:new, :create, :delete, :]
+      resources :events, only: [:new, :create, :delete]
     end
   end
 
