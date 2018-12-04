@@ -44,16 +44,22 @@ end
 
 puts 'Creating 20 events'
 counter = 0
+counter_day = 0
 Events = []
+start_date = Date.new(2018,12,1)
+end_date = Date.new(2018,12,4)
 20.times do
   event = Event.new(
     name: Faker::FunnyName.name,
     description: Faker::Lorem.paragraph(2),
     category: Event::EVENTS[rand(Event::EVENTS.length)],
     shop: Shops[counter],
+    start_date: start_date.next_day(counter_day),
+    end_date: end_date.next_day(counter_day)
     )
   event.save!
   counter += 1
+  counter_day += 1
   Events << event
 end
 

@@ -7,13 +7,13 @@
   <div class="best-events">
     <h2>Les offres de la semaine</h2>
     <div class="row">
-      <% @city.events.first(3).each do |event| %>
+      <% @best_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
             <div class="card-event-hidden">
               <p><%=  event.description %></p>
               <%= link_to "", root_path, class: "card-link" %>
-              <div class="end-date-hidden"><p>Jusqu'au vendredi X décembre</p></div>
+              <div class="end-date-hidden"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
             </div>
             <div class="card-category"> <h5><%= event.category %></h5> </div>
             <div class="card-description">
@@ -62,7 +62,7 @@
             <div class="card-event-hidden">
               <p><%=  event.description %></p>
               <%= link_to "", root_path, class: "card-link" %>
-              <div class="end-date-hidden"><p>Jusqu'au vendredi X décembre</p></div>
+              <div class="end-date-hidden"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
             </div>
             <div class="card-category"> <h5><%= event.category %></h5> </div>
             <div class="card-description">
