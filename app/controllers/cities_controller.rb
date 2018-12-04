@@ -2,6 +2,7 @@ class CitiesController < ApplicationController
   def index
     @best_events = Event.all.first(3)
     @best_shops = Shop.all.first(3)
+    @last_events = Event.all.first(3)
   end
 
   def search_city
