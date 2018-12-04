@@ -16,21 +16,24 @@
 }
 
 .shop-content {
-  display:flex
+  display:flex;
+  margin-top : 20px;
 }
 
 .shop-info-map {
-  background-color:red;
   width: 30vw;
-
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, .1);
+  padding: 10px;
 
 }
 
 .shop-info{
-  background-color: $main;
   padding: 5px;
 
 }
+
+
 
 .shop-feed {
   background-color:white;
@@ -45,4 +48,8 @@
   border: 1px solid rgba(0, 0, 0, .1);
   margin: 5px;
   padding: 5px;
+}
+
+.banner-shop {
+  height: 50vh
 }

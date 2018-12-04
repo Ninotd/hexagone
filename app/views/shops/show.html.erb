@@ -1,22 +1,48 @@
 
-  <div id="lightgallery">
-      <%= cl_image_tag @shop.shop_photos.first.photo, crop: :fill %>
-      <%= cl_image_tag @shop.shop_photos.first.photo, crop: :fill %>
+  <% if @shop.shop_photos.count == 1 %>
+
+  <div class="banner-shop" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
   </div>
 
-<div class="row">
-  <div class="col-md-4 col-sm-offset-4">
-    <div class="shop-show-main">
-      <h2><%= @shop.name %></h2>
-      <p><%= @shop.address %></p>
-      <div class="open-status">
-        <p> Ouvert </p>
+  <% else %>
+
+  <div id="lightgallery">
+    <div class="gallery-photos">
+      <div class="g-photo left-photo">
+        <a href="http://www.doppelberlin.com/wp-content/uploads/2016/12/l.jpg">
+           <img src="http://www.doppelberlin.com/wp-content/uploads/2016/12/l.jpg" alt="">
+        </a>
+      </div>
+      <div class="g-photo main-photo">
+        <a href="https://gettaphunter.com/wp-content/uploads/2016/08/bar-11.jpg">
+            <img src="https://gettaphunter.com/wp-content/uploads/2016/08/bar-11.jpg" alt="">
+        </a>
+      </div>
+      <div class="g-photo right-photo">
+        <a href="https://brewercameron.files.wordpress.com/2012/11/capri-lounge.jpg">
+           <img src="https://brewercameron.files.wordpress.com/2012/11/capri-lounge.jpg" alt="">
+        </a>
+      </div>
+    </div>
+<!-- il faudra utiliser un path pour le lien et un tag pour l'image -->
+  </div>
+
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-sm-offset-4">
+      <div class="shop-show-main">
+        <h2><%= @shop.name %></h2>
+        <p><%= @shop.address %></p>
+        <div class="open-status">
+          <p> Ouvert </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container">
+
   <div class="shop-content">
 
     <div class="shop-feed">
@@ -36,11 +62,14 @@
         <p> Adresse : <%= @shop.address %> </p>
         <p> Website : </p>
         <p> Horaires :</p>
-
       </div>
 
       <div class="shop-map">
-
+        <div id="map"
+          style="width: 100%"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
       </div>
 
     </div>

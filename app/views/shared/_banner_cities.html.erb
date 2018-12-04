@@ -3,17 +3,16 @@
     <h1><%= params[:query] %></h1>
     <div class="search-bar">
       <%= form_tag search_shop_cities_path, method: :get do %>
-        <%= text_field_tag :query_shops, params[:query_shops], :class => "form-control",placeholder: "ex. 'Fontainebleau'" %>
+        <%= text_field_tag :query_shops, params[:query_shops], :class => "form-control",placeholder: "ex. 'Mode'" %>
         <input type="hidden" name="city_id" value=<%= @city.id %>>
       <% end %>
     </div>
-  </div>
-  <div class="banner-quick-search">
-    <ul class="list-inline">
-      <li>Mode</li>
-      <li>Déco</li>
-      <li>Beauté</li>
-      <li>Alimentaire</li>
-    </ul>
+    <div class="banner-quick-search">
+      <ul class="list-inline">
+        <% Shop::CATEGORIES.each do |category| %>
+        <li><%= link_to category, search_shop_cities_path(query_shops: category, city_id: @city.id) %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>

@@ -20,10 +20,14 @@ class ShopsController < ApplicationController
   end
 
   def show
+    @markers = [{
+        lng: @shop.longitude,
+        lat: @shop.latitude
+      }]
   end
 
   def search_shop
-    results = PgSearch.multisearch(params[:query_shops]).limit(10)
+    @results = PgSearch.multisearch(params[:query_shops]).limit(10)
   end
 
   private
