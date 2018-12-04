@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :set_shop
+  before_action :set_shop, only: [:new, :create]
 
   def new
     @shop = Shop.new
@@ -20,6 +20,10 @@ class ShopsController < ApplicationController
   end
 
   def show
+  end
+
+  def search_shop
+    results = PgSearch.multisearch(params[:query_shops]).limit(10)
   end
 
   private

@@ -1,7 +1,7 @@
 .banner {
   color: white;
   text-align: center;
-  height: 70vh;
+  height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: contain, cover !important;
   display: flex;
@@ -26,4 +26,11 @@ ul {
   position: absolute;
   bottom: 10px;
   right: 567px;
+}
+
+.banner-cities {
+  height: 50vh;
+  h1 {
+    margin-bottom: 16px;
+  }
 }
