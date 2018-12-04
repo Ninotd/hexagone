@@ -1,0 +1,23 @@
+.introduction {
+  display: flex;
+  text-align: center;
+  margin: 15px;
+}
+
+.title {
+  padding: 10px;
+  h3 {
+    margin: 2px;
+  }
+  p {
+    margin: 2px;
+  }
+}
+
+.mission-content {
+  p {
+    padding: 10px;
+    margin: 2px;
+  }
+  text-align: justify;
+}
