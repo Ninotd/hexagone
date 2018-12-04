@@ -11,5 +11,7 @@ class Shop < ApplicationRecord
   validates :description, presence: true
   validates :category, inclusion: {in: CATEGORIES}
 
-
+  include PgSearch
+  multisearchable against: [ :name, :category, :description ], using: {
+      tsearch: { prefix: true } }
 end
