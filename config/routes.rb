@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :cities do
+    collection do
+      get 'city', to: "cities#search_city", as: "search"
+    end
     resources :shops, only: [:show, :index] do
       resources :events, only: [:new, :create, :delete, :edit]
     end
