@@ -1,0 +1,50 @@
+
+  <div id="lightgallery">
+      <%= cl_image_tag @shop.shop_photos.first.photo, crop: :fill %>
+      <%= cl_image_tag @shop.shop_photos.first.photo, crop: :fill %>
+  </div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-offset-4">
+    <div class="shop-show-main">
+      <h2><%= @shop.name %></h2>
+      <p><%= @shop.address %></p>
+      <div class="open-status">
+        <p> Ouvert </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="shop-content">
+
+    <div class="shop-feed">
+      <h6>Les dernières offres et évènements de <%= @shop.name %> </h6>
+      <% @shop.events.each do |event| %>
+
+        <div class="event-card-feed">
+          <%= event.name %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="shop-info-map">
+
+      <div class="shop-info">
+        <p> Téléphone : <%= @shop.phone_number %></p>
+        <p> Adresse : <%= @shop.address %> </p>
+        <p> Website : </p>
+        <p> Horaires :</p>
+
+      </div>
+
+      <div class="shop-map">
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

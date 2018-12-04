@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+  before_action :set_shop
 
   def new
     @shop = Shop.new
@@ -18,10 +19,13 @@ class ShopsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def set_shop
-    @shop = Booking.find(params[:shop_id])
+    @shop = Shop.find(params[:id])
   end
 
   def shop_params

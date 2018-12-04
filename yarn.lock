@@ -3628,6 +3628,11 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
+lightgallery.js@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/lightgallery.js/-/lightgallery.js-1.1.2.tgz#dde6bd9dc84925ec2e7aba15a837fa1297910afc"
+  integrity sha512-HYDh+CE+qJeBW660y0R/yvMATk9qj5tYxCFQqAcZLiW7QlHaYsNbaLV8v7fygAMIWZ0haJxgFC0rCF2drqHa7Q==
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -4593,6 +4598,11 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
+
+photoswipe@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/photoswipe/-/photoswipe-4.1.2.tgz#95c20a75cea23b70d6299641cad82e03cae7f797"
+  integrity sha1-lcIKdc6iO3DWKZZBytguA8rn95c=
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
