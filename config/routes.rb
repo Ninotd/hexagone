@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     collection do
       get 'city', to: "cities#search_city", as: "search"
     end
+
+    collection do
+      get 'shops', to: "shops#search_shop", as: "search_shop"
+    end
+
     resources :shops, only: [:show, :index] do
       resources :events, only: [:new, :create, :delete, :edit]
     end
