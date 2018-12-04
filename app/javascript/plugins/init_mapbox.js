@@ -15,12 +15,7 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10'
     });
-  }
-
-  if (mapElement) {
     const markers = JSON.parse(mapElement.dataset.markers);
-    console.log(mapElement)
-    console.log(markers)
     markers.forEach((marker) => {
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
