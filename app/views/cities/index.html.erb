@@ -80,11 +80,10 @@
     <div class="row">
       <% @last_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
-          <div class="card-incoming" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
+          <div class="card-incoming" style="background-image: linear-gradient(rgba(206,206,206,0.7), rgba(206,206,206,0.7)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
             <div class="card-event-hidden">
-              <p><%=  event.description %></p>
               <%= link_to "", root_path, class: "card-link" %>
-              <div class="end-date-hidden"><p>Jusqu'au vendredi X décembre</p></div>
+              <div class="end-date-hidden"><p>A partir du vendredi X décembre</p></div>
             </div>
             <div class="card-category"> <h5><%= event.category %></h5> </div>
             <div class="card-description">
