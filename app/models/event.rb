@@ -8,4 +8,8 @@ class Event < ApplicationRecord
   validates :category, presence: true
   validates :description, presence: true
   validates :category, inclusion: {in: EVENTS}
+
+  include PgSearch
+  multisearchable against: [ :category, :description ], using: {
+      tsearch: { prefix: true } }
 end
