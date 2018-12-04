@@ -7,7 +7,7 @@
   <div class="best-event">
     <h2>Les offres de la semaine</h2>
     <div class="row">
-      <% @best_events.each do |event| %>
+      <% @city.events.first(3).each do |event| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first, crop: :fill %>');">
             <div class="description-hidden-event">
@@ -28,7 +28,7 @@
   <div class="best-shops">
     <h2>Les meilleurs magasins</h2>
     <div class="row">
-      <% @best_shops.each do |shop| %>
+      <% @city.shops.first(3).each do |shop| %>
         <div class="col-xs-12 col-sm-4">
           <div class="shop-card">
             <div class="shop-card-head" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
