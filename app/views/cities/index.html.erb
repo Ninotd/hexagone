@@ -4,20 +4,21 @@
 
 
 <div class="container">
-  <div class="best-event">
+  <div class="best-events">
     <h2>Les offres de la semaine</h2>
     <div class="row">
       <% @best_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first, crop: :fill %>');">
-            <div class="description-hidden-event">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
+            <div class="card-event-hidden">
               <p><%=  event.description %></p>
               <%= link_to "", root_path, class: "card-link" %>
+              <div class="end-date-hidden"><p>Jusqu'au vendredi X décembre</p></div>
             </div>
-            <div class="card-category"><%= event.category %></div>
+            <div class="card-category"> <h5><%= event.category %></h5> </div>
             <div class="card-description">
               <h3><%= event.name %></h3>
-              <p><%= event.shop.name %></p>
+              <h5><%= event.shop.name %></h5>
             </div>
           </div>
         </div>
@@ -53,10 +54,52 @@
   </div>
 
   <div class="last-events">
-   <h2>Les nouveautés</h2>
+    <h2>Les nouveautés</h2>
+    <div class="row">
+      <% @last_events.each do |event| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card card-hovered" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
+            <div class="card-event-hidden">
+              <p><%=  event.description %></p>
+              <%= link_to "", root_path, class: "card-link" %>
+              <div class="end-date-hidden"><p>Jusqu'au vendredi X décembre</p></div>
+            </div>
+            <div class="card-category"> <h5><%= event.category %></h5> </div>
+            <div class="card-description">
+              <h3><%= event.name %></h3>
+              <h5><%= event.shop.name %></h5>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="incoming-events">
+    <h2>Prochainement</h2>
+    <div class="row">
+      <% @last_events.each do |event| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card-incoming" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
+            <div class="card-event-hidden">
+              <p><%=  event.description %></p>
+              <%= link_to "", root_path, class: "card-link" %>
+              <div class="end-date-hidden"><p>Jusqu'au vendredi X décembre</p></div>
+            </div>
+            <div class="card-category"> <h5><%= event.category %></h5> </div>
+            <div class="card-description">
+              <h3><%= event.name %></h3>
+              <h5><%= event.shop.name %></h5>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 </div>
+
+
 
 
 
