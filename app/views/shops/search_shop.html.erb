@@ -1,3 +1,22 @@
-<% @results.each do |result| %>
-  <%= result.searchable %>
-<% end %>
+<div class="container">
+  <p>Votre recherche est présentée par ... </p>
+  <div class="promo">
+    <h3><i class="fas fa-piggy-bank"></i> - Bons plans</h3>
+  </div>
+  <div class="new">
+    <h3><i class="fas fa-bomb"></i> - Nouveautés</h3>
+  </div>
+  <div class="events">
+    <h3><i class="fas fa-calendar-plus"></i> - Evènements</h3>
+  </div>
+  <% @results.each do |result| %>
+    <%= result.searchable.category %>
+    <%= result.searchable.shop.name %>
+  <% end %>
+</div>
+
+<!-- Nav tabs -->
+  <ul class="nav nav-tabs first" role="tablist">
+    <li role="presentation" class="active onglets-first"><a href="#infos" aria-controls="infos" role="tab" data-toggle="tab" class="onglets-content">Offres</a></li>
+    <li role="presentation" class="onglets-first"><a href="#reservations" aria-controls="reservations" role="tab" data-toggle="tab" class="onglets-content">Magasins</a></li>
+  </ul>

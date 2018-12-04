@@ -23,7 +23,7 @@ class ShopsController < ApplicationController
   end
 
   def search_shop
-    results = PgSearch.multisearch(params[:query_shops]).limit(10)
+    @results = PgSearch.multisearch(params[:query_shops])
   end
 
   private
