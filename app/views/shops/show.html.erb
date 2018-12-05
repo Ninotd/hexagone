@@ -1,32 +1,33 @@
 
-  <% if @shop.shop_photos.count == 1 %>
+ <% if @shop.shop_photos.count < 1 %>
 
   <div class="banner-shop" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
   </div>
 
-  <% else %>
+ <% else  %>
 
   <div id="lightgallery">
-    <div class="gallery-photos">
-      <div class="g-photo left-photo">
-        <a href="http://www.doppelberlin.com/wp-content/uploads/2016/12/l.jpg">
-           <img src="http://www.doppelberlin.com/wp-content/uploads/2016/12/l.jpg" alt="">
-        </a>
-      </div>
-      <div class="g-photo main-photo">
-        <a href="https://gettaphunter.com/wp-content/uploads/2016/08/bar-11.jpg">
-            <img src="https://gettaphunter.com/wp-content/uploads/2016/08/bar-11.jpg" alt="">
-        </a>
-      </div>
-      <div class="g-photo right-photo">
-        <a href="https://brewercameron.files.wordpress.com/2012/11/capri-lounge.jpg">
-           <img src="https://brewercameron.files.wordpress.com/2012/11/capri-lounge.jpg" alt="">
-        </a>
-      </div>
+    <div class="g-photo">
+      <% cl_image_path @shop.shop_photos.first.photo, crop: :fill %>
+        <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill  %>
+      <div class="mask"></div>
     </div>
-<!-- il faudra utiliser un path pour le lien et un tag pour l'image -->
+    <div class="g-photo">
+      <% cl_image_path @shop.shop_photos.first.photo, crop: :fill %>
+        <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill  %>
+    </div>
+    <div class="g-photo ">
+      <% cl_image_path @shop.shop_photos.first.photo, crop: :fill %>
+        <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill%>
+      <div class="mask"></div>
+    </div>
   </div>
 
+<!-- style="linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%)" -->
+
+
+
+<!-- il faudra utiliser un path pour le lien et un tag pour l'image -->
 <% end %>
 
 <div class="container">
