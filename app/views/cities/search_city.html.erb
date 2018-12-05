@@ -1,4 +1,5 @@
 <%= render 'shared/banner_cities' %>
+
 <div class="wrapper">
   <div class="container-best-shop">
     <div class="best-shops"> <h2>LES MEILLEURS MAGASINS</h2> </div>
@@ -30,7 +31,7 @@
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
             <div class="card-event-hidden">
               <p><%=  event.description %></p>
-              <%= link_to "", root_path, class: "card-link" %>
+              <%= link_to "", city_shop_path(@city, event.shop), class: "card-link" %>
               <div class="end-date-hidden"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
             </div>
             <div class="card-category"> <h5><%= event.category %></h5> </div>
@@ -39,6 +40,7 @@
               <h5><%= event.shop.name %></h5>
             </div>
           </div>
+          <h5><%= link_to "Ajouter au favori", city_shop_favorites_path(@city, event.shop), method: :post %></h5>
         </div>
       <% end %>
     </div>
