@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_153640) do
+ActiveRecord::Schema.define(version: 2018_12_05_143323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -38,7 +39,17 @@ ActiveRecord::Schema.define(version: 2018_12_04_153640) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "shop_category"
     t.index ["shop_id"], name: "index_events_on_shop_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_favorites_on_shop_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -68,6 +79,8 @@ ActiveRecord::Schema.define(version: 2018_12_04_153640) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["city_id"], name: "index_shops_on_city_id"
     t.index ["user_id"], name: "index_shops_on_user_id"
   end
@@ -89,6 +102,8 @@ ActiveRecord::Schema.define(version: 2018_12_04_153640) do
 
   add_foreign_key "event_photos", "events"
   add_foreign_key "events", "shops"
+  add_foreign_key "favorites", "shops"
+  add_foreign_key "favorites", "users"
   add_foreign_key "shop_photos", "shops"
   add_foreign_key "shops", "cities"
   add_foreign_key "shops", "users"

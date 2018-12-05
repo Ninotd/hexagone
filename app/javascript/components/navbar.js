@@ -1,13 +1,21 @@
 const initUpdateNavbarOnScroll = () => {
   const navbar = document.querySelector('.navbar-wagon');
-  if (navbar) {
+  const banner = document.querySelector('.banner');
+  let revealHeigth = 0;
+  if (banner) {
+    const bannerHeight = parseInt(window.getComputedStyle(banner).height, 10)
+    const navbarHeight = parseInt(window.getComputedStyle(navbar).height, 10)
+    revealHeigth = bannerHeight - navbarHeight
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= .50 * window.innerHeight) {
+      if (window.scrollY >= revealHeigth) {
         navbar.classList.add('navbar-wagon-white');
       } else {
         navbar.classList.remove('navbar-wagon-white');
       }
     });
+  } else {
+    navbar.classList.add('navbar-wagon-white');
+    // debugger
   }
 };
 

@@ -55,7 +55,8 @@ end_date = Date.new(2018,12,4)
     category: Event::EVENTS[rand(Event::EVENTS.length)],
     shop: Shops[counter],
     start_date: start_date.next_day(counter_day),
-    end_date: end_date.next_day(counter_day)
+    end_date: end_date.next_day(counter_day),
+    shop_category: Shops[counter].category
     )
   event.save!
   counter += 1

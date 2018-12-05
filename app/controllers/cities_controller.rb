@@ -29,7 +29,7 @@ class CitiesController < ApplicationController
   private
 
   def incoming_events
-    incoming_events = @city.events.where("start_date >= ?", Date.today)
+    incoming_events = @city.events.where("start_date > ?", Date.today)
     incoming_events_ordered = incoming_events.order("start_date")
     return incoming_events_ordered.first(3)
   end

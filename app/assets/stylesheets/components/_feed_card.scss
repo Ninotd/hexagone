@@ -1,0 +1,13 @@
+.feed-card {
+  height: 175px;
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  width: 90%;
+  p {
+    display: none;
+  }
+  &:hover {
+    }
+}
