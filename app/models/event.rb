@@ -12,4 +12,5 @@ class Event < ApplicationRecord
   include PgSearch
   multisearchable against: [ :category, :description, :shop_category ], using: {
       tsearch: { prefix: true } }
+
 end
