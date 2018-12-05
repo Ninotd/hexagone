@@ -1,16 +1,14 @@
 
 <div class="container">
   <p>Votre recherche est présentée par ... </p>
-  <div class="events">
-    <div class="promo col-xs-12">
-      <h3><i class="fas fa-piggy-bank"></i> - Bons plans</h3>
-      <% @event_bonsplans.each do |event| %>
-        <div class="col-xs-12 col-sm-4">
+  <h3><i class="fab fa-rebel"></i> - Offres</h3>
+  <% if @events.length < 3 %>
+    <div class="events-no-slick col-xs-12">
+      <% @events.each do |event| %>
           <%= link_to root_path do %>
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
+            <div class="card col-xs-12 col-sm-4 card-no-slick" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
               <div class="card-event-hidden">
                 <p><%=  event.description %></p>
-                <%= link_to "", root_path, class: "card-link" %>
                 <div class="end-date-hidden"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
               </div>
               <div class="card-category"> <h5><%= event.category %></h5> </div>
@@ -20,18 +18,15 @@
               </div>
             </div>
           <% end %>
-        </div>
       <% end %>
     </div>
-    <div class="new col-xs-12">
-      <h3><i class="fas fa-bomb"></i> - Nouveautés</h3>
-      <% @event_nouveautes.each do |event| %>
-        <div class="col-xs-12 col-sm-4">
+  <% else %>
+    <div class="events">
+      <% @events.each do |event| %>
           <%= link_to root_path do %>
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
               <div class="card-event-hidden">
                 <p><%=  event.description %></p>
-                <%= link_to "", root_path, class: "card-link" %>
                 <div class="end-date-hidden"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
               </div>
               <div class="card-category"> <h5><%= event.category %></h5> </div>
@@ -41,33 +36,11 @@
               </div>
             </div>
           <% end %>
-        </div>
       <% end %>
     </div>
-    <div class="events col-xs-12">
-      <h3><i class="fas fa-calendar-plus"></i> - Evènements</h3>
-      <% @event_evenements.each do |event| %>
-        <div class="col-xs-12 col-sm-4">
-          <%= link_to root_path do %>
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
-              <div class="card-event-hidden">
-                <p><%=  event.description %></p>
-                <%= link_to "", root_path, class: "card-link" %>
-                <div class="end-date-hidden"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
-              </div>
-              <div class="card-category"> <h5><%= event.category %></h5> </div>
-              <div class="card-description">
-                <h3><%= event.name %></h3>
-                <h5><%= event.shop.name %></h5>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <% end %>
+  <h3><i class="fab fa-rebel"></i> - Magasins</h3>
   <div class="shops col-xs-12">
-    <h3><i class="fab fa-rebel"></i> - Magasins</h3>
     <% @shops.each do |shop| %>
       <div class="col-xs-12 col-sm-4">
         <%= link_to root_path do %>
@@ -93,4 +66,6 @@
     <% end %>
   </div>
 </div>
+
+
 

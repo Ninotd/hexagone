@@ -3,7 +3,7 @@
 <%= render 'shared/banner_cities' %>
 
 <div class="container">
-    <div class="best-shops">
+    <div class="events-list">
     <h2>Les meilleurs magasins</h2>
     <div class="row">
       <% @city.shops.first(3).each do |shop| %>
@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <div class="best-events">
+  <div class="events-list">
     <h2>Les offres de la semaine</h2>
     <div class="row">
       <% @best_events.each do |event| %>
