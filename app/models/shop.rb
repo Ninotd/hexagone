@@ -16,7 +16,5 @@ class Shop < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch
-  multisearchable against: [ :name, :category, :description ], using: {
-      tsearch: { prefix: true } }
-
+  multisearchable against: [ :name, :category, :description ]
 end
