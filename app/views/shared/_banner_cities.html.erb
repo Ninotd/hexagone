@@ -1,18 +1,18 @@
 <div class="banner banner-cities" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://picsum.photos/1500/1200/?<%= params[:query] %>');">
   <div class="banner-title">
     <h1><%= params[:query] %></h1>
-    <div class="search-bar">
-      <%= form_tag search_shop_cities_path, method: :get do %>
-        <%= text_field_tag :query_shops, params[:query_shops], :class => "form-control",placeholder: "ex. 'Mode'" %>
-        <input type="hidden" name="city_id" value=<%= @city.id %>>
+  </div>
+  <div class="search-bar">
+    <%= form_tag search_shop_cities_path, method: :get do %>
+      <%= text_field_tag :query_shops, params[:query_shops], :class => "form-control",placeholder: "ex. 'Mode'" %>
+      <input type="hidden" name="city_id" value=<%= @city.id %>>
+    <% end %>
+  </div>
+  <div class="banner-quick-search">
+    <ul class="list-inline">
+      <% Shop::CATEGORIES.each do |category| %>
+      <li><%= link_to category, search_shop_cities_path(query_shops: category, city_id: @city.id) %></li>
       <% end %>
-    </div>
-    <div class="banner-quick-search">
-      <ul class="list-inline">
-        <% Shop::CATEGORIES.each do |category| %>
-        <li><%= link_to category, search_shop_cities_path(query_shops: category, city_id: @city.id) %></li>
-        <% end %>
-      </ul>
-    </div>
+    </ul>
   </div>
 </div>
