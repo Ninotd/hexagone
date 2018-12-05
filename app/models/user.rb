@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :shops
+  has_many :favorites, dependent: :destroy
 
   validates :email, format: { with: /\A.*@.*\.com\z/ }
 end
