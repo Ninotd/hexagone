@@ -1,0 +1,23 @@
+.footer {
+  background: #ffc0c2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+}
+
+.footer-links a {
+  color: white;
+  opacity: 0.5;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+  &:hover {
+    color: rgb(237, 109, 134);
+  }
+}
+
+.footer-copyright {
+  color: rgb(237, 109, 134);
+}
