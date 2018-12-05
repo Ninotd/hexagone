@@ -51,7 +51,21 @@
       <% @shop.events.each do |event| %>
 
         <div class="event-card-feed">
-          <%= event.name %>
+
+          <div class="feed-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
+            <div class="feed-card-date"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
+            <div class="feed-card-category"> <h5><%= event.category %></h5> </div>
+            <div class="feed-card-description">
+              <h3><%= event.name %></h3>
+              <h5><%= event.shop.name %></h5>
+            </div>
+          </div>
+
+          <div class="event-more">
+            <i class="fas fa-plus-circle"></i>
+            <i class="far fa-envelope"></i>
+          </div>
+
         </div>
       <% end %>
     </div>

@@ -48,6 +48,7 @@
   border: 1px solid rgba(0, 0, 0, .1);
   margin: 5px;
   padding: 5px;
+  display: flex;
 }
 
 .banner-shop {
@@ -95,9 +96,14 @@
   z-index: 2;
   background: black;
   opacity: 0.4;
+  transition: 0.4s ease;
 }
 
 .mask:hover {
   opacity: 0;
 }
 
+.event-more {
+  width: 40px;
+  text-align: center
+}
