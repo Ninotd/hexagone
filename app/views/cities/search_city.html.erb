@@ -1,11 +1,9 @@
 <%= render 'shared/banner_cities' %>
 
-<%= link_to "Mes favoris", favorites_path %>
-
-<div class="container">
-  <div class="best-shops">
-    <h2>Les meilleurs magasins</h2>
-    <div class="flexbox">
+<div class="wrapper">
+  <div class="container-best-shop">
+    <div class="best-shops"> <h2>LES MEILLEURS MAGASINS</h2> </div>
+    <div class="shop-flexbox">
       <% @city.shops.first(2).each do |shop| %>
         <div class="shop-card">
           <div class="card-head" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/350/200/1');">
@@ -18,8 +16,13 @@
         </div>
       <% end %>
     </div>
+    <div class="text-center">
+    <button type="button" class="btn-shops">TOUS LES MAGASINS</button>
+    </div>
   </div>
+</div>
 
+<div class="container">
   <div class="best-events">
     <h2>Les offres de la semaine</h2>
     <div class="row">
@@ -45,7 +48,7 @@
 
 
   <div class="last-events">
-    <h2>Les nouveautés</h2>
+    <h2>Les favoris</h2>
     <div class="row">
       <% @recent_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
