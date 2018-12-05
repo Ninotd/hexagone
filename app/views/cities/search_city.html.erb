@@ -1,6 +1,9 @@
 <%= render 'shared/banner_cities' %>
 
 
+<%= link_to "Mes favoris (à mettre dans la navbar)", favorites_path %>
+<%= link_to "Mon calendrier (à mettre dans la navbar)", calendars_path %>
+
 <div class="wrapper">
   <div class="container-best-shop">
     <div class="best-shops"> <h2>LES MEILLEURS MAGASINS</h2> </div>
@@ -41,7 +44,8 @@
               <h5><%= event.shop.name %></h5>
             </div>
           </div>
-          <h5><%= link_to "Ajouter au favori", city_shop_favorites_path(@city, event.shop), method: :post %></h5>
+          <h5><%= link_to "Ajouter au favori (à ajouter dans la card avec CSS)", city_shop_favorites_path(@city, event.shop), method: :post %></h5>
+          <h5><%= link_to "Ajouter à mon calendrier (à ajouter dans la card avec CSS)", city_shop_event_calendars_path(@city, event.shop, event), method: :post %></h5>
         </div>
       <% end %>
     </div>

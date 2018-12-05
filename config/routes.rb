@@ -12,12 +12,15 @@ Rails.application.routes.draw do
     end
 
     resources :shops, only: [:show, :index] do
-      resources :events, only: [:new, :create, :delete, :edit]
+      resources :events, only: [:new, :create, :delete, :edit] do
+        resources :calendars, only: :create
+      end
       resources :favorites, only: :create
     end
   end
 
   resources :favorites, only: [:index, :destroy]
+  resources :calendars, only: [:index, :destroy]
   resources :shops, only: [:new, :create, :edit, :delete]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
