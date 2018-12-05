@@ -1,14 +1,17 @@
-.flexbox {
+.shop-flexbox {
   display: flex;
   justify-content: space-around;
   margin: 15px 0;
   width: 100%;
+  padding-bottom: 20px;
 }
 
 .shop-card {
   background-position: center;
   position: relative;
   width: 450px;
+  margin-right: 15px;
+  background-color: white;
 }
 
 .card-head {
