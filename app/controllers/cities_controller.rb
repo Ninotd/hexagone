@@ -42,4 +42,5 @@ class CitiesController < ApplicationController
     # selectionner les 3 premiers
     return recent_events_ordered.first(3).reverse
   end
+
 end
