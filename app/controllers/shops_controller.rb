@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :set_shop, only: [:new, :create]
+  before_action :set_shop, only: [:new, :create, :show]
 
   def new
     @shop = Shop.new
