@@ -52,7 +52,6 @@ class ShopsController < ApplicationController
         @events << result.searchable
       end
     end
-    # splitter les events en categories pour les afficher separement
     @months = {
       "1" => 'janvier',
       "2" => 'février',
@@ -67,19 +66,6 @@ class ShopsController < ApplicationController
       "11" => 'novembre',
       "12" => 'décembre'
     }
-
-    @event_bonsplans = []
-    @event_nouveautes = []
-    @event_evenements = []
-    @events.each do |event|
-      if event.category == "Bon plan"
-        @event_bonsplans << event
-      elsif event.category == "Nouveauté"
-        @event_nouveautes << event
-      elsif event.category == "Evènement"
-        @event_evenements << event
-      end
-    end
   end
 
   private
