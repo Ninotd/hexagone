@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <% @calendars.each do |calendar| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path calendar.event.event_photos.first.photo, crop: :fill %>');">
+          <div class="card-event-hidden">
+            <p><%=  calendar.event.description %></p>
+            <%= link_to "", city_shop_path(calendar.event.shop.city, calendar.event.shop), class: "card-link" %>
+            <div class="end-date-hidden"><p>Jusqu'au <%= calendar.event.end_date.day %> <%= @months["#{calendar.event.end_date.month}"] %> <%= calendar.event.end_date.year %></p></div>
+          </div>
+          <div class="card-category"> <h5><%= calendar.event.category %></h5> </div>
+          <div class="card-description">
+            <h3><%= calendar.event.name %></h3>
+            <h5><%= calendar.event.shop.name %></h5>
+          </div>
+        </div>
+        <h5><%= link_to "Supprimer de mon calendrier", calendar_path(calendar), method: :delete, data: { confirm: "Are you sure?" }%></h5>
+      </div>
+    <% end %>
+  </div>
+</div>
