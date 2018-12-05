@@ -6,9 +6,6 @@ const initUpdateNavbarOnScroll = () => {
     const bannerHeight = parseInt(window.getComputedStyle(banner).height, 10)
     const navbarHeight = parseInt(window.getComputedStyle(navbar).height, 10)
     revealHeigth = bannerHeight - navbarHeight
-  }
-  if (navbar) {
-    // debugger
     window.addEventListener('scroll', () => {
       if (window.scrollY >= revealHeigth) {
         navbar.classList.add('navbar-wagon-white');
@@ -16,6 +13,9 @@ const initUpdateNavbarOnScroll = () => {
         navbar.classList.remove('navbar-wagon-white');
       }
     });
+  } else {
+    navbar.classList.add('navbar-wagon-white');
+    // debugger
   }
 };
 
