@@ -5,9 +5,11 @@
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: contain, cover !important;
   display: flex;
+  flex-direction: column;
   position: relative;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+
 }
 .banner h1 {
   font-size: 50px;
@@ -22,15 +24,23 @@
   margin-bottom: 30px;
 }
 
-ul {
-  position: absolute;
-  bottom: 10px;
-  right: 567px;
-}
+//banner in city page
 
 .banner-cities {
+  justify-content: center;
   height: 50vh;
   h1 {
-    margin-bottom: 16px;
+    margin-bottom: 40px;
+  }
+  .banner-quick-search {
+    justify-content: center;
+    a {
+      color: white;
+      padding: 10px 15px;
+      &:hover {
+        text-decoration: none;
+        color: $main;
+      }
+    }
   }
 }

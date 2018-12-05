@@ -1,22 +1,49 @@
 
-  <div id="lightgallery">
-      <%= cl_image_tag @shop.shop_photos.first.photo, crop: :fill %>
-      <%= cl_image_tag @shop.shop_photos.first.photo, crop: :fill %>
+ <% if @shop.shop_photos.count < 1 %>
+
+  <div class="banner-shop" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
   </div>
 
-<div class="row">
-  <div class="col-md-4 col-sm-offset-4">
-    <div class="shop-show-main">
-      <h2><%= @shop.name %></h2>
-      <p><%= @shop.address %></p>
-      <div class="open-status">
-        <p> Ouvert </p>
+ <% else  %>
+
+  <div id="lightgallery">
+    <div class="g-photo">
+      <% cl_image_path @shop.shop_photos.first.photo, crop: :fill %>
+        <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill  %>
+      <div class="mask"></div>
+    </div>
+    <div class="g-photo">
+      <% cl_image_path @shop.shop_photos.first.photo, crop: :fill %>
+        <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill  %>
+    </div>
+    <div class="g-photo ">
+      <% cl_image_path @shop.shop_photos.first.photo, crop: :fill %>
+        <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill%>
+      <div class="mask"></div>
+    </div>
+  </div>
+
+<!-- style="linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%)" -->
+
+
+
+<!-- il faudra utiliser un path pour le lien et un tag pour l'image -->
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-sm-offset-4">
+      <div class="shop-show-main">
+        <h2><%= @shop.name %></h2>
+        <p><%= @shop.address %></p>
+        <div class="open-status">
+          <p> Ouvert </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container">
+
   <div class="shop-content">
 
     <div class="shop-feed">
@@ -24,7 +51,21 @@
       <% @shop.events.each do |event| %>
 
         <div class="event-card-feed">
-          <%= event.name %>
+
+          <div class="feed-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
+            <div class="feed-card-date"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
+            <div class="feed-card-category"> <h5><%= event.category %></h5> </div>
+            <div class="feed-card-description">
+              <h3><%= event.name %></h3>
+              <h5><%= event.shop.name %></h5>
+            </div>
+          </div>
+
+          <div class="event-more">
+            <i class="fas fa-plus-circle"></i>
+            <i class="far fa-envelope"></i>
+          </div>
+
         </div>
       <% end %>
     </div>
@@ -36,11 +77,14 @@
         <p> Adresse : <%= @shop.address %> </p>
         <p> Website : </p>
         <p> Horaires :</p>
-
       </div>
 
       <div class="shop-map">
-
+        <div id="map"
+          style="width: 100%"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
       </div>
 
     </div>

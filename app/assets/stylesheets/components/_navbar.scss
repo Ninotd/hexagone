@@ -43,7 +43,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: $main;
+  color: white;
   text-decoration: none;
 }
 
@@ -79,9 +79,13 @@
 }
 
 .navbar-wagon-white {
-  background-color: white;
+  background-color: #F4F4F4;
   a, .fa-plus-circle {
-    color: $main;
+    color: rgb(237, 109, 134);
+    &:hover {
+      color: red;
+      opacity: 0.6;
+    }
   }
 }
 
@@ -89,10 +93,5 @@
   background-color: white;
   a, .fa-plus-circle {
     color: $main;
-
-    &:hover {
-      color: $main;
-      opacity: 0.6;
-    }
   }
 }
