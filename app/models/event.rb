@@ -10,6 +10,5 @@ class Event < ApplicationRecord
   validates :category, inclusion: {in: EVENTS}
 
   include PgSearch
-  multisearchable against: [ :category, :description, :shop_category ], using: {
-      tsearch: { prefix: true } }
+  multisearchable against: [ :category, :description, :shop_category ]
 end
