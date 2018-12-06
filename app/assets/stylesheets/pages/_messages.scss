@@ -27,6 +27,7 @@
   margin: 0 10px;
   padding: 11px 10px 8px 10px;
 }
+
 .avatar {
   width: 42px;
   height: 42px;
@@ -59,7 +60,6 @@ input.form-control {
 .chat-header {
   color: black;
   padding: 10px 20px;
-  margin-top: 10px;
   h4 {
     margin: 0;
     text-align: center
@@ -100,7 +100,6 @@ input.form-control {
 .message-list-header{
   color: black;
   padding: 10px 20px;
-  margin-top: 10px;
   h4 {
     margin: 0;
     text-align: center
@@ -110,7 +109,9 @@ input.form-control {
 
 .shop-small-conv{
   height:40px;
-  padding: 10px
+  padding: 10px;
+  display: flex;
+  text-decoration:none;
 }
 
 .time-sent {
@@ -119,4 +120,9 @@ input.form-control {
     font-size: 10px;
     padding-top: 20px;
   }
+}
+
+.client-name {
+  text-decoration: none;
+  margin-left: 10px;
 }

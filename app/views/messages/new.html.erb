@@ -15,12 +15,19 @@
         <% end %>
       <% end %>
     <% else  %>
-      <% all_user_messages = @shop.messages.map {|message| message.user.email} %>
+      <% all_user_with_me = @shop.messages.map {|message| message.user.email} %>
+      <% all_user_messages = all_user_with_me - [current_user.email] %>
       <% all_user_messages.uniq.each do |user|%>
-        <% id = User.find_by(email: user).id %>
-        <%= link_to new_shop_user_message_path(@shop,id) do %>
+        <% talking_user = User.find_by(email: user) %>
+        <%= link_to new_shop_user_message_path(@shop,talking_user) do %>
           <div class="shop-small-conv">
-            <%= user %>
+            <% if talking_user.photo.nil? %>
+              <img src="https://makerepo.com/assets/default-avatar-19cf8cebb96b4d8beff4ef9cad0e5903d288c778c503777332a57085a65371be.png" alt="", class= "avatar">
+            <% else %>
+            <% end %>
+            <div class="client-name">
+              <%= talking_user.first_name + " " + talking_user.last_name%>
+            </div>
           </div>
         <% end %>
       <% end %>

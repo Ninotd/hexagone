@@ -13,9 +13,13 @@
       <%= link_to "Ma ville", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mes boutiques", favorites_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mes évènements", calendars_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
-
+      <% if current_user.messages != []  %>
+      <%= link_to "Messages", new_shop_user_message_path(Message.where(user: current_user).last.shop,current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+      <% elsif current_user.shops.first.messages != [] %>
+        <%= link_to "Messages", new_shop_user_message_path(current_user.shops.first, Message.where(shop:current_user.shops.first).last.user), class: "navbar-wagon-item navbar-wagon-link" %>
+      <% else  %>
+      <% end %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">

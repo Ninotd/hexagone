@@ -1,5 +1,8 @@
 <div class="message <%= user_is_messages_author ? "right" : "" %>">
-  <%= message.user_id %>
+  <% if message.user.photo.nil? %>
+  <img src="https://makerepo.com/assets/default-avatar-19cf8cebb96b4d8beff4ef9cad0e5903d288c778c503777332a57085a65371be.png" alt="", class= "avatar">
+  <% else %>
+  <% end %>
   <div class="message-content"><%= message.content %></div>
   <div class="time-sent">
     <p> <%= message.created_at %></p>
