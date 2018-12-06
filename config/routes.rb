@@ -17,13 +17,22 @@ Rails.application.routes.draw do
       end
       resources :favorites, only: :create
     end
-
+    
     resources :events, only: :index
-
   end
+
+
+  resources :shops, only: [] do
+    resources :users, only: :[] do
+      resources :messages, only: [:new, :create]
+    end
+  end
+
+
 
   resources :favorites, only: [:index, :destroy]
   resources :calendars, only: [:index, :destroy]
   resources :shops, only: [:new, :create, :edit, :delete]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
