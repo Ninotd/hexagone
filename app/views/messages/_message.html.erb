@@ -1,6 +1,9 @@
 <div class="message <%= user_is_messages_author ? "right" : "" %>">
   <%= message.user_id %>
   <div class="message-content"><%= message.content %></div>
+  <div class="time-sent">
+    <p> <%= message.created_at %></p>
+  </div>
 </div>
 
 

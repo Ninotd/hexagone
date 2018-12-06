@@ -39,6 +39,11 @@
         <div class="open-status">
           <p> Ouvert </p>
         </div>
+        <div class="send-message">
+          <%= link_to new_shop_user_message_path(@shop, current_user) do %>
+          <i class="far fa-envelope"></i>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
