@@ -1,19 +1,60 @@
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6, sm-offset-3">
-      <div class="chat-header">
-      </div>
-      <div class="messages">
-        <% @messages.each do |message| %>
-          <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+<div class= "message-page">
+<div class= "message-list">
+  <div class="message-list-header">
+    <h4>Messages</h4>
+  </div>
+  <div class= "message-list-all">
+    <% if current_user == @sender %>
+      <% all_shops_message = current_user.messages.map {|message| message.shop.name} %>
+      <%  all_shops_message.uniq.each do |shop| %>
+      <% shopp = Shop.find_by(name: shop).id %>
+        <%= link_to new_shop_user_message_path(shopp, current_user.id) do %>
+          <div class="shop-small-conv">
+            <%= shop %>
+          </div>
         <% end %>
-      </div>
-    </div>
-    <div id="shop-chat" data-shop-id="<%= @shop.id %>" data-current-id="<%= current_user.id %>" data-user-id="<%= @sender.id %>"></div>
-    <%= simple_form_for [@shop, @sender, @message], remote: true do |f| %>
-      <%= f.input :content, label: false %>
-      <%= f.submit %>
+      <% end %>
+    <% else  %>
+      <% all_user_messages = @shop.messages.map {|message| message.user.email} %>
+      <% all_user_messages.uniq.each do |user|%>
+        <% id = User.find_by(email: user).id %>
+        <%= link_to new_shop_user_message_path(@shop,id) do %>
+          <div class="shop-small-conv">
+            <%= user %>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
+
+</div>
+
+
+  <div class="wrapper-message">
+    <div class="row">
+      <div class="col-sm-6, sm-offset-3">
+        <div class="chat-header">
+            <% if current_user == @sender %>
+              <h4 class="person-talking-to"> <%= @shop.name %> </h4>
+            <% else %>
+              <h4><%= params[:user_id] %></h4>
+            <% end %>
+        </div>
+        <div class="messages">
+          <% @messages.each do |message| %>
+            <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+          <% end %>
+        </div>
+        <div id="shop-chat" data-shop-id="<%= @shop.id %>" data-current-id="<%= current_user.id %>" data-user-id="<%= @sender.id %>">
+        <div class="send-message">
+        <%= simple_form_for [@shop, @sender, @message], remote: true do |f| %>
+          <%= f.input :content, label: false, placeholder: "Ecrivez votre message ..." %>
+          <%= f.submit "Envoyer",  id: "create-message"%>
+        <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

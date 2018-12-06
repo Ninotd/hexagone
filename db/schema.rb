@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2018_12_05_164231) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +52,14 @@ ActiveRecord::Schema.define(version: 2018_12_05_164231) do
     t.index ["shop_id"], name: "index_events_on_shop_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_favorites_on_shop_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.bigint "user_id"
@@ -64,15 +70,6 @@ ActiveRecord::Schema.define(version: 2018_12_05_164231) do
     t.integer "sender_id"
     t.index ["shop_id"], name: "index_messages_on_shop_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
-  create_table "favorites", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "shop_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shop_id"], name: "index_favorites_on_shop_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -127,10 +124,10 @@ ActiveRecord::Schema.define(version: 2018_12_05_164231) do
   add_foreign_key "calendars", "users"
   add_foreign_key "event_photos", "events"
   add_foreign_key "events", "shops"
-  add_foreign_key "messages", "shops"
-  add_foreign_key "messages", "users"
   add_foreign_key "favorites", "shops"
   add_foreign_key "favorites", "users"
+  add_foreign_key "messages", "shops"
+  add_foreign_key "messages", "users"
   add_foreign_key "shop_photos", "shops"
   add_foreign_key "shops", "cities"
   add_foreign_key "shops", "users"
