@@ -13,7 +13,7 @@ const initUpdateNavbarOnScroll = () => {
         navbar.classList.remove('navbar-wagon-white');
       }
     });
-  } else {
+  } else if (navbar) {
     navbar.classList.add('navbar-wagon-white');
     // debugger
   }
