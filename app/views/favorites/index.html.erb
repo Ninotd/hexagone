@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="flexbox">
+    <% @favorites.each do |favorite| %>
+      <div class="shop-card">
+        <div class="card-head" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/350/200/1');">
+          </div>
+        <div class="card-body">
+          <div class="card-category-shop"> <%= favorite.shop.category %> </div>
+          <div class="card-name-shop"> <%= favorite.shop.name %> </div>
+          <div class="card-description-shop"> <%= favorite.shop.name %> </div>
+          <%= link_to "Supprimer de mes favoris", favorite_path(favorite), method: :delete, data: { confirm: "Are you sure?" }%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

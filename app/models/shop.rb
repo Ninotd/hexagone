@@ -4,6 +4,8 @@ class Shop < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :shop_photos, dependent: :destroy
   has_many :messages
+  has_many :favorites, dependent: :destroy
+
 
   CATEGORIES = ["Beauté", "Fleuriste", "Pressing", "Cordonnier", "Maison et Déco", "Alimentation", "Mode", "Sport"]
 
