@@ -1,6 +1,10 @@
-
 <div class="container container-shop-results">
   <div class="wrapper">
+    <%= link_to search_cities_path(query: @city.name) do %>
+      <div class="back-to-index-button">
+        <p> <i class="fas fa-arrow-circle-left"></i>Retour</p>
+      </div>
+    <% end %>
     <p>Votre recherche est présentée par ... </p>
     <h3><i class="fab fa-rebel"></i> - Offres</h3>
     <% if @events.length < 3 %>
@@ -60,6 +64,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 
