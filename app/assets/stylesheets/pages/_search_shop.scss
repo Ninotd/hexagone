@@ -1,7 +1,6 @@
 
-.container {
-  position: relative;
-  top: 90px;
+.wrapper {
+  margin-top: 100px;
 }
 
 .slick-prev:before {
@@ -23,5 +22,10 @@
 }
 .events-no-slick {
   margin: 0 -10px;
+}
+
+.shops {
+  margin-bottom: 25px;
+  padding: 0px;
 }
 
