@@ -1,0 +1,25 @@
+.back-to-index-button {
+  position: absolute;
+  top: 85px;
+  left: 24px;
+  font-size: 16px;
+  color: $third;
+  &:hover {
+  color: $fourth;
+  cursor: pointer;
+  text-decoration: none;
+  }
+}
+
+.back-to-index-button-show-shop {
+  position: absolute;
+  top: 480px;
+  left: 24px;
+  font-size: 16px;
+  color: $third;
+  &:hover {
+  color: $fourth;
+  cursor: pointer;
+  text-decoration: none;
+  }
+}

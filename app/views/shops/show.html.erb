@@ -31,6 +31,11 @@
 <% end %>
 
 <div class="container">
+  <%= link_to search_cities_path(query: @city.name) do %>
+    <div class="back-to-index-button-show-shop">
+      <p> <i class="fas fa-arrow-circle-left"></i>Retour</p>
+    </div>
+  <% end %>
   <div class="row">
     <div class="col-md-4 col-sm-offset-4">
       <div class="shop-show-main">
