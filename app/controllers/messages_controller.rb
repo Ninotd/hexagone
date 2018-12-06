@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @sender = User.find(params[:user_id])
     @message = Message.new
+    # Pour que s'affiche les messages du shop liés qu'à l'useur qui demande qq chose
     @messages = @shop.messages.where(sender_id: params[:user_id])
   end
 
@@ -14,7 +15,6 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.sender_id = @sender.id
     if @message.save
-      # redirect_to chat_room_path(@chat_room)
     else
       render :new
     end
