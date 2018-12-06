@@ -12,7 +12,10 @@
 
   </head>
   <body style="background-color: #f0ece2">
-    <%= render 'shared/navbar' %>
+    <% if @navbar == false %>
+    <% else  %>
+      <%= render 'shared/navbar' %>
+    <% end %>
     <%= render 'shared/flashes' %>
     <div class="sticky-footer"> <%= yield %> </div>
     <%= render 'shared/footer' %>
