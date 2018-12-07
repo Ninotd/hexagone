@@ -1,4 +1,5 @@
 require 'faker'
+require "csv"
 
 puts 'Cleaning database...'
 City.destroy_all
@@ -25,65 +26,85 @@ Users = []
   user_name += 1
 end
 
-puts 'Creating 20 shops'
-counter = 0
-Shops = []
-20.times do
+puts 'Creating shops'
+file = "/Users/robi/code/Ninotd/hexagone/app/services/scraping_results.csv"
+CSV.foreach(file, headers: :first_row, header_converters: :symbol) do |row|
   shop = Shop.new(
-    name: Faker::FunnyName.name,
-    address: Faker::Address.street_name,
+    name: row[:name],
     description: Faker::Lorem.paragraph(2),
-    category: Shop::CATEGORIES[rand(Shop::CATEGORIES.length)],
-    user: Users[counter],
+    category: row[:category],
+    address: row[:location],
+    phone_number: row[:phone],
+    user: User.first,
     city: City.find_by(name: "Fontainebleau")
     )
   shop.save!
-  counter += 1
-  Shops << shop
-end
-
-puts 'Creating 20 events'
-counter = 0
-counter_day = 0
-Events = []
-start_date = Date.new(2018,12,1)
-end_date = Date.new(2018,12,4)
-20.times do
-  event = Event.new(
-    name: Faker::FunnyName.name,
-    description: Faker::Lorem.paragraph(2),
-    category: Event::EVENTS[rand(Event::EVENTS.length)],
-    shop: Shops[counter],
-    start_date: start_date.next_day(counter_day),
-    end_date: end_date.next_day(counter_day),
-    shop_category: Shops[counter].category
-    )
-  event.save!
-  counter += 1
-  counter_day += 1
-  Events << event
-end
-
-puts 'Creating 20 shop_photos'
-counter = 0
-20.times do
   shop_photo = ShopPhoto.new(
-    shop: Shops[counter]
+    shop: shop
     )
-  shop_photo.remote_photo_url = "https://picsum.photos/200/300"
+  shop_photo.remote_photo_url = row[:image]
   shop_photo.save!
-  counter += 1
 end
 
-puts 'Creating 20 event_photos'
-counter = 0
-20.times do
-  event_photo = EventPhoto.new(
-    event: Events[counter]
-    )
-  event_photo.remote_photo_url = "https://picsum.photos/200/300"
-  event_photo.save!
-  counter += 1
-end
+# puts 'Creating 20 shops'
+# counter = 0
+# Shops = []
+# 20.times do
+#   shop = Shop.new(
+#     name: Faker::FunnyName.name,
+#     address: Faker::Address.street_name,
+#     description: Faker::Lorem.paragraph(2),
+#     category: Shop::CATEGORIES[rand(Shop::CATEGORIES.length)],
+#     user: Users[counter],
+#     city: City.find_by(name: "Fontainebleau")
+#     )
+#   shop.save!
+#   counter += 1
+#   Shops << shop
+# end
+
+# puts 'Creating 20 events'
+# counter = 0
+# counter_day = 0
+# Events = []
+# start_date = Date.new(2018,12,1)
+# end_date = Date.new(2018,12,4)
+# 20.times do
+#   event = Event.new(
+#     name: Faker::FunnyName.name,
+#     description: Faker::Lorem.paragraph(2),
+#     category: Event::EVENTS[rand(Event::EVENTS.length)],
+#     shop: Shops[counter],
+#     start_date: start_date.next_day(counter_day),
+#     end_date: end_date.next_day(counter_day),
+#     shop_category: Shops[counter].category
+#     )
+#   event.save!
+#   counter += 1
+#   counter_day += 1
+#   Events << event
+# end
+
+# # puts 'Creating 20 shop_photos'
+# # counter = 0
+# # 20.times do
+# #   shop_photo = ShopPhoto.new(
+# #     shop: Shops[counter]
+# #     )
+# #   shop_photo.remote_photo_url = "https://picsum.photos/200/300"
+# #   shop_photo.save!
+# #   counter += 1
+# # end
+
+# puts 'Creating 20 event_photos'
+# counter = 0
+# 20.times do
+#   event_photo = EventPhoto.new(
+#     event: Events[counter]
+#     )
+#   event_photo.remote_photo_url = "https://picsum.photos/200/300"
+#   event_photo.save!
+#   counter += 1
+# end
 
 puts 'Finished!'

@@ -12,7 +12,7 @@ class Shop < ApplicationRecord
   validates :name, presence: true
   validates :address, presence: true
   validates :description, presence: true
-  validates :category, inclusion: {in: CATEGORIES}
+  # validates :category, inclusion: {in: CATEGORIES}
 
 
   geocoded_by :address
