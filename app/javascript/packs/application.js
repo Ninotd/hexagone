@@ -5,6 +5,7 @@ import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 
 import { initSlick } from '../plugins/slick';
+import { shopShowEventCard } from '../plugins/shopShowEventCard';
 
 initUpdateNavbarOnScroll();
 initAutocomplete();
