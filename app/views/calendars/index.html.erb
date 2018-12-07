@@ -2,7 +2,7 @@
   <div class="row">
     <% @calendars.each do |calendar| %>
       <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path calendar.event.event_photos.first.photo, crop: :fill %>');">
+        <div class="card" style="background-image: url('<%= cl_image_path calendar.event.event_photos.first.photo, crop: :fill %>');">
           <div class="card-event-hidden">
             <p><%=  calendar.event.description %></p>
             <%= link_to "", city_shop_path(calendar.event.shop.city, calendar.event.shop), class: "card-link" %>

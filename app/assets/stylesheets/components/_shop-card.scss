@@ -54,7 +54,7 @@
   overflow: hidden;
   &:hover {
     .shop-card__image {
-      filter: contrast(100%);
+      filter: contrast(70%);
     }
   }
 
@@ -72,7 +72,7 @@
   background-size: cover;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
-  filter: contrast(70%);
+  filter: contrast(100%);
   //filter: saturate(180%);
   overflow: hidden;
   position: relative;

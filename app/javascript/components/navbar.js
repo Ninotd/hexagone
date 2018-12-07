@@ -8,6 +8,13 @@ const initUpdateNavbarOnScroll = () => {
     revealHeigth = bannerHeight - navbarHeight
     window.addEventListener('scroll', () => {
       if (window.scrollY >= revealHeigth) {
+      //   console.log("banner height:")
+      // console.log(bannerHeight)
+      // console.log("navbar height:")
+      // console.log(navbarHeight)
+      // console.log("revealHeigth height:")
+      // console.log(revealHeigth)
+      // console.log(scrollY)
         navbar.classList.add('navbar-wagon-white');
       } else {
         navbar.classList.remove('navbar-wagon-white');
