@@ -1,6 +1,10 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:new, :create, :show]
 
+  def index
+    @shops = Shop.all
+  end
+
   def new
     @shop = Shop.new
   end
@@ -20,6 +24,7 @@ class ShopsController < ApplicationController
   end
 
   def show
+    @city = City.find(params[:city_id])
     @markers = [{
         lng: @shop.longitude,
         lat: @shop.latitude
@@ -43,6 +48,7 @@ class ShopsController < ApplicationController
   def search_shop
     @results = PgSearch.multisearch(params[:query_shops])
     # splitter les results entre events et shops
+    @city = City.find(params[:city_id])
     @shops = []
     @events = []
     @results.each do |result|

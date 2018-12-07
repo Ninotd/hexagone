@@ -10,9 +10,10 @@
       <% end %>
     </div>
     <div class="banner-quick-search">
-        <% Shop::CATEGORIES.each do |category| %>
-        <p><%= link_to category, search_shop_cities_path(query_shops: category, city_id: @city.id) %></p>
-        <% end %>
+      <p><%= link_to "Mode", search_shop_cities_path(query_shops: "mode", city_id: @city.id) %></p>
+      <p><%= link_to "Maison et déco", search_shop_cities_path(query_shops: "Maison et déco", city_id: @city.id) %></p>
+      <p><%= link_to "Beauté", search_shop_cities_path(query_shops: "beauté", city_id: @city.id) %></p>
+      <p><%= link_to "Alimentaire", search_shop_cities_path(query_shops: "alimentaire", city_id: @city.id) %></p>
     </div>
   </div>
 </div>

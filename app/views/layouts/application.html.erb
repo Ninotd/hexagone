@@ -11,14 +11,16 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
 
   </head>
-  <body>
-    <%= render 'shared/navbar' %>
+  <body style="background-color: #f0ece2">
+    <% if @navbar == false %>
+    <% else  %>
+      <%= render 'shared/navbar' %>
+    <% end %>
     <%= render 'shared/flashes' %>
     <div class="sticky-footer"> <%= yield %> </div>
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
-
   </body>
 </html>
 

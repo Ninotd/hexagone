@@ -12,10 +12,15 @@ initSlick();
 
 import { initMapbox } from '../plugins/init_mapbox.js'
 import { initGallery} from '../components/gallery-shop'
+import { initShopChat} from '../plugins/action_cable'
+
 
 initUpdateNavbarOnScroll();
 initAutocomplete();
 initMapbox();
 initGallery();
+initShopChat();
+
+
 
 

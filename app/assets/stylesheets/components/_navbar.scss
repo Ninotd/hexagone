@@ -39,11 +39,11 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: white;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: white;
+  color: $fourth;
   text-decoration: none;
 }
 
@@ -79,9 +79,9 @@
 }
 
 .navbar-wagon-white {
-  background-color: #F4F4F4;
+  background-color: $background;
   a, .fa-plus-circle {
-    color: rgb(237, 109, 134);
+    color: $fourth;
     &:hover {
       color: red;
       opacity: 0.6;
