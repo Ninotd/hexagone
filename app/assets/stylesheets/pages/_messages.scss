@@ -1,3 +1,7 @@
+.document {
+  background: white;
+}
+
 .messages {
   font-size: 14px;
   color: #868686;
@@ -6,9 +10,8 @@
   border: 1px solid #ececec;
   border-top: none;
   border-bottom-width: 0;
-  max-height: calc(100vh - 70px - 45px - 61px - 30px);
   overflow: scroll;
-  height: 100vh;
+  height: 87vh;
 }
 
 .message {
@@ -37,7 +40,7 @@
 #create-message {
   padding: 10px;
   background-color: #ffffff;
-  margin-bottom: 20px;
+  width: 10vw;
   border: 1px solid #ececec;
   height: 50px
 }
@@ -45,6 +48,7 @@
 .message_content {
   margin-bottom: 0;
 }
+
 input.form-control {
   border: 1px solid #ECECEC;
   box-shadow: none;
@@ -59,11 +63,12 @@ input.form-control {
 
 .chat-header {
   color: black;
-  padding: 10px 20px;
+  padding: 10.5px 20px;
   h4 {
     margin: 0;
     text-align: center
   }
+  border-bottom: 0.05px solid #C3C6CA
 }
 
 #new_message {
@@ -72,22 +77,23 @@ input.form-control {
 
 #message_content{
   height:50px;
+  width: 65vw;
 }
 
 
 
 .wrapper-message{
   margin-top:0px;
-  width: 70vw
+  width: 75vw
 }
 
 .message-list {
-  width: 30vw;
-  border-right: 1px solid black;
+  width: 25vw;
+  border-right: 0.05px solid #C3C6CA;
 }
 
 .message-list-all{
-  border-top: 1px solid black
+  border-top: 0.05px solid #C3C6CA
 
 }
 
@@ -104,19 +110,22 @@ input.form-control {
     margin: 0;
     text-align: center
   }
+  position: relative
+
 
 }
 
 .shop-small-conv{
-  height:40px;
+  height:60px;
   padding: 10px;
   display: flex;
   text-decoration:none;
+  z-index: -2000;
 }
 
 .time-sent {
   & p {
-    margin-bottom:0px;
+
     font-size: 10px;
     padding-top: 20px;
   }
@@ -125,4 +134,45 @@ input.form-control {
 .client-name {
   text-decoration: none;
   margin-left: 10px;
+  & p{
+    margin-bottom: 0px;
+  }
 }
+
+.last-message-preview{
+  margin-left: 10px;
+  & p {
+    font-size: 12px;
+    margin-bottom:0px;
+  }
+}
+
+.contact{
+  color:black;
+
+
+}
+
+.shop-small-conv:hover {
+  background-color: #F2F2F2;
+}
+
+.back-to-shop {
+  font-size: 12px;
+  position: absolute;
+  bottom: 35px;
+  left: 10px;
+}
+
+.sticky-footer-message{
+  min-height: 100vh;
+  background-color: white;
+}
+
+// .last-message-time{
+//   margin-left: 10px;
+//   & p {
+//     font-size: 12px;
+//     margin-bottom: Opx;
+//   }
+// }
