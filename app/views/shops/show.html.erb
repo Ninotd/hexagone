@@ -60,23 +60,32 @@
       <h6>Les dernières offres et évènements de <%= @shop.name %> </h6>
       <% @shop.events.each do |event| %>
 
-        <div class="event-card-feed">
+        <div class=" shop-page-events-card [ is-collapsed ] ">
+          <div class="shop-page-events-card__inner [ js-expander ]">
+            <div class="event-free_card event-shop-show-free_card">
+              <div class="event-info_section">
+                <div class="event-free_header">
+                  <h3><strong><%= event.category %></strong></h3>
+                  <h4>Boutique : <%= event.shop.name %></h4>
+                  <h4><%= event.name %></h4>
+                  <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
+                </div>
+              </div>
+              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
+            </div>
 
-          <div class="feed-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
-            <div class="feed-card-date"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
-            <div class="feed-card-category"> <h5><%= event.category %></h5> </div>
-            <div class="feed-card-description">
-              <h3><%= event.name %></h3>
-              <h5><%= event.shop.name %></h5>
+            <div class="event-more">
+              <i class="fas fa-plus-circle"></i>
+              <i class="far fa-envelope"></i>
             </div>
           </div>
-
-          <div class="event-more">
-            <i class="fas fa-plus-circle"></i>
-            <i class="far fa-envelope"></i>
+          <div class="shop-page-events-card__expander">
+            <i class="fas fa-times [ js-collapser ]"></i>
+            Expander
           </div>
-
         </div>
+
+
       <% end %>
     </div>
 
@@ -101,20 +110,3 @@
 
   </div>
 </div>
-
-<div class="shop-page-events-wrapper">
-  <div class="shop-page-events-cards">
-
-    <div class=" shop-page-events-card [ is-collapsed ] ">
-      <div class="shop-page-events-card__inner [ js-expander ]">
-        <span>Card</span>
-        <i class="fa fa-folder-o"></i>
-      </div>
-      <div class="shop-page-events-card__expander">
-        <i class="fa fa-close [ js-collapser ]"></i>
-        Expander
-      </div>
-    </div>
-  </div>
-</div>
-

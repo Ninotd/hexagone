@@ -2,7 +2,7 @@
 
 
 <div class="container">
-  <h2>Les meilleurs magasins</h2>
+  <h2 class="underline-details">Les meilleurs magasins</h2>
   <div class="shop-cards">
     <% @city.shops.first(3).each do |shop| %>
       <div class="shop-cards__item">
@@ -22,11 +22,11 @@
 
 <div class="container">
   <div class="best-events">
-    <h2>Les offres de la semaine</h2>
+    <h2 class="underline-details">Les offres de la semaine</h2>
     <div class="row event-flexbox">
       <% @best_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
-          <%= link_to root_path do %>
+          <%= link_to city_shop_path(@city, event) do %>
             <div class="event-free_card">
               <div class="event-info_section">
                 <div class="event-free_header">
@@ -49,34 +49,12 @@
     </div>
   </div>
 
-  <div class="best-shops">
-    <h2>Les meilleures boutiques</h2>
-    <div class="shop-flexbox">
-      <% @city.shops.first(2).each do |shop| %>
-        <div class="shop-card">
-          <div class="card-head" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/350/200/1');">
-            </div>
-          <div class="card-body">
-            <div class="card-category-shop"> <%= shop.category %> </div>
-            <div class="card-name-shop"> <%= shop.name %> </div>
-            <div class="card-description-shop"> <%= shop.name %> </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="text-center">
-      <%= link_to city_shops_path(@city) do %>
-        <button type="button" class="btn-shops">TOUTES LES BOUTIQUES</button>
-      <% end %>
-    </div>
-  </div>
-
   <div class="favorite-events">
-    <h2>Mes favoris</h2>
+    <h2 class="underline-details">Mes favoris</h2>
     <div class="row">
       <% @recent_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
-          <%= link_to root_path do %>
+          <%= link_to city_shop_path(@city, event) do %>
             <div class="event-free_card">
               <div class="event-info_section">
                 <div class="event-free_header">
@@ -100,11 +78,11 @@
   </div>
 
   <div class="incoming-events">
-    <h2>Prochainement</h2>
+    <h2 class="underline-details">Prochainement</h2>
     <div class="row">
       <% @incoming_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
-          <%= link_to root_path do %>
+          <%= link_to city_shop_path(@city, event) do %>
             <div class="event-free_card">
               <div class="event-info_section">
                 <div class="event-free_header">

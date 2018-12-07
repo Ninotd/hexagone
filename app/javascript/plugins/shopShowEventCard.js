@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 const shopShowEventCard = () => {
   $(document).ready(function(){
     const $cell = $('.shop-page-events-card');

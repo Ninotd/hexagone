@@ -10,6 +10,7 @@ import { shopShowEventCard } from '../plugins/shopShowEventCard';
 initUpdateNavbarOnScroll();
 initAutocomplete();
 initSlick();
+shopShowEventCard();
 
 import { initMapbox } from '../plugins/init_mapbox.js'
 import { initGallery} from '../components/gallery-shop'

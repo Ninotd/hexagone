@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css'
 
 const initSlick = () => {
   $(document).ready(function(){
-    $('.events').slick({
+    $('.events-with-slick').slick({
       centerMode: true,
       centerPadding: '0px',
       slidesToShow: 3,

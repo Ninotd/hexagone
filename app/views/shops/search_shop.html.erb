@@ -1,62 +1,61 @@
 
-<div class="container">
-  <p>Votre recherche est présentée par ... </p>
-  <h3><i class="fab fa-rebel"></i> - Offres</h3>
+<div class="container container-search">
+  <h2><strong>Votre recherche est présentée par ... </strong></h2>
+  <h2 class="underline-details">Les offres que vous recherchez</h2>
   <% if @events.length < 3 %>
     <div class="events-no-slick col-xs-12">
       <% @events.each do |event| %>
+        <div class="col-xs-12 col-sm-4">
           <%= link_to root_path do %>
-            <div class="card col-xs-12 col-sm-4 card-no-slick" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
-              <div class="card-event-hidden">
-                <p><%=  event.description %></p>
-                <div class="end-date-hidden"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
+            <div class="event-free_card">
+              <div class="event-info_section">
+                <div class="event-free_header">
+                  <h3><strong><%= event.category %></strong></h3>
+                  <h4>Boutique : <%= event.shop.name %></h4>
+                  <h4><%= event.name %></h4>
+                  <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
+                </div>
               </div>
-              <div class="card-category"> <h5><%= event.category %></h5> </div>
-              <div class="card-description">
-                <h3><%= event.name %></h3>
-                <h5><%= event.shop.name %></h5>
-              </div>
+              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
             </div>
           <% end %>
+        </div>
       <% end %>
     </div>
   <% else %>
-    <div class="events">
+    <div class="events-with-slick">
       <% @events.each do |event| %>
-          <%= link_to root_path do %>
-            <div class="flip flip-vertical">
-                <div class="front" style="background-image: url(https://images.pexels.com/photos/38136/pexels-photo-38136.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb)">
-                  <h1 class="text-shadow"><%= event.category %></h1>
-                  <h5><%= event.shop.name %></h5>
-
+          <%= link_to city_shop_path(@city, event) do %>
+            <div class="event-free_card">
+              <div class="event-info_section">
+                <div class="event-free_header">
+                  <h3><strong><%= event.category %></strong></h3>
+                  <h4>Boutique : <%= event.shop.name %></h4>
+                  <h4><%= event.name %></h4>
+                  <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
                 </div>
-                <div class="back">
-                   <h2><%= event.name %></h2>
-                   <p><%=  event.description %></p>
-                   <%= link_to "", city_shop_path(@city, event.shop), class: "card-link" %>
-                   <div class="end-date-hidden"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
-                </div>
+              </div>
+              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
             </div>
           <% end %>
       <% end %>
     </div>
   <% end %>
-  <h3><i class="fab fa-rebel"></i> - Magasins</h3>
-  <div class="wrapper">
-    <div class="container-best-shop">
-      <div class="shop-flexbox">
-        <% @shops.first(2).each do |shop| %>
+  <div class="container">
+    <h2 class="underline-details">Les magasins que vous recherchez</h2>
+    <div class="shop-cards">
+      <% @shops.each do |shop| %>
+        <div class="shop-cards__item">
           <div class="shop-card">
-            <div class="card-head" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempicsum.com/futurama/350/200/1');">
-              </div>
-            <div class="card-body">
-              <div class="card-category-shop"> <%= shop.category %> </div>
-              <div class="card-name-shop"> <%= shop.name %> </div>
-              <div class="card-description-shop"> <%= shop.name %> </div>
+            <div class="shop-card__image shop-card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path shop.shop_photos.first.photo, crop: :fill %>');"></div>
+            <div class="shop-card__content">
+              <div class="shop-card__title">Catégorie : <%= shop.category %></div>
+              <p class="shop-card__text">Restaurant : <%= shop.name %></p>
+              <%= link_to "Voir cette boutique", city_shop_path(@city, shop), class: "shop-btn shop-btn--block shop-card__btn" %>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
