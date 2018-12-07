@@ -1,11 +1,19 @@
+i.fas.fa-times{
+  position: absolute;
+  top: 10px;
+}
 
+.fa-times:before{
+  position: absolute;
+  right: 3px;
+}
 
 * {
   box-sizing: border-box;
 }
 
 .event-shop-show-free_card{
-  width: 85%;
+  width: 100%;
 }
 
 //Grid Container
@@ -17,23 +25,23 @@
 
 //Cards
 .shop-page-events-card {
-  margin: 15px;
   width: 90%;
+  margin: 0 auto;
+  margin-top: 5px;
   transition: all 0.2s ease-in-out;
 
   //Expander
   &__expander {
     transition: all 0.2s ease-in-out;
-    background-color: $background;
+    background-color: #fcf8f3;
     position: relative;
+    border-radius: 10px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    text-transform: uppercase;
-    color: $light-gray;
-    font-size: 1.5em;
+    color: $fourth;
 
     .fas {
       font-size: 0.75em;
@@ -91,7 +99,7 @@
 
     .shop-page-events-card__expander {
       max-height: 1000px;
-      min-height: 200px;
+      min-height: 100px;
       width: 100%;
       overflow: visible;
       margin-top: 30px;
@@ -119,4 +127,5 @@
     }
   }
 }
+
 

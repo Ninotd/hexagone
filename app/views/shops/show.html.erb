@@ -60,7 +60,7 @@
   <div class="shop-content">
 
     <div class="shop-feed">
-      <h6>Les dernières offres et évènements de <%= @shop.name %> </h6>
+      <h5>Les dernières offres et évènements de <%= @shop.name %> </h5>
       <% @shop.events.each do |event| %>
 
         <div class=" shop-page-events-card [ is-collapsed ] ">
@@ -76,15 +76,10 @@
               </div>
               <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
             </div>
-
-            <div class="event-more">
-              <i class="fas fa-plus-circle"></i>
-              <i class="far fa-envelope"></i>
-            </div>
           </div>
           <div class="shop-page-events-card__expander">
             <i class="fas fa-times [ js-collapser ]"></i>
-            Expander
+            <%= event.description %>
           </div>
         </div>
 
