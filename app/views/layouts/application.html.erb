@@ -12,13 +12,20 @@
 
   </head>
   <body style="background-color: #f0ece2">
+    <%= render 'shared/flashes' %>
     <% if @navbar == false %>
     <% else  %>
       <%= render 'shared/navbar' %>
     <% end %>
+
     <%= render 'shared/flashes' %>
+    <% if @footer == false %>
+    <div class="sticky-footer-message"> <%= yield %> </div>
+    <% else %>
     <div class="sticky-footer"> <%= yield %> </div>
     <%= render 'shared/footer' %>
+    <% end %>
+
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
