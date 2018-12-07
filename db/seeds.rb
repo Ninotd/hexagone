@@ -19,7 +19,9 @@ Users = []
 20.times do
   user = User.new(
     email: "#{user_name}@gmail.com",
-    password: "hexagon"
+    password: "hexagon",
+    first_name: "Victor#{user_name}",
+    last_name: "Desjardins"
     )
   Users << user
   user.save!

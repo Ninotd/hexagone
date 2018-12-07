@@ -31,6 +31,11 @@
 <% end %>
 
 <div class="container">
+  <%= link_to request.referer.present? ? request.referer : search_cities_path(query: @city.name) do %>
+    <div class="back-to-index-button-show-shop">
+      <p> <i class="fas fa-arrow-circle-left"></i>Retour</p>
+    </div>
+  <% end %>
   <div class="row">
     <div class="col-md-4 col-sm-offset-4">
       <div class="shop-show-main">
@@ -38,6 +43,14 @@
         <p><%= @shop.address %></p>
         <div class="open-status">
           <p> Ouvert </p>
+        </div>
+        <div class="send-message">
+          <% if current_user != @shop.user %>
+            <%= link_to new_shop_user_message_path(@shop, current_user) do %>
+            <i class="far fa-envelope"></i>
+            <% end %>
+          <% else %>
+          <% end %>
         </div>
       </div>
     </div>

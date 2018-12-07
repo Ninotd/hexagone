@@ -5,6 +5,8 @@ class MessagesController < ApplicationController
     @message = Message.new
     # Pour que s'affiche les messages du shop liés qu'à l'useur qui demande qq chose
     @messages = @shop.messages.where(sender_id: params[:user_id])
+    @footer = false
+    @navbar = false
   end
 
   def create
@@ -19,6 +21,7 @@ class MessagesController < ApplicationController
       render :new
     end
   end
+
 
   private
 
