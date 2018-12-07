@@ -25,7 +25,7 @@
   <% else %>
     <div class="events-with-slick">
       <% @events.each do |event| %>
-          <%= link_to city_shop_path(@city, event) do %>
+          <%= link_to city_shop_path(@city, event.shop) do %>
             <div class="event-free_card">
               <div class="event-info_section">
                 <div class="event-free_header">
