@@ -51,7 +51,8 @@
         <% if current_user == @sender %>
           <h4 class="person-talking-to"> <%= @shop.name %> </h4>
         <% else %>
-          <h4> <%= params[:user_id] %> </h4>
+          <% client_talking = User.find(params[:user_id]) %>
+          <h4> <%= client_talking.first_name + " " + client_talking.last_name%> </h4>
         <% end %>
     </div>
     <div class="messages">
