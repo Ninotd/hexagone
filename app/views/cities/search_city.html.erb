@@ -1,23 +1,44 @@
 <%= render 'shared/banner_cities' %>
 
+
+<div class="container">
+  <h2>Les meilleurs magasins</h2>
+  <div class="shop-cards">
+    <% @city.shops.first(3).each do |shop| %>
+      <div class="shop-cards__item">
+        <div class="shop-card">
+          <div class="shop-card__image shop-card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path shop.shop_photos.first.photo, crop: :fill %>');"></div>
+          <div class="shop-card__content">
+            <div class="shop-card__title">Catégorie : <%= shop.category %></div>
+            <p class="shop-card__text">Restaurant : <%= shop.name %></p>
+            <%= link_to "Voir cette boutique", city_shop_path(@city, shop), class: "shop-btn shop-btn--block shop-card__btn" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
 <div class="container">
   <div class="best-events">
     <h2>Les offres de la semaine</h2>
     <div class="row event-flexbox">
       <% @best_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
-            <div class="card-event-hidden">
-              <p><%=  event.description %></p>
-              <%= link_to "", city_shop_path(@city, event.shop), class: "card-link" %>
-              <div class="end-date-hidden"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
+          <%= link_to root_path do %>
+            <div class="event-free_card">
+              <div class="event-info_section">
+                <div class="event-free_header">
+                  <h3><strong><%= event.category %></strong></h3>
+                  <h4>Boutique : <%= event.shop.name %></h4>
+                  <h4><%= event.name %></h4>
+                  <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
+                </div>
+              </div>
+              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
             </div>
-            <div class="card-category"> <h5><%= event.category %></h5> </div>
-            <div class="card-description">
-              <h3><%= event.name %></h3>
-              <h5><%= event.shop.name %></h5>
-            </div>
-          </div>
+          <% end %>
         </div>
       <% end %>
     </div>
@@ -56,17 +77,16 @@
       <% @recent_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
           <%= link_to root_path do %>
-            <div class="card card-hovered" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
-              <div class="card-event-hidden">
-                <p><%=  event.description %></p>
-                <%= link_to "", root_path, class: "card-link" %>
-                <div class="end-date-hidden"><p>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p></div>
+            <div class="event-free_card">
+              <div class="event-info_section">
+                <div class="event-free_header">
+                  <h3><strong><%= event.category %></strong></h3>
+                  <h4>Boutique : <%= event.shop.name %></h4>
+                  <h4><%= event.name %></h4>
+                  <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
+                </div>
               </div>
-              <div class="card-category"> <h5><%= event.category %></h5> </div>
-              <div class="card-description">
-                <h3><%= event.name %></h3>
-                <h5><%= event.shop.name %></h5>
-              </div>
+              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
             </div>
           <% end %>
         </div>
@@ -79,31 +99,26 @@
     </div>
   </div>
 
-
-
   <div class="incoming-events">
     <h2>Prochainement</h2>
     <div class="row">
       <% @incoming_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
           <%= link_to root_path do %>
-            <div class="card-incoming" style="background-image: linear-gradient(rgba(206,206,206,0.7), rgba(206,206,206,0.7)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
-              <div class="card-event-hidden">
-                <%= link_to "", root_path, class: "card-link" %>
-                <div class="end-date-hidden">
-                  <p>A partir du <%= event.start_date.day %> <%= @months["#{event.start_date.month}"] %> <%= event.start_date.year %> ! Restez attentifs !</p>
+            <div class="event-free_card">
+              <div class="event-info_section">
+                <div class="event-free_header">
+                  <h3><strong><%= event.category %></strong></h3>
+                  <h4>Boutique : <%= event.shop.name %></h4>
+                  <h4><%= event.name %></h4>
+                  <h5>A partir du <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
                 </div>
               </div>
-              <div class="card-category"> <h5><%= event.category %></h5> </div>
-              <div class="card-description">
-                <h3><%= event.name %></h3>
-                <h5><%= event.shop.name %></h5>
-              </div>
+              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
             </div>
           <% end %>
         </div>
       <% end %>
-    </div>
   </div>
 </div>
 
