@@ -23,3 +23,14 @@
   text-decoration: none;
   }
 }
+
+.quick-search-btn{
+  background-color: #ffba5a;
+  border-radius: 10px;
+  &:hover {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  }
+}

@@ -57,9 +57,10 @@
   display: flex;
   justify-content: space-between;
   margin-top: 24px;
+  width: 500px;
   a {
     color: white;
-    padding: 10px 15px;
+    padding: 2px 15px;
     &:hover {
       text-decoration: none;
       color: $main;

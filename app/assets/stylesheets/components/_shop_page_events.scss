@@ -1,0 +1,122 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
+.event-shop-show-free_card{
+  width: 85%;
+}
+
+//Grid Container
+.shop-page-events-cards {
+  padding: 15px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+//Cards
+.shop-page-events-card {
+  margin: 15px;
+  width: 90%;
+  transition: all 0.2s ease-in-out;
+
+  //Expander
+  &__expander {
+    transition: all 0.2s ease-in-out;
+    background-color: $background;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-transform: uppercase;
+    color: $light-gray;
+    font-size: 1.5em;
+
+    .fas {
+      font-size: 0.75em;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      position: relative;
+      left: 55%;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &.is-collapsed {
+
+    .shop-page-events-card__inner {
+      &:after {
+        content: "";
+        opacity: 0;
+      }
+    }
+    .shop-page-events-card__expander {
+      max-height: 0;
+      min-height: 0;
+      overflow: hidden;
+      margin-top: 0;
+      opacity: 0;
+    }
+  }
+
+  &.is-expanded {
+
+    .shop-page-events-card__inner {
+
+      &:after{
+        content: "";
+        opacity: 1;
+        display: block;
+        height: 0;
+        width: 0;
+        position: absolute;
+        bottom: -30px;
+        left: calc(50% - 15px);
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid #333a45;
+      }
+
+      //folder open icon
+      .fas:before {
+        content: "\f115";
+      }
+    }
+
+    .shop-page-events-card__expander {
+      max-height: 1000px;
+      min-height: 200px;
+      width: 100%;
+      overflow: visible;
+      margin-top: 30px;
+      opacity: 1;
+    }
+
+    &:hover {
+      .shop-page-events-card__inner {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &.is-inactive {
+    .shop-page-events-card__inner {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    &:hover {
+      .shop-page-events-card__inner {
+        background-color: $main;
+        transform: scale(1);
+      }
+    }
+  }
+}
+

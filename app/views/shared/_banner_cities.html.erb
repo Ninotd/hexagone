@@ -10,10 +10,10 @@
       <% end %>
     </div>
     <div class="banner-quick-search">
-      <p><%= link_to "Mode", search_shop_cities_path(query_shops: "mode", city_id: @city.id) %></p>
-      <p><%= link_to "Maison et déco", search_shop_cities_path(query_shops: "Maison et déco", city_id: @city.id) %></p>
-      <p><%= link_to "Beauté", search_shop_cities_path(query_shops: "beauté", city_id: @city.id) %></p>
-      <p><%= link_to "Alimentaire", search_shop_cities_path(query_shops: "alimentaire", city_id: @city.id) %></p>
+      <p><%= link_to "Mode", search_shop_cities_path(query_shops: "mode", city_id: @city.id),class: "quick-search-btn" %></p>
+      <p><%= link_to "Maison et déco", search_shop_cities_path(query_shops: "Maison et déco", city_id: @city.id),class: "quick-search-btn" %></p>
+      <p><%= link_to "Beauté", search_shop_cities_path(query_shops: "beauté", city_id: @city.id),class: "quick-search-btn" %></p>
+      <p><%= link_to "Alimentaire", search_shop_cities_path(query_shops: "alimentaire", city_id: @city.id),class: "quick-search-btn" %></p>
     </div>
   </div>
 </div>
