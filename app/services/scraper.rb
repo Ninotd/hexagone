@@ -1,6 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
-require 'CSV'
+require 'csv'
 
 # url = "http://ucaifontainebleau.com/annuaire-ucaif/"
 
