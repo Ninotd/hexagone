@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  mount ActionCable.server => "/cable"
+
   resources :cities do
     collection do
       get 'city', to: "cities#search_city", as: "search"
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
       end
       resources :favorites, only: :create
     end
-    
+
     resources :events, only: :index
   end
 
