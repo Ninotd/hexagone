@@ -31,7 +31,7 @@
 <% end %>
 
 <div class="container">
-  <%= link_to search_cities_path(query: @city.name) do %>
+  <%= link_to request.referer.present? ? request.referer : search_cities_path(query: @city.name) do %>
     <div class="back-to-index-button-show-shop">
       <p> <i class="fas fa-arrow-circle-left"></i>Retour</p>
     </div>
