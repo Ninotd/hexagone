@@ -8,7 +8,7 @@
 
   <div id="lightgallery">
     <div class="g-photo">
-      <% cl_image_path @shop.shop_photos.first.photo, crop: :fill %>
+      <% cl_image_path @shop.shop_photos.first.photo %>
         <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill  %>
       <div class="mask"></div>
     </div>
@@ -19,6 +19,7 @@
     <div class="g-photo ">
       <% cl_image_path @shop.shop_photos.first.photo, crop: :fill %>
         <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill%>
+
       <div class="mask"></div>
     </div>
   </div>

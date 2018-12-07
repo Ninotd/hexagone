@@ -6,5 +6,4 @@ const initGallery = () => {
   lightGallery(document.getElementById('lightgallery'));
 }
 
-
 export {initGallery};
