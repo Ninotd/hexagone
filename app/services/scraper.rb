@@ -16,11 +16,11 @@ CSV.open("./scraping_results.csv", 'wb') do |csv|
 # count = 0
   begin
     html_doc.search('.w2dc-row.w2dc-listing').each do |element|
-      p image = element.search('.w2dc-listing-logo-img img')[0].attributes["src"].value.strip if element.search('.w2dc-listing-logo-img img')[0]
-      p name = element.search('.w2dc-listing-header')[0].text.strip if element.search('.w2dc-listing-header')[0]
-      p location = element.search('.w2dc-location')[0].text.strip if element.search('.w2dc-location')[0]
-      p opening_time = element.search('.w2dc-field-output-block-textarea .w2dc-field-content')[0].text.strip if element.search('.w2dc-field-output-block-textarea .w2dc-field-content')[0]
-      p phone = element.search('.w2dc-field-output-block-string .w2dc-field-content')[0].text.strip if element.search('.w2dc-field-output-block-string .w2dc-field-content')[0]
+     image = element.search('.w2dc-listing-logo-img img')[0].attributes["src"].value.strip if element.search('.w2dc-listing-logo-img img')[0]
+     name = element.search('.w2dc-listing-header')[0].text.strip if element.search('.w2dc-listing-header')[0]
+     location = element.search('.w2dc-location')[0].text.strip if element.search('.w2dc-location')[0]
+     opening_time = element.search('.w2dc-field-output-block-textarea .w2dc-field-content')[0].text.strip if element.search('.w2dc-field-output-block-textarea .w2dc-field-content')[0]
+     phone = element.search('.w2dc-field-output-block-string .w2dc-field-content')[0].text.strip if element.search('.w2dc-field-output-block-string .w2dc-field-content')[0]
       csv << [image, name, location, opening_time, phone]
       # count += 1
     end

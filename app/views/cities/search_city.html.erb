@@ -26,7 +26,7 @@
     <div class="row event-flexbox">
       <% @best_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
-          <%= link_to city_shop_path(@city, event) do %>
+          <%= link_to city_shop_path(@city, event.shop) do %>
             <div class="event-free_card">
               <div class="event-info_section">
                 <div class="event-free_header">
@@ -54,7 +54,7 @@
     <div class="row">
       <% @recent_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
-          <%= link_to city_shop_path(@city, event) do %>
+          <%= link_to city_shop_path(@city, event.shop) do %>
             <div class="event-free_card">
               <div class="event-info_section">
                 <div class="event-free_header">
@@ -82,7 +82,7 @@
     <div class="row">
       <% @incoming_events.each do |event| %>
         <div class="col-xs-12 col-sm-4">
-          <%= link_to city_shop_path(@city, event) do %>
+          <%= link_to city_shop_path(@city, event.shop) do %>
             <div class="event-free_card">
               <div class="event-info_section">
                 <div class="event-free_header">
