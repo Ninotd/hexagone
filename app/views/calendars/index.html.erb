@@ -1,21 +1,111 @@
 <div class="container">
-  <div class="row">
-    <% @calendars.each do |calendar| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: url('<%= cl_image_path calendar.event.event_photos.first.photo, crop: :fill %>');">
-          <div class="card-event-hidden">
-            <p><%=  calendar.event.description %></p>
-            <%= link_to "", city_shop_path(calendar.event.shop.city, calendar.event.shop), class: "card-link" %>
-            <div class="end-date-hidden"><p>Jusqu'au <%= calendar.event.end_date.day %> <%= @months["#{calendar.event.end_date.month}"] %> <%= calendar.event.end_date.year %></p></div>
+
+  <% if @calendars.first.nil? && @favorites.first.nil? %>
+
+    <h2>Personnalises ta page en ajoutant tes magasins préférés et enregistres les évènements que tu ne veux pas louper !</h2>
+
+  <% elsif @calendars.first.nil? %>
+
+    <h2 class="underline-details">Mes magasins</h2>
+    <div class="shop-cards relative-position">
+      <% @favorites.each do |favorite| %>
+        <div class="shop-cards__item col-xs-12 col-sm-4">
+          <div class="shop-card">
+            <div class="shop-card__image shop-card__image--fence" style="background-image: url('<%= cl_image_path favorite.shop.shop_photos.first.photo, crop: :fill %>');"></div>
+            <div class="shop-card__content">
+              <div class="shop-card__title">Catégorie : <%= favorite.shop.category %></div>
+              <p class="shop-card__text">Boutique : <%= favorite.shop.name %></p>
+              <%= link_to "Voir cette boutique", city_shop_path(@city, favorite.shop), class: "shop-btn shop-btn--block shop-card__btn" %>
+            </div>
           </div>
-          <div class="card-category"> <h5><%= calendar.event.category %></h5> </div>
-          <div class="card-description">
-            <h3><%= calendar.event.name %></h3>
-            <h5><%= calendar.event.shop.name %></h5>
+          <div class="add-to-favorite-link">
+            <%= link_to favorite_path(favorite), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;width:50px;'>Supprimer de mes favoris</p>"><i class="fas fa-trash-alt"></i></button>
+            <% end %>
           </div>
         </div>
-        <h5><%= link_to "Supprimer de mon calendrier", calendar_path(calendar), method: :delete, data: { confirm: "Are you sure?" }%></h5>
+      <% end %>
+    </div>
+
+    <% elsif @favorites.first.nil? %>
+
+      <h2>Mes évènements</h2>
+      <div class="best-events">
+        <h2 class="underline-details">Mes évènements</h2>
+        <div class="row evenement-card-flexbox events-with-slick">
+          <% @calendars.each do |calendar| %>
+            <div class="col-xs-12 col-sm-4 evenement-card-link">
+              <%= link_to city_shop_path(@city, calendar.event.shop) do %>
+                <div class="evenement-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path calendar.event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
+                  <div class="evenement-card-description">
+                    <h2><%= calendar.event.name %></h2>
+                    <h3><%= calendar.event.shop.name %></h3>
+                  </div>
+                  <div class="evenement-card-category">
+                    <h3><%= calendar.event.shop.category %></h3>
+                  </div>
+                </div>
+              <% end %>
+              <div class="add-to-calendar-link">
+                <%= link_to calendar_path(calendar), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Supprimer du calendrier</p>"><i class="fas fa-trash-alt"></i></button>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
-    <% end %>
-  </div>
+
+  <% else %>
+
+    <h2>Mes évènements</h2>
+    <div class="best-events">
+      <h2 class="underline-details">Mes évènements</h2>
+      <div class="row evenement-card-flexbox events-with-slick">
+        <% @calendars.each do |calendar| %>
+          <div class="col-xs-12 col-sm-4 evenement-card-link">
+            <%= link_to city_shop_path(@city, calendar.event.shop) do %>
+              <div class="evenement-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path calendar.event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
+                <div class="evenement-card-description">
+                  <h2><%= calendar.event.name %></h2>
+                  <h3><%= calendar.event.shop.name %></h3>
+                </div>
+                <div class="evenement-card-category">
+                  <h3><%= calendar.event.shop.category %></h3>
+                </div>
+              </div>
+            <% end %>
+            <div class="add-to-calendar-link">
+              <%= link_to calendar_path(calendar), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Supprimer du calendrier</p>"><i class="fas fa-trash-alt"></i></button>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <h2 class="underline-details">Mes magasins</h2>
+    <div class="shop-cards relative-position">
+      <% @favorites.each do |favorite| %>
+        <div class="shop-cards__item col-xs-12 col-sm-4">
+          <div class="shop-card">
+            <div class="shop-card__image shop-card__image--fence" style="background-image: url('<%= cl_image_path favorite.shop.shop_photos.first.photo, crop: :fill %>');"></div>
+            <div class="shop-card__content">
+              <div class="shop-card__title">Catégorie : <%= favorite.shop.category %></div>
+              <p class="shop-card__text">Boutique : <%= favorite.shop.name %></p>
+              <%= link_to "Voir cette boutique", city_shop_path(@city, favorite.shop), class: "shop-btn shop-btn--block shop-card__btn" %>
+            </div>
+          </div>
+          <div class="add-to-favorite-link">
+            <%= link_to favorite_path(favorite), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;width:50px;'>Supprimer de mes favoris</p>"><i class="fas fa-trash-alt"></i></button>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+
 </div>

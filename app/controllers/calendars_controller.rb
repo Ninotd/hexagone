@@ -2,6 +2,8 @@ class CalendarsController < ApplicationController
 
   def index
     @calendars = current_user.calendars
+    @favorites = current_user.favorites
+    @city = City.first
     @months = {
       "1" => 'janvier',
       "2" => 'février',

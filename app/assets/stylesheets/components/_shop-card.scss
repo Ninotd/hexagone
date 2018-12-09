@@ -42,6 +42,15 @@
   @media(min-width: 56rem) {
     width: 33.3333%;
   }
+  .add-to-favorite-link {
+    opacity: 0;
+    transition: opacity 0.6s;
+  }
+  &:hover {
+    .add-to-favorite-link {
+      opacity: 1;
+    }
+  }
 }
 
 .shop-card {
@@ -58,6 +67,10 @@
   }
   position: relative;
 
+}
+
+.relative-position {
+  position: relative;
 }
 
 .shop-card__content {
@@ -101,5 +114,12 @@
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 1.25rem;
+}
+
+.add-to-favorite-link {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  opacity: 0.6;
 }
 
