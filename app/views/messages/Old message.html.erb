@@ -72,3 +72,23 @@ Old message
   </div>
 
 </div>
+
+<div class="message <%= user_is_messages_author ? "right" : "" %>">
+   <% if message.user == @shop.user %>
+    <% if @shop.shop_photos == [] %>
+      <img src="https://makerepo.com/assets/default-avatar-19cf8cebb96b4d8beff4ef9cad0e5903d288c778c503777332a57085a65371be.png" alt="", class= "avatar">
+    <% else  %>
+      <%= cl_image_tag @shop.shop_photos.first.photo, class: "avatar"%>
+    <% end %>
+  <% else %>
+    <% if message.user.photo.nil? %>
+    <img src="https://makerepo.com/assets/default-avatar-19cf8cebb96b4d8beff4ef9cad0e5903d288c778c503777332a57085a65371be.png" alt="", class= "avatar">
+    <% else %>
+    <%= cl_image_tag user.photo, class: "avatar"%>
+    <% end %>
+  <% end %>
+  <div class="message-content"><%= message.content %></div>
+  <div class="time-sent">
+    <p> <%= message.created_at %></p>
+  </div>
+</div>

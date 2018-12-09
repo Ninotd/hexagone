@@ -20,7 +20,7 @@
         <div class="message-all">
 
           <% if current_user == @sender %>
-            <% all_shops_message = current_user.messages.map {|message| message.shop.name} %>
+            <% all_shops_message = current_user.messages.sort{|a,b| b.created_at <=> a.created_at}.map {|message| message.shop.name} %>
             <%  all_shops_message.uniq.each do |shop| %>
             <% shopp = Shop.find_by(name: shop) %>
               <%= link_to new_shop_user_message_path(shopp, current_user.id) do %>
@@ -94,7 +94,7 @@
         <div id="shop-chat" data-shop-id="<%= @shop.id %>" data-current-id="<%= current_user.id %>" data-user-id="<%= @sender.id %>">
           <div class="send-message">
             <%= simple_form_for [@shop, @sender, @message], remote: true do |f| %>
-              <%= f.input :content, class:"form-control", label: false, placeholder: "Ecrivez votre message ..." %>
+              <%= f.input :content, class:"form-control", label: false, placeholder: "Votre message ..." %>
               <%= f.submit "Envoyer",  id: "create-message"%>
             <% end %>
           </div>

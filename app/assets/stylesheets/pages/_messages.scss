@@ -50,9 +50,10 @@ font-weight: bold
   background:white;
   border-radius: 1px;
   box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  transition:all 0.3s ease;
   &:hover{
     background-color: $gray;
-    transform: scale(1);
+    transform: scale(1.1);
   }
 }
 
@@ -97,7 +98,7 @@ font-weight: bold
   border-bottom-width: 0;
   overflow: scroll;
   margin-top: 15px;
-  max-height: calc(100vh - 70px - 45px - 61px - 30px);
+  height: calc(100vh - 70px - 45px - 61px - 30px);
 
 }
 
@@ -111,6 +112,10 @@ font-weight: bold
       color : white;
     }
   }
+}
+
+.send-message{
+
 }
 
 #new_message {
@@ -134,4 +139,16 @@ font-weight: bold
   border-radius: 3px;
   margin: 0 10px;
   padding: 11px 10px 8px 10px;
+}
+
+input.form-control {
+  border: 1px solid #ECECEC;
+  box-shadow: none;
+  font-size: 14px;
+  color: #868686;
+  &:focus {
+    outline: none;
+    border: 1px solid blue;
+    box-shadow: none;
+  }
 }
