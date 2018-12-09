@@ -24,5 +24,6 @@ initGallery();
 initShopChat();
 
 
-
-
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
