@@ -19,7 +19,7 @@ const initShopChat = () => {
           // append message dans la new
           // if (data.current_user_id != currentId)
           if (data.current_user_id != currentId) {
-          const messagesContainer = document.querySelector('.messages');
+          const messagesContainer = document.querySelector('.message-feed');
           console.log(data.message_partial)
           messagesContainer.insertAdjacentHTML('beforeend', data.message_partial)
           scrollLastMessageIntoView();

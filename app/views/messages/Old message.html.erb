@@ -1,0 +1,74 @@
+Old message
+
+
+<div class= "message-page">
+<div class= "message-list">
+  <div class="message-list-header">
+    <%= link_to "Retour au magasin", city_shop_path(@shop.city, @shop), class:"back-to-shop" %>
+    <h4>Messages</h4>
+  </div>
+  <div class= "message-list-all">
+    <% if current_user == @sender %>
+      <% all_shops_message = current_user.messages.map {|message| message.shop.name} %>
+      <%  all_shops_message.uniq.each do |shop| %>
+      <% shopp = Shop.find_by(name: shop).id %>
+        <%= link_to new_shop_user_message_path(shopp, current_user.id) do %>
+          <div class="shop-small-conv">
+            <%= shop %>
+          </div>
+        <% end %>
+      <% end %>
+    <% else  %>
+      <% all_user_with_me = @shop.messages.map {|message| message.user.email} %>
+      <% all_user_messages = all_user_with_me - [current_user.email] %>
+      <% all_user_messages.uniq.each do |user|%>
+        <% talking_user = User.find_by(email: user) %>
+        <%= link_to new_shop_user_message_path(@shop,talking_user), class:"contact" do %>
+          <div class="shop-small-conv">
+            <% if talking_user.photo.nil? %>
+              <img src="https://makerepo.com/assets/default-avatar-19cf8cebb96b4d8beff4ef9cad0e5903d288c778c503777332a57085a65371be.png" alt="", class= "avatar">
+            <% else %>
+            <% end %>
+            <div class="preview">
+              <div class="client-name">
+                 <p> <%= talking_user.first_name + " " + talking_user.last_name%> </p>
+              </div>
+              <div class="last-message-preview">
+                <% last_message = talking_user.messages.where(shop: @shop).last %>
+                <p> <%= last_message.content %> </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
+
+
+  <div class="wrapper-message">
+    <div class="chat-header">
+        <% if current_user == @sender %>
+          <h4 class="person-talking-to"> <%= @shop.name %> </h4>
+        <% else %>
+          <% client_talking = User.find(params[:user_id]) %>
+          <h4> <%= client_talking.first_name + " " + client_talking.last_name%> </h4>
+        <% end %>
+    </div>
+    <div class="messages">
+      <% @messages.each do |message| %>
+        <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+      <% end %>
+    </div>
+    <div id="shop-chat" data-shop-id="<%= @shop.id %>" data-current-id="<%= current_user.id %>" data-user-id="<%= @sender.id %>">
+    <div class="send-message">
+    <%= simple_form_for [@shop, @sender, @message], remote: true do |f| %>
+      <%= f.input :content, label: false, placeholder: "Ecrivez votre message ..." %>
+      <%= f.submit "Envoyer",  id: "create-message"%>
+    <% end %>
+    </div>
+    </div>
+  </div>
+
+</div>
