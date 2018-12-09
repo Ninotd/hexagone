@@ -43,6 +43,7 @@ class ShopsController < ApplicationController
       "11" => 'novembre',
       "12" => 'décembre'
     }
+    @event = Event.new
   end
 
   def search_shop
