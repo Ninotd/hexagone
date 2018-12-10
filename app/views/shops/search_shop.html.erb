@@ -38,15 +38,13 @@
   </div>
 <% else %>
   <% if params[:query_shops] == "events" %>
-    <div class="container wrapper-des-cards">
-      <div class="row events-no-slick evenement-card-flexbox">
+      <div class="events-no-slick col-xs-12">
         <% @filtered_results.each do |event| %>
           <div class="col-xs-12 col-sm-4">
-            <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
+            <%= render partial: 'shared/search_show_event_card', locals: {event: event} %>
           </div>
         <% end %>
       </div>
-    </div>
   <% elsif params[:query_shops] == "offers" %>
     <div class="events-no-slick col-xs-12 row">
       <% @filtered_results.each do |event| %>
