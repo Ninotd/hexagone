@@ -7,6 +7,7 @@ class CitiesController < ApplicationController
       redirect_to root_path
       return
     end
+
     @city_offers = @city.events.where(category: "Bon plan")
     @city_events = @city.events.where(category: "Evènement")
     @months = {

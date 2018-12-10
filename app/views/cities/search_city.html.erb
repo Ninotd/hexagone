@@ -2,6 +2,54 @@
 
 
 <div class="container">
+  <h2 class="underline-details">Les meilleurs magasins</h2>
+  <div class="shop-cards">
+    <% @city.shops.first(3).each do |shop| %>
+      <div class="shop-cards__item">
+        <div class="shop-card">
+          <div class="shop-card__image shop-card__image--fence" style="background-image: url('<%= cl_image_path shop.shop_photos.first.photo, crop: :fill %>');"></div>
+          <div class="shop-card__content">
+            <div class="shop-card__title">Catégorie : <%= shop.category %></div>
+            <p class="shop-card__text">Boutique : <%= shop.name %></p>
+            <%= link_to "Voir cette boutique", city_shop_path(@city, shop), class: "shop-btn shop-btn--block shop-card__btn" %>
+          </div>
+        </div>
+      </div>
+      <div class="add-to-calendar-link">
+        <%= link_to city_shop_favorites_path(@city, shop), method: :post do %>
+          <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" title="Ajouter aux favoris">+</button>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container">
+
+  <div class="best-events">
+    <h2 class="underline-details">Les offres de la semaine</h2>
+    <div class="row evenement-card-flexbox events-with-slick">
+      <% @best_events.each do |event| %>
+        <div class="col-xs-12 col-sm-4 evenement-card-link">
+          <%= link_to city_shop_path(@city, event.shop) do %>
+            <div class="evenement-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
+              <div class="evenement-card-description">
+                <h2><%= event.name %></h2>
+                <h3><%= event.shop.name %></h3>
+              </div>
+              <div class="evenement-card-category">
+                <h3><%= event.shop.category %></h3>
+              </div>
+            </div>
+          <% end %>
+          <div class="add-to-calendar-link">
+            <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post do %>
+              <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" title="Ajouter au calendrier">+</button>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
   <div class="check-events">
     <div class="card-section-title">
       <h3>Jette un coup d'oeil aux évènements de <%= @city.name %></h3>

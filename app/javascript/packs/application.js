@@ -30,5 +30,6 @@ initUpdateNavbarOnScroll();
 initAutocomplete();
 
 
-
-
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
