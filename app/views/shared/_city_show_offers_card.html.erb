@@ -11,6 +11,7 @@
         <p><%= event.description %></p>
       </div>
     </div>
+
     <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
   </div>
 <% end %>

@@ -12,6 +12,7 @@
       </div>
     </div>
   <% end %>
+
   <div class="add-to-calendar-link">
     <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post do %>
       <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Ajouter au calendrier</p>">+</button>
