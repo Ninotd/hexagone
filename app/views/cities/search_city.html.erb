@@ -8,11 +8,6 @@
           <p><i class="fas fa-angle-double-right"></i> Tous les evènements</p>
       </div>
     <% end %>
-    <div class="row events-with-slick evenement-card-flexbox">
-      <% @city_events.each do |event| %>
-        <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
-      <% end %>
-    </div>
   </div>
 </div>
 <div class="wrapper wrapper-des-cards">
@@ -31,11 +26,6 @@
         <p><i class="fas fa-angle-double-right"></i> Toutes les offres</p>
       </div>
     <% end %>
-    <div class="row events-with-slick">
-      <% @city_offers.each do |event| %>
-        <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
-      <% end %>
-    </div>
   </div>
 </div>
 <div class="wrapper wrapper-des-cards">

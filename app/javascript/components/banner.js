@@ -4,7 +4,7 @@ const loadDynamicBannerText = () => {
   if (userNameBox) {
     const user_name = userNameBox.innerText;
     new Typed('#banner-typed-text', {
-      strings: [`Bienvenue ${user_name} !`],
+      strings: [`Bienvenue ${user_name} !`, "Viens découvrir les offres de tes commerçants !"],
       typeSpeed: 50,
       loop: true
     });
