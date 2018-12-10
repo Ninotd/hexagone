@@ -8,8 +8,13 @@
     </div>
   </div>
   <div class="add-to-favorite-link">
-    <%= link_to city_shop_favorites_path(@city, shop), method: :post do %>
-      <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;width:50px;'>Ajouter à mes favoris</p>">+</button>
+    <% if current_user.favorites.where(shop_id: shop.id) == [] %>
+      <%= link_to city_shop_favorites_path(@city, shop), method: :post, remote: true do %>
+        <button type="button" data-shop-id="<%= shop.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;width:50px;'>Ajouter à mes favoris</p>"><i class="fas fa-heart"></i></button>
+        <button type="button" data-shop-id="<%= shop.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>La boutique est dans tes favoris</p>"><i class="fas fa-check"></i></button>
+      <% end %>
+    <% else %>
+      <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>La boutique est dans tes favoris</p>"><i class="fas fa-check"></i></button>
     <% end %>
   </div>
 </div>
