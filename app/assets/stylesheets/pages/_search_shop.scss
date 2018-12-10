@@ -8,10 +8,17 @@
 }
 
 .slick-prev:before {
-  color: black !important;
+  color: white !important;
+}
+.slick-prev{
+  left: 10px !important;
+  z-index: 10;
 }
 .slick-next:before {
-  color: black !important;
+  color: white !important;
+}
+.slick-next{
+  right: 10px !important;
 }
 
 .slick-slide {
@@ -24,12 +31,18 @@
 .card-no-slick {
   margin: 0 10px;
 }
-.events-no-slick {
-  margin: 0 -10px;
+
+.events-with-slick{
+  width: 100%;
+  margin: 0 auto;
 }
 
 .shops {
   margin-bottom: 25px;
   padding: 0px;
+}
+
+.check-that-bottom-margin{
+  margin-bottom: 20px;
 }
 

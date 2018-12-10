@@ -1,66 +1,58 @@
 
-<div class="container container-search">
+<div class="container-search">
   <h2><strong>Votre recherche est présentée par ... </strong></h2>
   <h2 class="underline-details">Les offres que vous recherchez</h2>
-  <% if @events.length < 3 %>
-    <div class="events-no-slick col-xs-12">
+</div>
+
+<% if @filtered_results.empty? %>
+  <div class="check-events best-events">
+    <div class="card-section-title">
+      <h3>Jette un coup d'oeil aux évènements de <%= @city.name %></h3>
+      <p><i class="fas fa-angle-double-right"></i> Tous les evènements</p>
+    </div>
+    <div class="events-with-slick evenement-card-flexbox">
       <% @events.each do |event| %>
-        <div class="col-xs-12 col-sm-4">
-          <%= link_to city_shop_path(@city, event) do %>
-            <div class="event-free_card">
-              <div class="event-info_section">
-                <div class="event-free_header">
-                  <h3><strong><%= event.category %></strong></h3>
-                  <h4>Boutique : <%= event.shop.name %></h4>
-                  <h4><%= event.name %></h4>
-                  <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
-                </div>
-              </div>
-              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
-            </div>
-          <% end %>
-        </div>
+        <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
       <% end %>
     </div>
-  <% else %>
+  </div>
+  <div class="check-offers">
+    <div class="card-section-title">
+      <h3>Tu peux aussi checker les offres des magasins de <%= @city.name %></h3>
+      <p><i class="fas fa-angle-double-right"></i> Toutes les offres</p>
+    </div>
     <div class="events-with-slick">
       <% @events.each do |event| %>
-          <%= link_to city_shop_path(@city, event.shop) do %>
-            <div class="event-free_card">
-              <div class="event-info_section">
-                <div class="event-free_header">
-                  <h3><strong><%= event.category %></strong></h3>
-                  <h4>Boutique : <%= event.shop.name %></h4>
-                  <h4><%= event.name %></h4>
-                  <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
-                </div>
-              </div>
-              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
-            </div>
-          <% end %>
+        <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
       <% end %>
     </div>
-  <% end %>
-  <div class="container">
-    <h2 class="underline-details">Les magasins que vous recherchez</h2>
-    <div class="shop-cards">
-      <% @shops.each do |shop| %>
-        <div class="shop-cards__item">
-          <div class="shop-card">
-            <div class="shop-card__image shop-card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path shop.shop_photos.first.photo, crop: :fill %>');"></div>
-            <div class="shop-card__content">
-              <div class="shop-card__title">Catégorie : <%= shop.category %></div>
-              <p class="shop-card__text">Restaurant : <%= shop.name %></p>
-              <%= link_to "Voir cette boutique", city_shop_path(@city, shop), class: "shop-btn shop-btn--block shop-card__btn" %>
-            </div>
-          </div>
+  </div>
+<% else %>
+  <% if params[:query_shops] == "events" %>
+    <div class="events-no-slick col-xs-12">
+      <% @filtered_results.each do |event| %>
+        <div class="col-xs-12 col-sm-4 check-that-bottom-margin">
+          <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
         </div>
       <% end %>
     </div>
   </div>
-</div>
-
-
-
-
-
+<% else %>
+  <% if params[:query_shops] == "events" %>
+      <div class="events-no-slick col-xs-12">
+        <% @filtered_results.each do |event| %>
+          <div class="col-xs-12 col-sm-4">
+            <%= render partial: 'shared/search_show_event_card', locals: {event: event} %>
+          </div>
+        <% end %>
+      </div>
+  <% elsif params[:query_shops] == "offers" %>
+    <div class="events-no-slick col-xs-12">
+      <% @filtered_results.each do |event| %>
+        <div class="col-xs-12 col-sm-4 check-that-bottom-margin">
+          <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

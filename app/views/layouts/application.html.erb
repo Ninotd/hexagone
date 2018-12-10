@@ -7,11 +7,16 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-
     <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Muli:300,400,700');
+    </style>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500');
+    </style>
 
   </head>
-  <body style="background-color: #f0ece2">
+  <body style="background-color: $background">
     <%= render 'shared/flashes' %>
     <% if @navbar == false %>
     <% else  %>

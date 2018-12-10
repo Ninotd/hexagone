@@ -14,6 +14,16 @@
       <% end %>
     </div>
   </div>
+</div>
+<div class="wrapper wrapper-des-cards">
+  <div class="row events-with-slick evenement-card-flexbox">
+    <% @city_events.each do |event| %>
+      <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
   <div class="check-offers">
     <%= link_to search_shop_cities_path(query_shops: "offers", city_id: @city.id) do %>
       <div class="card-section-title">
@@ -27,14 +37,25 @@
       <% end %>
     </div>
   </div>
+</div>
+<div class="wrapper wrapper-des-cards">
+  <div class="row events-with-slick">
+    <% @city_offers.each do |event| %>
+      <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
+    <% end %>
+  </div>
+</div>
+<div class="container">
   <div class="shops-all">
     <div class="card-section-title">
       <h3>Sinon tu peux aussi voir tous les magasins de <%= @city.name %></h3>
     </div>
-    <div class="shop-cards relative-position">
-      <% @city.shops.each do |shop| %>
-        <%= render partial: 'shared/shop_card', locals: {shop: shop} %>
-      <% end %>
-    </div>
+  </div>
+</div>
+<div class="container wrapper-des-cards">
+  <div class="shop-cards relative-position">
+    <% @city.shops.each do |shop| %>
+      <%= render partial: 'shared/shop_card', locals: {shop: shop} %>
+    <% end %>
   </div>
 </div>
