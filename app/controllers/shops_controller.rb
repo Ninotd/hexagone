@@ -53,7 +53,7 @@ class ShopsController < ApplicationController
     @shops = []
     @events = []
     @results.each do |result|
-      if result.searchable.class.to_s  == "Shop"
+      if result.searchable.class.to_s == "Shop"
         @shops << result.searchable
       elsif result.searchable.class.to_s == "Event"
         @events << result.searchable
