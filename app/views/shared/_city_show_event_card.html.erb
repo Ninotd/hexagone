@@ -1,4 +1,3 @@
-<div class="col-xs-12 col-sm-4 evenement-card-link">
   <%= link_to city_shop_path(@city, event.shop) do %>
     <div class="evenement-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
       <div class="evenement-card-description">
@@ -15,4 +14,4 @@
       <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Ajouter au calendrier</p>">+</button>
     <% end %>
   </div>
-</div>
+
