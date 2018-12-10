@@ -17,6 +17,7 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.sender_id = @sender.id
     if @message.save
+
     else
       render :new
     end
