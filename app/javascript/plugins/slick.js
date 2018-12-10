@@ -7,11 +7,12 @@ const initSlick = () => {
   $(document).ready(function(){
     $('.events-with-slick').slick({
       centerMode: true,
-      centerPadding: '0px',
+      centerPadding: '100px',
       slidesToShow: 3,
+      swipeToSlide: true,
       infinite: true,
       // autoplay: true,
-      // autoplaySpeed: 2000,
+      // autoplaySpeed: 3000,
       responsive: [
         {
           breakpoint: 768,

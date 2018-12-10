@@ -30,13 +30,13 @@
 <div class="container-shop">
   <%= link_to request.referer.present? ? request.referer : search_cities_path(query: @city.name) do %>
     <div class="back-to-index-button-show-shop">
-      <p> <i class="fas fa-arrow-circle-left"></i>Retour</p>
+        <p> <i class="fas fa-arrow-circle-left"></i>Retour</p>
     </div>
   <% end %>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="shop-show-main">
-        <h2><%= @shop.name %></h2>
+        <h1><%= @shop.name %></h2>
         <p><%= @shop.address %></p>
         <div class="open-status">
           <p> Ouvert </p>
@@ -44,7 +44,10 @@
         <div class="send-message">
           <% if current_user != @shop.user %>
             <%= link_to new_shop_user_message_path(@shop, current_user) do %>
-            <i class="far fa-envelope"></i>
+            <button type="button" class="btn btn-primary">
+            <i class="fas fa-comments"></i>
+            Chat
+            </button>
             <% end %>
           <% else %>
           <% end %>
@@ -54,68 +57,96 @@
           <p> <%= @shop.description %> </p>
           <% end %>
         </div>
+          <%= link_to city_shop_favorites_path(@shop.city, @shop), method: :post, class: "add-favs" do %>
         <div class="add-fav">
-          Ajouter à mes magasins
-          <i class="fas fa-plus-circle"></i>
+            <p> Ajouter aux favoris </p>
+            <button type="button" class="btn btn-secondary add-shop-show" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;width:50px;'>Ajouter à mes favoris</p>">+</button>
         </div>
+          <% end %>
       </div>
     </div>
   </div>
 
 
   <div class="shop-content">
-
     <div class="shop-feed">
-      <h5>Les dernières offres et évènements de <%= @shop.name %> </h5>
-      <% @shop.events.each do |event| %>
-
-        <div class=" shop-page-events-card [ is-collapsed ] ">
-          <div class="shop-page-events-card__inner [ js-expander ]">
-            <div class="event-free_card event-shop-show-free_card">
-              <div class="event-info_section">
-                <div class="event-free_header">
-                  <h3><strong><%= event.category %></strong></h3>
-                  <h4>Boutique : <%= event.shop.name %></h4>
-                  <h4><%= event.name %></h4>
-                  <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
+      <div class="shop-show-event">
+        <h5> Les évènements organisés par <%= @shop.name %> </h5>
+          <% @shop_events.each do |event| %>
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3 evenement-card-link">
+                <div class="evenement-card-show card-with-no-margin " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
+                  <div class="evenement-card-description">
+                    <h2><%= event.name %></h2>
+                    <h3><%= event.shop.name %></h3>
+                  </div>
+                  <div class="evenement-card-category">
+                    <h3><%= event.shop.category %></h3>
+                  </div>
+                  <div class="add-to-calendar-link">
+                  <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post do %>
+                    <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Ajouter au calendrier</p>">+</button>
+                  <% end %>
+                  </div>
                 </div>
               </div>
-              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
+             </div>
+          <% end %>
+      </div>
+      <div class="shop-show-offers">
+        <h5> Les offres de <%= @shop.name %> </h5>
+        <% if @shop_offers == [] %>
+          <div class="no-offer">
+            <%= @shop.name%>  n'a pas d'offres particulières en ce moment
+          </div>
+        <% else %>
+          <% @shop_offers.each do |event| %>
+            <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+            <div class=" shop-page-events-card [ is-collapsed ] ">
+              <div class="shop-page-events-card__inner [ js-expander ]">
+                <div class="event-free_card event-shop-show-free_card">
+                  <div class="event-info_section">
+                      <div class="event-free_header">
+                        <h3><strong><%= event.category %></strong></h3>
+                        <h4>Boutique : <%= event.shop.name %></h4>
+                        <h4><%= event.name %></h4>
+                        <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
+                      </div>
+                    </div>
+                    <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
+                  </div>
+                </div>
+              <div class="shop-page-events-card__expander">
+                <i class="fas fa-times [ js-collapser ]"></i>
+                <%= event.description %>
+              </div>
             </div>
           </div>
-          <div class="shop-page-events-card__expander">
-            <i class="fas fa-times [ js-collapser ]"></i>
-            <%= event.description %>
-          </div>
         </div>
-
-
       <% end %>
+     <% end %>
     </div>
 
     <div class = "info-map">
-
       <div class="info">
         <p class="info-title">TELEPHONE</p>
         <p class="white"> <%= @shop.phone_number %> </p>
         <p class="info-title">ADRESSE</p>
         <p class="white"> <%= @shop.address %> </p>
         <p class="info-title">HORRAIRES</p>
-        <div class="hours">
-
-
-        </div>
-
+        <div class="hours"></div>
       </div>
-
-
       <div class="shop-map">
         <div id="map"
           style="width: 100%"
           data-markers="<%= @markers.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-        ></div>
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
+    </div>
+
+    <div class="also">
 
     </div>
 

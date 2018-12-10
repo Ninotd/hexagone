@@ -1,5 +1,5 @@
 
-<div class="container container-search">
+<div class="container-search">
   <h2><strong>Votre recherche est présentée par ... </strong></h2>
   <h2 class="underline-details">Les offres que vous recherchez</h2>
 </div>
@@ -36,6 +36,16 @@
         </div>
       <% end %>
     </div>
+  </div>
+<% else %>
+  <% if params[:query_shops] == "events" %>
+      <div class="events-no-slick col-xs-12">
+        <% @filtered_results.each do |event| %>
+          <div class="col-xs-12 col-sm-4">
+            <%= render partial: 'shared/search_show_event_card', locals: {event: event} %>
+          </div>
+        <% end %>
+      </div>
   <% elsif params[:query_shops] == "offers" %>
     <div class="events-no-slick col-xs-12">
       <% @filtered_results.each do |event| %>
