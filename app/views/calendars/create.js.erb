@@ -1,0 +1,5 @@
+document.querySelectorAll('.js-calendar-button').forEach ((button) => {
+  if ('<%= @event.id %>' === button.dataset.eventId) {
+    button.classList.toggle("d-none");
+  };
+});
