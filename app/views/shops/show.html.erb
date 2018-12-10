@@ -75,7 +75,7 @@
           <% @shop_events.each do |event| %>
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3 evenement-card-link">
-                <div class="evenement-card-show card-with-no-margin " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
+                <div class="evenement-card-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');" data-toggle="modal" data-target="#exampleModal">
                   <div class="evenement-card-description">
                     <h2><%= event.name %></h2>
                     <h3><%= event.shop.name %></h3>
@@ -91,6 +91,7 @@
                 </div>
               </div>
              </div>
+             <%= render partial: 'shared/modal_event', locals: {event: event} %>
           <% end %>
       </div>
       <div class="shop-show-offers">
@@ -153,3 +154,6 @@
 
   </div>
 </div>
+
+
+

@@ -199,3 +199,35 @@
 .add-to-calendar-link{
   display: flex;
 }
+
+
+
+.event-modal-footer {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.btn-modal {
+  background-color:$fourth;
+  color: white;
+  border-radius: 4px;
+}
+
+.left-btn {
+  margin-left: 20px;
+}
+
+.photo-event-gallery{
+  height: 50%;
+  margin-bottom: 30px;
+}
+
+.event-modal-description{
+  height: 50%;
+  margin: 0px 30px;
+  text-align: justify;
+}
