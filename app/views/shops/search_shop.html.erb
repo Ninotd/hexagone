@@ -1,5 +1,5 @@
 
-<div class="container container-search">
+<div class="container-search">
   <h2><strong>Votre recherche est présentée par ... </strong></h2>
   <h2 class="underline-details">Les offres que vous recherchez</h2>
 </div>
@@ -10,10 +10,12 @@
       <h3>Jette un coup d'oeil aux évènements de <%= @city.name %></h3>
       <p><i class="fas fa-angle-double-right"></i> Tous les evènements</p>
     </div>
-    <div class="row events-with-slick evenement-card-flexbox">
-      <% @events.each do |event| %>
-        <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
-      <% end %>
+    <div class="wrapper wrapper-des-cards">
+      <div class="row events-with-slick evenement-card-flexbox">
+        <% @events.each do |event| %>
+          <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="check-offers">
@@ -27,15 +29,22 @@
       <% end %>
     </div>
   </div>
-<% else %>
-  <% if params[:query_shops] == "events" %>
-    <div class="events-no-slick col-xs-12 row">
-      <% @filtered_results.each do |event| %>
-        <div class="col-xs-12 col-sm-4">
-          <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
-        </div>
+  <div class="container wrapper-des-cards">
+    <div class="shop-cards relative-position">
+      <% @shops.each do |shop| %>
+        <%= render partial: 'shared/shop_card', locals: {shop: shop} %>
       <% end %>
     </div>
+  </div>
+<% else %>
+  <% if params[:query_shops] == "events" %>
+      <div class="events-no-slick col-xs-12">
+        <% @filtered_results.each do |event| %>
+          <div class="col-xs-12 col-sm-4">
+            <%= render partial: 'shared/search_show_event_card', locals: {event: event} %>
+          </div>
+        <% end %>
+      </div>
   <% elsif params[:query_shops] == "offers" %>
     <div class="events-no-slick col-xs-12 row">
       <% @filtered_results.each do |event| %>
