@@ -10,7 +10,7 @@
       <h3>Jette un coup d'oeil aux évènements de <%= @city.name %></h3>
       <p><i class="fas fa-angle-double-right"></i> Tous les evènements</p>
     </div>
-    <div class="row events-with-slick evenement-card-flexbox">
+    <div class="events-with-slick evenement-card-flexbox">
       <% @events.each do |event| %>
         <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
       <% end %>
@@ -21,7 +21,7 @@
       <h3>Tu peux aussi checker les offres des magasins de <%= @city.name %></h3>
       <p><i class="fas fa-angle-double-right"></i> Toutes les offres</p>
     </div>
-    <div class="row events-with-slick">
+    <div class="events-with-slick">
       <% @events.each do |event| %>
         <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
       <% end %>
@@ -29,17 +29,17 @@
   </div>
 <% else %>
   <% if params[:query_shops] == "events" %>
-    <div class="events-no-slick col-xs-12 row">
+    <div class="events-no-slick col-xs-12">
       <% @filtered_results.each do |event| %>
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-4 check-that-bottom-margin">
           <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
         </div>
       <% end %>
     </div>
   <% elsif params[:query_shops] == "offers" %>
-    <div class="events-no-slick col-xs-12 row">
+    <div class="events-no-slick col-xs-12">
       <% @filtered_results.each do |event| %>
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-4 check-that-bottom-margin">
           <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
         </div>
       <% end %>
