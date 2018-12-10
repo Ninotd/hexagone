@@ -27,3 +27,19 @@
   margin-top: 40px;
 }
 
+.card-section-title{
+  display: flex;
+  align-items: baseline;
+  p{
+    display:none;
+  }
+  &:hover{
+    p{
+      display: block;
+      margin-left: 10px;
+      font-size: 16px;
+      font-weight: bolder;
+    }
+  }
+}
+
