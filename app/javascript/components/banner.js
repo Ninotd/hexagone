@@ -1,8 +1,10 @@
 import Typed from 'typed.js';
 
+const user_name = document.getElementById("user-name-to-hide").innerText
+
 const loadDynamicBannerText = () => {
   new Typed('#banner-typed-text', {
-    strings: ["Bienvenue ${current_user.first_name}"],
+    strings: [`Bienvenue ${user_name} !`],
     typeSpeed: 50,
     loop: true
   });
