@@ -49,6 +49,7 @@ class ShopsController < ApplicationController
   def search_shop
     @filtered_results = []
     @city = City.find(params[:city_id])
+
     if params[:query_shops] == "events"
       @results = Event.where(category: "Evènement")
       @results.each do |result|

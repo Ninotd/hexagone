@@ -6,31 +6,41 @@
       <h3>Jette un coup d'oeil aux évènements de <%= @city.name %></h3>
       <p><i class="fas fa-angle-double-right"></i> Tous les evènements</p>
     </div>
-    <div class="row events-with-slick evenement-card-flexbox">
-      <% @city_events.each do |event| %>
-        <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
-      <% end %>
-    </div>
   </div>
+</div>
+<div class="wrapper wrapper-des-cards">
+  <div class="row events-with-slick evenement-card-flexbox">
+    <% @city_events.each do |event| %>
+      <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
+    <% end %>
+  </div>
+</div>
+<div class="container">
   <div class="check-offers">
     <div class="card-section-title">
       <h3>Tu peux aussi checker les offres des magasins de <%= @city.name %></h3>
       <p><i class="fas fa-angle-double-right"></i> Toutes les offres</p>
     </div>
-    <div class="row events-with-slick">
-      <% @city_offers.each do |event| %>
-        <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
-      <% end %>
-    </div>
   </div>
+</div>
+<div class="wrapper wrapper-des-cards">
+  <div class="row events-with-slick">
+    <% @city_offers.each do |event| %>
+      <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
+    <% end %>
+  </div>
+</div>
+<div class="container">
   <div class="shops-all">
     <div class="card-section-title">
       <h3>Sinon tu peux aussi voir tous les magasins de <%= @city.name %></h3>
     </div>
-    <div class="shop-cards relative-position">
-      <% @city.shops.each do |shop| %>
-        <%= render partial: 'shared/shop_card', locals: {shop: shop} %>
-      <% end %>
-    </div>
+  </div>
+</div>
+<div class="container wrapper-des-cards">
+  <div class="shop-cards relative-position">
+    <% @city.shops.each do |shop| %>
+      <%= render partial: 'shared/shop_card', locals: {shop: shop} %>
+    <% end %>
   </div>
 </div>
