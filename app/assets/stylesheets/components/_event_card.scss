@@ -1,9 +1,4 @@
-.card {
-  height: 175px;
-  background-size: cover !important;
-  background-position: center;
-  color: white;
-  position: relative;
+.hover-on-card-to-description {
   p {
     display: none;
   }
@@ -16,7 +11,10 @@
     }
     p {
       display: block;
-      font-size: 14px;
+      font-size: 10px;
+      width: 75%;
+      height: 100%;
+      padding: 10px;
     }
   }
 }

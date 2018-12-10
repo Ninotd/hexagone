@@ -49,7 +49,7 @@
   flex-direction: column;
   align-items: center;
   position: absolute;
-  bottom: 10px;
+  bottom: 30px;
   width: 100%;
 }
 
@@ -65,5 +65,13 @@
       text-decoration: none;
       color: $main;
     }
+  }
+}
+
+.banner-text{
+  width: 100%;
+  padding: 20px;
+  .welcome-back{
+    text-align: left;
   }
 }

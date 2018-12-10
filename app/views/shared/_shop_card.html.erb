@@ -4,7 +4,7 @@
     <div class="shop-card__content">
       <div class="shop-card__title">Catégorie : <%= shop.category %></div>
       <p class="shop-card__text">Boutique : <%= shop.name %></p>
-      <button class="shop-btn shop-btn--block shop-card__btn">Voir cette boutique</button>
+      <%= link_to "Voir cette boutique", city_shop_path(@city, shop), class: "shop-btn shop-btn--block shop-card__btn" %>
     </div>
   </div>
 </div>
