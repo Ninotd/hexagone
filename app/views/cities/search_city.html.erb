@@ -3,9 +3,9 @@
 
 <div class="container">
   <h2 class="underline-details">Les meilleurs magasins</h2>
-  <div class="shop-cards">
+  <div class="shop-cards relative-position">
     <% @city.shops.first(3).each do |shop| %>
-      <div class="shop-cards__item">
+      <div class="shop-cards__item col-xs-12 col-sm-4">
         <div class="shop-card">
           <div class="shop-card__image shop-card__image--fence" style="background-image: url('<%= cl_image_path shop.shop_photos.first.photo, crop: :fill %>');"></div>
           <div class="shop-card__content">
@@ -14,19 +14,19 @@
             <%= link_to "Voir cette boutique", city_shop_path(@city, shop), class: "shop-btn shop-btn--block shop-card__btn" %>
           </div>
         </div>
-      </div>
-      <div class="add-to-calendar-link">
-        <%= link_to city_shop_favorites_path(@city, shop), method: :post do %>
-          <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" title="Ajouter aux favoris">+</button>
-        <% end %>
+        <div class="add-to-favorite-link">
+          <%= link_to city_shop_favorites_path(@city, shop), method: :post do %>
+            <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;width:50px;'>Ajouter à mes favoris</p>">+</button>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
 </div>
 
 
-<div class="container">
 
+<div class="container">
   <div class="best-events">
     <h2 class="underline-details">Les offres de la semaine</h2>
     <div class="row evenement-card-flexbox events-with-slick">
@@ -45,7 +45,7 @@
           <% end %>
           <div class="add-to-calendar-link">
             <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post do %>
-              <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" title="Ajouter au calendrier">+</button>
+              <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Ajouter au calendrier</p>">+</button>
             <% end %>
           </div>
         </div>
