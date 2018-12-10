@@ -1,19 +1,16 @@
 <div class="text-center-banner-search banner-content">
   <div class="banner banner-cities" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://picsum.photos/1500/1200/?<%= params[:query] %>');">
-    <h1><%= params[:query] %></h1>
-  </div>
-  <div class="search">
-    <div class="search-bar">
-      <%= form_tag search_shop_cities_path, method: :get do %>
-        <%= text_field_tag :query_shops, params[:query_shops], :class => "form-control",placeholder: "ex. 'Mode'" %>
-        <input type="hidden" name="city_id" value=<%= @city.id %>>
-      <% end %>
+    <div class="banner-text">
+      <h2>(Re)Découvre <%= params[:query] %> <br> avec nous !</h2>
+      <span class="welcome-back" id="banner-typed-text"></span>
     </div>
-    <div class="banner-quick-search">
-      <p><%= link_to "Mode", search_shop_cities_path(query_shops: "mode", city_id: @city.id),class: "quick-search-btn" %></p>
-      <p><%= link_to "Maison et déco", search_shop_cities_path(query_shops: "Maison et déco", city_id: @city.id),class: "quick-search-btn" %></p>
-      <p><%= link_to "Beauté", search_shop_cities_path(query_shops: "beauté", city_id: @city.id),class: "quick-search-btn" %></p>
-      <p><%= link_to "Alimentaire", search_shop_cities_path(query_shops: "alimentaire", city_id: @city.id),class: "quick-search-btn" %></p>
+    <div class="search">
+      <div class="search-bar">
+        <%= form_tag search_shop_cities_path, method: :get do %>
+          <%= text_field_tag :query_shops, params[:query_shops], :class => "form-control",placeholder: "ex. 'Mode' / 'Alimentation' / 'Nike'" %>
+          <input type="hidden" name="city_id" value=<%= @city.id %>>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -50,67 +50,36 @@
           </div>
         </div>
       <% end %>
+  <div class="check-events">
+    <div class="card-section-title">
+      <h3>Jette un coup d'oeil aux évènements de <%= @city.name %></h3>
+      <p><i class="fas fa-angle-double-right"></i> Tous les evènements</p>
     </div>
-    <div class="text-center">
-      <%= link_to city_events_path(@city) do %>
-        <button type="button" class="btn-shops">TOUTES LES OFFRES</button>
+    <div class="row events-with-slick">
+      <% @city_events.each do |event| %>
+        <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
       <% end %>
     </div>
   </div>
-
-  <div class="favorite-events">
-    <h2 class="underline-details">Mes favoris</h2>
-    <div class="row">
-      <% @recent_events.each do |event| %>
-        <div class="col-xs-12 col-sm-4">
-          <%= link_to city_shop_path(@city, event.shop) do %>
-            <div class="event-free_card">
-              <div class="event-info_section">
-                <div class="event-free_header">
-                  <h3><strong><%= event.category %></strong></h3>
-                  <h4>Boutique : <%= event.shop.name %></h4>
-                  <h4><%= event.name %></h4>
-                  <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
-                </div>
-              </div>
-              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+  <div class="check-offers">
+    <div class="card-section-title">
+      <h3>Tu peux aussi checker les offres des magasins de <%= @city.name %></h3>
+      <p><i class="fas fa-angle-double-right"></i> Toutes les offres</p>
     </div>
-    <div class="text-center">
-      <%= link_to city_events_path(@city) do %>
-        <button type="button" class="btn-shops">TOUTES LES OFFRES</button>
+    <div class="row events-with-slick">
+      <% @city_offers.each do |event| %>
+        <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
       <% end %>
     </div>
   </div>
-
-  <div class="incoming-events">
-    <h2 class="underline-details">Prochainement</h2>
-    <div class="row">
-      <% @incoming_events.each do |event| %>
-        <div class="col-xs-12 col-sm-4">
-          <%= link_to city_shop_path(@city, event.shop) do %>
-            <div class="event-free_card">
-              <div class="event-info_section">
-                <div class="event-free_header">
-                  <h3><strong><%= event.category %></strong></h3>
-                  <h4>Boutique : <%= event.shop.name %></h4>
-                  <h4><%= event.name %></h4>
-                  <h5>A partir du <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
-                </div>
-              </div>
-              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
-            </div>
-          <% end %>
-        </div>
+  <div class="shops-all">
+    <div class="card-section-title">
+      <h3>Sinon tu peux aussi voir tous les magasins de <%= @city.name %></h3>
+    </div>
+    <div class="shop-cards">
+      <% @city.shops.each do |shop| %>
+        <%= render partial: 'shared/shop_card', locals: {shop: shop} %>
       <% end %>
+    </div>
   </div>
 </div>
-
-
-
-
-
-

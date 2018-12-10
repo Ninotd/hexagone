@@ -7,11 +7,9 @@ class CitiesController < ApplicationController
       redirect_to root_path
       return
     end
-    @best_events = @city.events.where(category: "Evènement")
-    # joins(shops: :city)
-    # .where("category = ? AND shops.city_id = ?", "Evènement", @city.id)
-    @incoming_events = incoming_events
-    @recent_events = recent_events
+
+    @city_offers = @city.events.where(category: "Bon plan")
+    @city_events = @city.events.where(category: "Evènement")
     @months = {
       "1" => 'janvier',
       "2" => 'février',
