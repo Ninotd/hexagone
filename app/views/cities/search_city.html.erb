@@ -1,14 +1,35 @@
 <%= render 'shared/banner_cities' %>
 
 <div class="wrapper wrapper-des-section-titles">
+  <div class="check-offers">
+    <%= link_to search_shop_cities_path(query_shops: "offers", city_id: @city.id) do %>
+      <div class="card-section-title">
+        <h3>Offres</h3>
+        <p><i class="fas fa-arrow-alt-circle-right"></i> Toutes les offres</p>
+      </div>
+      <div class="card-section-explanatory-p">
+        <p>Check les <strong>offres</strong> de tes commerçants et deviens l'expert(e) bons plans auprès de tes amis ! <br>Dans cette section, tu peux voir un aperçu des offres commerciales en cours ou à venir. Tu peux aussi voir toutes les offres en cliquant sur le titre de la rubrique. <br> Avec Hexagone, tu es le/la gourou des promos de ta ville !</p>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="wrapper wrapper-des-cards">
+  <div class="row events-with-slick">
+    <% @city_offers.each do |event| %>
+      <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
+    <% end %>
+  </div>
+</div>
+
+<div class="wrapper wrapper-des-section-titles">
   <div class="check-events best-events">
     <%= link_to search_shop_cities_path(query_shops: "events", city_id: @city.id) do %>
       <div class="card-section-title">
-          <h3>Jette un coup d'oeil aux évènements et découvre de nouveaux commerçants !</h3>
+          <h3>Evènements</h3>
           <p><i class="fas fa-arrow-alt-circle-right"></i> Tous les évènements</p>
       </div>
       <div class="card-section-explanatory-p">
-        <p>Dans cette section, tu peux voir un aperçu d'évènements en cours ou à venir. Tu peux aussi voir tous les évènements en cliquant sur le titre de la rubrique. <br> Avec Hexagone, tu (re)découvres tes commerçants !</p>
+        <p>Jette un coup d'oeil aux <strong>évènements</strong> et découvre de nouveaux commerçants ! <br>Dans cette section, tu peux voir un aperçu d'évènements en cours ou à venir. Tu peux aussi voir tous les évènements en cliquant sur le titre de la rubrique. <br> Avec Hexagone, tu (re)découvres tes commerçants !</p>
       </div>
     <% end %>
   </div>
@@ -22,32 +43,12 @@
 </div>
 
 <div class="wrapper wrapper-des-section-titles">
-  <div class="check-offers">
-    <%= link_to search_shop_cities_path(query_shops: "offers", city_id: @city.id) do %>
-      <div class="card-section-title">
-        <h3>Check les offres de tes commerçants et deviens l'expert(e) bons plans auprès de tes amis !</h3>
-        <p><i class="fas fa-arrow-alt-circle-right"></i> Toutes les offres</p>
-      </div>
-      <div class="card-section-explanatory-p">
-        <p>Dans cette section, tu peux voir un aperçu des offres commerciales en cours ou à venir. Tu peux aussi voir toutes les offres en cliquant sur le titre de la rubrique. <br> Avec Hexagone, tu es le/la gourou des promos de ta ville !</p>
-      </div>
-    <% end %>
-  </div>
-</div>
-<div class="wrapper wrapper-des-cards">
-  <div class="row events-with-slick">
-    <% @city_offers.each do |event| %>
-      <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
-    <% end %>
-  </div>
-</div>
-<div class="wrapper wrapper-des-section-titles">
   <div class="shops-all">
     <div class="card-section-title">
-      <h3>Repère de nouvelles boutiques et renouvelle tes habitudes ! </h3>
+      <h3>Boutiques</h3>
     </div>
     <div class="card-section-explanatory-p">
-      <p>Dans cette section, on t'a listé l'ensemble des boutiques, si possible indépendantes, que tu pourras trouver sur Hexagone. <br> Avec Hexagone, tu apprends à connaître l'offre commerçante de ta ville !</p>
+      <p>Repère de nouvelles boutiques et renouvelle tes habitudes ! <br>Dans cette section, on t'a listé l'ensemble des boutiques, si possible indépendantes, que tu pourras trouver sur Hexagone. <br> Avec Hexagone, tu apprends à connaître l'offre commerçante de ta ville !</p>
     </div>
   </div>
 </div>
