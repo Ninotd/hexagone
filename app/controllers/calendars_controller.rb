@@ -1,7 +1,16 @@
 class CalendarsController < ApplicationController
 
   def index
-    @calendars = current_user.calendars
+    @event_calendars = []
+    @offer_calendars = []
+    calendars = current_user.calendars
+    calendars.each do |calendar|
+      if calendar.event.category == "Evènement"
+        @event_calendars << calendar
+      else
+        @offer_calendars << calendar
+      end
+    end
     @favorites = current_user.favorites
     @city = City.first
     @months = {

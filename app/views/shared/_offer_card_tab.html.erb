@@ -1,0 +1,28 @@
+<%= link_to city_shop_path(@city, event.shop) do %>
+  <div class="event-free_card hover-on-card-to-description">
+    <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
+      <div class="event-shop-name">
+        <h4><%= event.shop.name %></h4>
+      </div>
+      <div class="event-offer-name">
+        <h3 class="h4-title-on-card"><%= event.name %></h3>
+      </div>
+      <div class="event-offer-date">
+        <h4>Jusqu'au <%= event.end_date.day %>/<%= event.end_date.month%>/<%= event.end_date.year %></h4>
+      </div>
+      <div class="event-offer-description">
+        <p><%= event.description %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="add-to-calendar-offer-link-on-search">
+  <%= link_to calendar_path(calendar), method: :delete do %>
+    <button type="button" data-shop-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
+      <div class="button-to-calendar-description">
+        Supprimer du calendrier
+      </div>
+      <i class="fas a-trash-alt"></i>
+    </button>
+  <% end %>
+</div>
