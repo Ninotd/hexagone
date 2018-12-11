@@ -15,26 +15,13 @@
 
   <div class="calendars-tab-content" id="tabs-shops">
     <% if @shops.nil? %>
-      <h2>Personnalises ta page en ajoutant tes magasins préférés !</h2>
+      <h4>Personnalises ta page en ajoutant tes <strong> magasins </strong> préférés !</h4>
+      <%#= link_to "offers", "http://hexagone.site/cities/city?query=#{@city.id}"%>
+      <%= link_to "+ de magasins", "http://localhost:3000/cities/city?query=#{@city.id}"%>
     <% elsif %>
-    <h2 class="underline-details">Mes magasins</h2>
-      <div class="shop-cards relative-position">
-        <% @favorites.each do |favorite| %>
-          <div class="shop-cards__item col-xs-12 col-sm-4">
-            <div class="shop-card">
-              <div class="shop-card__image shop-card__image--fence" style="background-image: url('<%= cl_image_path favorite.shop.shop_photos.first.photo, crop: :fill %>');"></div>
-              <div class="shop-card__content">
-                <div class="shop-card__title">Catégorie : <%= favorite.shop.category %></div>
-                <p class="shop-card__text">Boutique : <%= favorite.shop.name %></p>
-                <%= link_to "Voir cette boutique", city_shop_path(@city, favorite.shop), class: "shop-btn shop-btn--block shop-card__btn" %>
-              </div>
-            </div>
-            <div class="add-to-favorite-link">
-              <%= link_to favorite_path(favorite), method: :delete, data: { confirm: "Are you sure?" } do %>
-                <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;width:50px;'>Supprimer de mes favoris</p>"><i class="fas fa-trash-alt"></i></button>
-              <% end %>
-            </div>
-          </div>
+      <div class="tab-deal-content">
+        <% @shops.each do |shop| %>
+          <%= shop %>
         <% end %>
       </div>
     <% end %>
@@ -42,68 +29,33 @@
 
   <div class="calendars-tab-content" id="tabs-events">
     <% if @calendars.nil? %>
-      <h2>Personnalises ta page en ajoutant les évènements que tu ne veux pas louper !</h2>
+      <div class="tab-deal-title">
+      <h4>Personnalises ta page en ajoutant les <strong> évènements </strong> que tu ne veux pas louper !</h4>
+      <%#= link_to "offers", "http://hexagone.site/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
+      <%= link_to "+ d'évènements", "http://localhost:3000/cities/shops?city_id=#{@city.id}&query_shops=events"%>
+      </div>
     <% elsif %>
-    <h2>Mes évènements</h2>
-      <div class="best-events">
-        <h2 class="underline-details">Mes évènements</h2>
-        <div class="row evenement-card-flexbox events-with-slick">
-          <% @calendars.each do |calendar| %>
-            <div class="col-xs-12 col-sm-4 evenement-card-link">
-              <%= link_to city_shop_path(@city, calendar.event.shop) do %>
-                <div class="evenement-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path calendar.event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
-                  <div class="evenement-card-description">
-                    <h2><%= calendar.event.name %></h2>
-                    <h3><%= calendar.event.shop.name %></h3>
-                  </div>
-                  <div class="evenement-card-category">
-                    <h3><%= calendar.event.shop.category %></h3>
-                  </div>
-                </div>
-              <% end %>
-              <div class="add-to-calendar-link">
-                <%= link_to calendar_path(calendar), method: :delete, data: { confirm: "Are you sure?" } do %>
-                  <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Supprimer du calendrier</p>"><i class="fas fa-trash-alt"></i></button>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+      <div class="tab-deal-content">
+        <% @calendars.each do |calendar| %>
+          <%= calendar if calendar.event.category == "Evènement" %>
+        <% end %>
       </div>
     <% end %>
   </div>
 
   <div class="calendars-tab-content " id="tabs-deals">
     <% if @events.nil? %>
-      <h2>Personnalises ta page en ajoutant les meilleures bons plans du moment !</h2>
+      <div class="tab-deal-title">
+      <h4>Personnalises ta page en ajoutant les meilleures <strong> bons plans </strong> du moment !</h4>
+      <%#= link_to "offers", "http://hexagone.site/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
+      <%= link_to "+ de bons plans", "http://localhost:3000/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
+      </div>
     <% elsif %>
-    <h2>Mes évènements</h2>
-      <div class="best-events">
-        <h2 class="underline-details">Mes évènements</h2>
-        <div class="row evenement-card-flexbox events-with-slick">
-          <% @calendars.each do |calendar| %>
-            <div class="col-xs-12 col-sm-4 evenement-card-link">
-              <%= link_to city_shop_path(@city, calendar.event.shop) do %>
-                <div class="evenement-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path calendar.event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
-                  <div class="evenement-card-description">
-                    <h2><%= calendar.event.name %></h2>
-                    <h3><%= calendar.event.shop.name %></h3>
-                  </div>
-                  <div class="evenement-card-category">
-                    <h3><%= calendar.event.shop.category %></h3>
-                  </div>
-                </div>
-              <% end %>
-              <div class="add-to-calendar-link">
-                <%= link_to calendar_path(calendar), method: :delete, data: { confirm: "Are you sure?" } do %>
-                  <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Supprimer du calendrier</p>"><i class="fas fa-trash-alt"></i></button>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+      <div class="tab-deal-content">
+        <% @calendars.each do |calendar| %>
+          <%= calendar if calendar.event.category == "Bon plan" %>
+        <% end %>
       </div>
     <% end %>
   </div>
 </div>
-
