@@ -26,20 +26,23 @@
 
 
 <% end %>
-
+<div class="background">
 <div class="container-shop">
   <%= link_to request.referer.present? ? request.referer : search_cities_path(query: @city.name) do %>
     <div class="back-to-index-button-show-shop">
         <p> <i class="fas fa-arrow-circle-left"></i>Retour</p>
     </div>
   <% end %>
+
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="shop-show-main">
         <h1><%= @shop.name %></h2>
-        <p><%= @shop.address %></p>
-        <div class="open-status">
-          <p> Ouvert </p>
+        <div class="address-open">
+          <p ><%= @shop.address %></p>
+          <div class="open-status">
+            <p class="open">OUVERT</p>
+          </div>
         </div>
         <div class="send-message">
           <% if current_user != @shop.user %>
@@ -74,7 +77,7 @@
         <h5> Les évènements organisés par <%= @shop.name %> </h5>
           <% @shop_events.each do |event| %>
             <div class="row">
-              <div class="col-sm-6 col-sm-offset-3 evenement-card-link">
+              <div class="col-sm-8 col-sm-offset-2 evenement-card-link">
                 <div class="evenement-card-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');" data-toggle="modal" data-target="#exampleModal">
                   <div class="evenement-card-description">
                     <h2><%= event.name %></h2>
@@ -103,31 +106,25 @@
         <% else %>
           <% @shop_offers.each do |event| %>
             <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-            <div class=" shop-page-events-card [ is-collapsed ] ">
-              <div class="shop-page-events-card__inner [ js-expander ]">
-                <div class="event-free_card event-shop-show-free_card">
-                  <div class="event-info_section">
-                      <div class="event-free_header">
-                        <h3><strong><%= event.category %></strong></h3>
-                        <h4>Boutique : <%= event.shop.name %></h4>
-                        <h4><%= event.name %></h4>
-                        <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
-                      </div>
-                    </div>
-                    <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
+            <div class="col-sm-8 col-sm-offset-2">
+              <div class="event-free_card">
+                <div class="event-info_section" data-toggle="modal" data-target="#EventModal">
+                  <div class="event-free_header">
+                    <h3><strong><%= event.category %></strong></h3>
+                    <h5>Boutique : <%= event.shop.name %></h5>
+                    <h5><%= event.name %></h5>
+                    <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
                   </div>
                 </div>
-              <div class="shop-page-events-card__expander">
-                <i class="fas fa-times [ js-collapser ]"></i>
-                <%= event.description %>
+                <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
               </div>
             </div>
           </div>
-        </div>
+      <%= render partial: 'shared/modal_offers', locals: {event: event} %>
       <% end %>
      <% end %>
     </div>
+
 
     <div class = "info-map">
       <div class="info">
@@ -148,11 +145,18 @@
     </div>
 
     <div class="also">
-
+      <h5> Vous pourriez aussi aimer  ... </h5>
+      <div class="row">
+      <% shop_similar = Shop.where(category: @shop.category) %>
+      <% shop_similar.each do |shop| %>
+      <%= render partial: 'shared/shop_card', locals: {shop: shop} %>
+      <% end %>
+      </div>
     </div>
 
 
   </div>
+</div>
 </div>
 
 
