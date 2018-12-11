@@ -1,0 +1,210 @@
+.shop-show-main{
+  text-align: center;
+  border-bottom: 1px solid black;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.open-status {
+  background-color:#4EA155;
+  font-size: 10px;
+  margin-left: 10px;
+  border-radius: 3px;
+  color: white;
+  padding: 2px 5px;
+  max-height: 17px;
+  p.open {
+    margin-bottom: 0px;
+    text-transform: uppercase;
+  }
+}
+
+.shop-content {
+  margin-top : 20px;
+}
+
+.info-map {
+  display: flex;
+  margin-top: 30px;
+}
+
+.address-open{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  & p {
+    margin-bottom: 0px;
+  }
+}
+
+
+.shop-feed {
+  padding: 10px;
+}
+
+
+.banner-shop {
+  height: 50vh
+}
+
+
+.photo-event-gallery{
+  display:flex;
+}
+
+.event-more {
+  width: 40px;
+  text-align: center;
+}
+
+.send-message{
+  & i {
+  }
+}
+
+.container-shop {
+  margin: 0 auto;
+  width: 670px;
+}
+
+.add-fav {
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+  & p {
+    margin-bottom:0px;
+    margin-right: 5px;
+    font-size: 14px;
+  }
+}
+
+.add-favs {
+  color: grey;
+  transition: 0.4s ease;
+  & :hover {
+    color: $fourth;
+  }
+}
+
+.fa-plus-circle{
+  margin-left: 10px;
+}
+
+.shop-map {
+  padding-left: 15px;
+  width: 50%
+}
+
+.info {
+  padding: 10px 10px;
+  background-color:#EEEDED;
+  width : 50%;
+  & p.info-title {
+   font-size: 13px;
+   margin-bottom: 3px;
+  }
+  & p.white {
+    color: black;
+  }
+}
+
+.add-shop-show {
+  padding: 0px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+  z-index: 500;
+  border: 2px solid white;
+  & :hover{
+    color: white
+  }
+}
+
+.btn-primary {
+  width: 100px;
+  background-color:$fourth;
+  border: 1px solid $fourth;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.shop-show-event{
+  width: 100%;
+  margin-bottom: 20px;
+  & h5{
+    margin-bottom: 30px;
+  }
+}
+
+.shop-show-offers{
+  width: 100%;
+  margin-bottom: 20px;
+  & h5{
+    margin-bottom: 30px;
+    margin-top: 50px;
+  }
+}
+
+
+
+.shop-content{
+  & .row {
+    margin: 0 auto;
+
+  }
+}
+
+.evenement-card-show {
+  height: 257px;
+  color: white;
+  position: relative;
+  border-radius: 3px;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+}
+
+.add-to-calendar-link{
+  display: flex;
+}
+
+
+
+.event-modal-footer {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.btn-modal {
+  background-color:$fourth;
+  color: white;
+  border-radius: 4px;
+}
+
+.left-btn {
+  margin-left: 20px;
+}
+
+.photo-event-gallery{
+  height: 50%;
+  margin-bottom: 30px;
+}
+
+.event-modal-description{
+  height: 50%;
+  margin: 0px 30px;
+  text-align: justify;
+}
+
+
+// .background {
+//   background-color:#132238;
+//   color: white
+// }

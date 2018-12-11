@@ -1,140 +1,95 @@
+<% if @shop.shop_photos.count < 1 %>
 
- <% if @shop.shop_photos.count < 1 %>
-
-  <div class="banner-shop" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('@shop.photo_phoyo');">
+  <div class="banner-shop" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('@shop.shop_photos');">
   </div>
 
  <% else  %>
 
   <div id="lightgallery">
-    <div class="g-photo">
-      <% cl_image_path @shop.shop_photos.first.photo %>
+    <div class="g-photo" data-src="<%= @shop.shop_photos.first.photo.url %>">
+      <%= link_to @shop.shop_photos.first.photo.url do %>
         <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill  %>
+      <% end %>
       <div class="mask"></div>
     </div>
-    <div class="g-photo">
-      <% cl_image_path @shop.shop_photos.first.photo, crop: :fill %>
-        <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill  %>
+    <div class="g-photo" data-src="<%= @shop.shop_photos.first.photo.url %>">
+      <%= link_to @shop.shop_photos.first.photo.url, crop: :fill do %>
+        <%= cl_image_tag @shop.shop_photos.first.photo, width: 700, height: 400, crop: :fill  %>
+        <% end %>
     </div>
-    <div class="g-photo ">
-      <% cl_image_path @shop.shop_photos.first.photo, crop: :fill %>
+    <div class="g-photo " data-src="<%= @shop.shop_photos.first.photo.url %>">
+      <%= link_to @shop.shop_photos.first.photo.url, crop: :fill do %>
         <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill%>
-
+      <% end %>
       <div class="mask"></div>
     </div>
   </div>
 
 
 <% end %>
-<div class="background">
-<div class="container-shop">
-  <%= link_to request.referer.present? ? request.referer : search_cities_path(query: @city.name) do %>
-    <div class="back-to-index-button-show-shop">
-        <p> <i class="fas fa-arrow-circle-left"></i>Retour</p>
-    </div>
-  <% end %>
 
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="shop-show-main">
-        <h1><%= @shop.name %></h2>
-        <div class="address-open">
-          <p ><%= @shop.address %></p>
-          <div class="open-status">
-            <p class="open">OUVERT</p>
-          </div>
+<div class="container">
+  <div class="shop-head">
+    <div class="shop-description">
+      <div class="title-open">
+      <h2><%= @shop.name %></h2>
+      <h4>OUVERT</h4>
+      </div>
+      <div class="desc">
+         <%= "Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they’re not explicitly required. Add and customize as you see fit.Be sure to set a unique id on the .carousel for optional controls, especially if you’re using multiple carousels on a single page."%>
+      </div>
+    </div>
+    <div class="shop-main-info-message">
+      <div class="shop-main-info">
+        <h6> Infos </h6>
+        <div class="info-singular">
+          <i class="fas fa-map-marker-alt"></i><p> <%= @shop.address %></p>
         </div>
-        <div class="send-message">
-          <% if current_user != @shop.user %>
-            <%= link_to new_shop_user_message_path(@shop, current_user) do %>
-            <button type="button" class="btn btn-primary">
-            <i class="fas fa-comments"></i>
-            Chat
-            </button>
-            <% end %>
-          <% else %>
+        <div class="info-singular">
+          <i class="fas fa-clock"></i><p></p>
+        </div>
+        <div class="info-singular">
+          <i class="fas fa-phone"></i><p> <%= @shop.phone_number %></p>
+        </div>
+      </div>
+      <div class="send-message">
+        <% if current_user != @shop.user %>
+          <%= link_to new_shop_user_message_path(@shop, current_user) do %>
+          <p>Chatter avec le commercant</p>
+          <i class="fas fa-comments"></i>
           <% end %>
-        </div>
-        <div class="shop-description">
-          <% if @shop.description != nil %>
-          <p> <%= @shop.description %> </p>
-          <% end %>
-        </div>
-          <%= link_to city_shop_favorites_path(@shop.city, @shop), method: :post, class: "add-favs" do %>
-        <div class="add-fav">
-            <p> Ajouter aux favoris </p>
-            <button type="button" class="btn btn-secondary add-shop-show" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;width:50px;'>Ajouter à mes favoris</p>">+</button>
-        </div>
-          <% end %>
+        <% else %>
+        <% end %>
       </div>
     </div>
   </div>
 
-
-  <div class="shop-content">
-    <div class="shop-feed">
-      <div class="shop-show-event">
-        <h5> Les évènements organisés par <%= @shop.name %> </h5>
+  <div class="shop-body">
+    <div class="shop-events">
+      <h3>Les évènements organisés par <%= @shop.name %></h3>
+      <div class="row">
+        <div class="col-sm-4">
           <% @shop_events.each do |event| %>
-            <div class="row">
-              <div class="col-sm-8 col-sm-offset-2 evenement-card-link">
-                <div class="evenement-card-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');" data-toggle="modal" data-target="#exampleModal">
-                  <div class="evenement-card-description">
-                    <h2><%= event.name %></h2>
-                    <h3><%= event.shop.name %></h3>
-                  </div>
-                  <div class="evenement-card-category">
-                    <h3><%= event.shop.category %></h3>
-                  </div>
-                  <div class="add-to-calendar-link">
-                  <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post do %>
-                    <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Ajouter au calendrier</p>">+</button>
-                  <% end %>
-                  </div>
-                </div>
-              </div>
-             </div>
-             <%= render partial: 'shared/modal_event', locals: {event: event} %>
+
+          <%= render partial: 'shared/modal_event', locals: {event: event} %>
           <% end %>
+        </div>
       </div>
-      <div class="shop-show-offers">
-        <h5> Les offres de <%= @shop.name %> </h5>
-        <% if @shop_offers == [] %>
-          <div class="no-offer">
-            <%= @shop.name%>  n'a pas d'offres particulières en ce moment
-          </div>
-        <% else %>
+    </div>
+    <div class="shop-offers">
+      <h3>Les offres proposées par <%= @shop.name %> </h3>
+      <div class="row">
+        <div class="col-sm-4">
           <% @shop_offers.each do |event| %>
-            <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-              <div class="event-free_card">
-                <div class="event-info_section" data-toggle="modal" data-target="#EventModal">
-                  <div class="event-free_header">
-                    <h3><strong><%= event.category %></strong></h3>
-                    <h5>Boutique : <%= event.shop.name %></h5>
-                    <h5><%= event.name %></h5>
-                    <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
-                  </div>
-                </div>
-                <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
-              </div>
-            </div>
-          </div>
-      <%= render partial: 'shared/modal_offers', locals: {event: event} %>
-      <% end %>
-     <% end %>
+
+          <%= render partial: 'shared/modal_offers', locals: {event: event} %>
+          <% end %>
+        </div>
+      </div>
     </div>
 
-
-    <div class = "info-map">
-      <div class="info">
-        <p class="info-title">TELEPHONE</p>
-        <p class="white"> <%= @shop.phone_number %> </p>
-        <p class="info-title">ADRESSE</p>
-        <p class="white"> <%= @shop.address %> </p>
-        <p class="info-title">HORRAIRES</p>
-        <div class="hours"></div>
-      </div>
+    <div class="access">
+      <h3>Accès</h3>
       <div class="shop-map">
         <div id="map"
           style="width: 100%"
@@ -145,19 +100,13 @@
     </div>
 
     <div class="also">
-      <h5> Vous pourriez aussi aimer  ... </h5>
+      <h3>Vous pourriez aussi aimer ... </h3>
       <div class="row">
-      <% shop_similar = Shop.where(category: @shop.category) %>
-      <% shop_similar.each do |shop| %>
-      <%= render partial: 'shared/shop_card', locals: {shop: shop} %>
-      <% end %>
+        <div class="col-sm-4">
+
+        </div>
       </div>
     </div>
-
-
   </div>
+
 </div>
-</div>
-
-
-

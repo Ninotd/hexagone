@@ -8,8 +8,10 @@ initUpdateNavbarOnScroll();
 import { initAutocomplete } from '../plugins/init_autocomplete';
 initAutocomplete();
 
-import { initSlick } from '../plugins/slick';
+import { initSlick, initSlick2} from '../plugins/slick';
 initSlick();
+initSlick2();
+
 
 import { shopShowEventCard } from '../plugins/shopShowEventCard';
 shopShowEventCard();
