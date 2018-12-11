@@ -66,11 +66,14 @@ class ShopsController < ApplicationController
       @results = PgSearch.multisearch(params[:query_shops])
       @shops = []
       @events = []
+      @offers = []
       @results.each do |result|
         if result.searchable.class.to_s == "Shop"
           @shops << result.searchable
-        elsif result.searchable.class.to_s == "Event"
+        elsif result.searchable.category.to_s == "Evènement"
           @events << result.searchable
+        elsif result.searchable.category.to_s == "Bon plan"
+          @offers << result.searchable
         end
     end
     # splitter les results entre events et shops
