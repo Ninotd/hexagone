@@ -2,10 +2,12 @@
 
 <div class="container">
   <div class="check-events best-events">
-    <div class="card-section-title">
-      <h3>Jette un coup d'oeil aux évènements de <%= @city.name %></h3>
-      <p><i class="fas fa-angle-double-right"></i> Tous les evènements</p>
-    </div>
+    <%= link_to search_shop_cities_path(query_shops: "events", city_id: @city.id) do %>
+      <div class="card-section-title">
+          <h3>Jette un coup d'oeil aux évènements de <%= @city.name %></h3>
+          <p><i class="fas fa-angle-double-right"></i> Tous les evènements</p>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="wrapper wrapper-des-cards">
@@ -15,12 +17,15 @@
     <% end %>
   </div>
 </div>
+
 <div class="container">
   <div class="check-offers">
-    <div class="card-section-title">
-      <h3>Tu peux aussi checker les offres des magasins de <%= @city.name %></h3>
-      <p><i class="fas fa-angle-double-right"></i> Toutes les offres</p>
-    </div>
+    <%= link_to search_shop_cities_path(query_shops: "offers", city_id: @city.id) do %>
+      <div class="card-section-title">
+        <h3>Tu peux aussi checker les offres des magasins de <%= @city.name %></h3>
+        <p><i class="fas fa-angle-double-right"></i> Toutes les offres</p>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="wrapper wrapper-des-cards">

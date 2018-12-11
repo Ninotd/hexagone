@@ -10,10 +10,19 @@
       </div>
     </div>
   <% end %>
+
   <div class="add-to-calendar-link">
-    <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post do %>
-      <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Ajouter au calendrier</p>">+</button>
+    <% if current_user.calendars.where(event_id: event.id) == [] %>
+      <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
+        <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Ajouter au calendrier</p>">+</button>
+        <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>L'évènement est dans ton calendrier</p>"><i class="fas fa-check"></i></button>
+      <% end %>
+    <% else %>
+      <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>L'évènement est dans ton calendrier</p>"><i class="fas fa-check"></i></button>
     <% end %>
+  </div>
+  <div class="event-date-hidden">
+    <p>Le <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p>
   </div>
 </div>
 
