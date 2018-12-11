@@ -1,0 +1,23 @@
+<div class="modal fade" id="EventModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel"> <%= event.name %> </h4>
+        </div>
+        <div class="modal-body">
+          <div class="photo-event-gallery">
+
+            <%= cl_image_tag event.event_photos.first.photo, height: 200, crop: :fill  %>
+
+          </div>
+          <div class="event-modal-description">
+            <%= event.description %>
+          </div>
+        </div>
+        <div class="event-modal-footer">
+          <button type="button" class="btn btn-modal" data-dismiss="modal">Nous Contacter</button>
+          <button type="button" class="btn btn-modal left-btn">Ajouter à mon calendrier</button>
+        </div>
+      </div>
+    </div>
+  </div>
