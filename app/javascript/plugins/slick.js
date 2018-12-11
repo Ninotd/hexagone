@@ -37,4 +37,11 @@ const initSlick = () => {
   });
 }
 
-export { initSlick }
+const initSlick2 = () => {
+  $(document).ready(function(){
+    console.log("lol")
+    $('.modal-slick').slick();
+  });
+}
+
+export { initSlick, initSlick2}
