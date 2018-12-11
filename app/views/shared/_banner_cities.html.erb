@@ -8,7 +8,7 @@
     <div class="search">
       <div class="search-bar">
         <%= form_tag search_shop_cities_path, method: :get do %>
-          <%= text_field_tag :query_shops, params[:query_shops], :class => "form-control",placeholder: "ex. 'Mode' / 'Alimentation' / 'Nike'" %>
+          <%= text_field_tag :query_shops, params[:query_shops], :class => "form-control",placeholder: "Inscris ici ce que tu cherches --> 'Mode' / 'Nike' / 'Alimentation'" %>
           <input type="hidden" name="city_id" value=<%= @city.id %>>
         <% end %>
       </div>

@@ -1,11 +1,14 @@
 <%= render 'shared/banner_cities' %>
 
-<div class="container">
+<div class="wrapper wrapper-des-section-titles">
   <div class="check-events best-events">
     <%= link_to search_shop_cities_path(query_shops: "events", city_id: @city.id) do %>
       <div class="card-section-title">
-          <h3>Jette un coup d'oeil aux évènements de <%= @city.name %></h3>
-          <p><i class="fas fa-angle-double-right"></i> Tous les evènements</p>
+          <h3>Jette un coup d'oeil aux évènements et découvre de nouveaux commerçants !</h3>
+          <p><i class="fas fa-arrow-alt-circle-right"></i> Tous les évènements</p>
+      </div>
+      <div class="card-section-explanatory-p">
+        <p>Dans cette section, tu peux voir un aperçu d'évènements en cours ou à venir. Tu peux aussi voir tous les évènements en cliquant sur le titre de la rubrique. <br> Avec Hexagone, tu (re)découvres tes commerçants !</p>
       </div>
     <% end %>
   </div>
@@ -18,12 +21,15 @@
   </div>
 </div>
 
-<div class="container">
+<div class="wrapper wrapper-des-section-titles">
   <div class="check-offers">
     <%= link_to search_shop_cities_path(query_shops: "offers", city_id: @city.id) do %>
       <div class="card-section-title">
-        <h3>Tu peux aussi checker les offres des magasins de <%= @city.name %></h3>
-        <p><i class="fas fa-angle-double-right"></i> Toutes les offres</p>
+        <h3>Checke les offres de tes commerçants et deviens l'expert(e) bons plans auprès de tes amis !</h3>
+        <p><i class="fas fa-arrow-alt-circle-right"></i> Toutes les offres</p>
+      </div>
+      <div class="card-section-explanatory-p">
+        <p>Dans cette section, tu peux voir un aperçu des offres commerciales en cours ou à venir. Tu peux aussi voir toutes les offres en cliquant sur le titre de la rubrique. <br> Avec Hexagone, tu es le/la gourou des promos de ta ville !</p>
       </div>
     <% end %>
   </div>
@@ -35,14 +41,17 @@
     <% end %>
   </div>
 </div>
-<div class="container">
+<div class="wrapper wrapper-des-section-titles">
   <div class="shops-all">
     <div class="card-section-title">
-      <h3>Sinon tu peux aussi voir tous les magasins de <%= @city.name %></h3>
+      <h3>Repère de nouvelles boutiques et renouvelle tes habitudes ! </h3>
+    </div>
+    <div class="card-section-explanatory-p">
+      <p>Dans cette section, on t'a listé l'ensemble des boutiques, si possible indépendantes, que tu pourras trouver sur Hexagone. <br> Avec Hexagone, tu apprends à connaître l'offre commerçante de ta ville !</p>
     </div>
   </div>
 </div>
-<div class="container wrapper-des-cards">
+<div class="wrapper wrapper-des-shops">
   <div class="shop-cards relative-position">
     <% @city.shops.each do |shop| %>
       <%= render partial: 'shared/shop_card', locals: {shop: shop} %>
