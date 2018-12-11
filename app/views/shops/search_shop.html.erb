@@ -1,39 +1,86 @@
-
-<div class="container container-search">
-  <h2><strong>Votre recherche est présentée par ... </strong></h2>
-  <h2 class="underline-details">Les offres que vous recherchez</h2>
+<div class="wrapper container-search">
   <%= link_to request.referer.present? ? request.referer : search_cities_path(query: @city.name) do %>
-    <div>
-        <p> <i class="fas fa-arrow-circle-left"></i>Retour</p>
-    </div>
+      <p> <i class="fas fa-arrow-circle-left"></i> Retour</p>
   <% end %>
 </div>
 
 <% if @filtered_results.empty? %>
-  <div class="check-events best-events">
+  <div class="wrapper wrapper-des-section-titles">
     <div class="card-section-title">
-      <h3>Jette un coup d'oeil aux évènements de <%= @city.name %></h3>
-      <p><i class="fas fa-angle-double-right"></i> Tous les evènements</p>
+      <h2>Cocorico ! Tellement d'activité dans ta ville ! <br> Regarde ce qu'Hexagone a dégoté pour toi : </h3>
     </div>
-    <div class="events-with-slick evenement-card-flexbox">
-      <% @events.each do |event| %>
-        <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
+  </div>
+  <!-- les evenements -->
+  <div class="wrapper wrapper-des-section-titles">
+    <div class="check-events best-events">
+        <div class="card-section-title">
+            <h3>Voici les évènements que nous te proposons de découvrir !</h3>
+        </div>
+        <div class="card-section-explanatory-p">
+          <p>Dans cette section, tu peux voir le résultat des <strong>évènements</strong> en cours ou à venir qui correspondent à ta recherche. Tu peux cliquer sur la carte pour accéder à plus d'informations. <br> Avec Hexagone, tu (re)découvres tes commerçants !</p>
+        </div>
+    </div>
+  </div>
+  <% if @events.length < 3%>
+    <div class="wrapper wrapper-des-cards">
+      <div class="row events-with-slick evenement-card-flexbox left-align-slick">
+        <% @events.each do |event| %>
+          <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <div class="wrapper wrapper-des-cards">
+      <div class="row events-with-slick evenement-card-flexbox">
+        <% @events.each do |event| %>
+          <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <!-- les offres -->
+  <div class="wrapper wrapper-des-section-titles">
+    <div class="check-offers">
+        <div class="card-section-title">
+          <h3>Et les offres que nous te demandons de ne pas rater !</h3>
+        </div>
+        <div class="card-section-explanatory-p">
+          <p>Dans cette section, tu peux voir le résultat des <strong>offres</strong> en cours ou à venir qui correspondent à ta recherche. Tu peux cliquer sur la carte pour accéder à plus d'informations. <br> Avec Hexagone, tu es le/la gourou des promos de ta ville !</p>
+        </div>
+    </div>
+  </div>
+  <div class="wrapper wrapper-des-cards">
+    <div class="row events-with-slick">
+      <% @offers.each do |event| %>
+        <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
       <% end %>
     </div>
   </div>
-  <div class="check-offers">
-    <div class="card-section-title">
-      <h3>Tu peux aussi checker les offres des magasins de <%= @city.name %></h3>
-      <p><i class="fas fa-angle-double-right"></i> Toutes les offres</p>
+  <!-- les magasins -->
+  <div class="wrapper wrapper-des-section-titles">
+    <div class="shops-all">
+      <div class="card-section-title">
+        <h3>Pour rappel, voici les boutiques qui cernent ta recherche</h3>
+      </div>
+      <div class="card-section-explanatory-p">
+        <p>Dans cette section, on t'a listé l'ensemble des boutiques, si possible indépendantes, qui correspondent à ta recherche. <br> Avec Hexagone, tu apprends à connaître l'offre commerçante de ta ville !</p>
+      </div>
     </div>
-    <div class="events-with-slick">
-      <% @events.each do |event| %>
-      <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
+  </div>
+  <div class="wrapper wrapper-des-shops">
+    <div class="shop-cards relative-position">
+      <% @shops.each do |shop| %>
+        <%= render partial: 'shared/shop_card', locals: {shop: shop} %>
       <% end %>
     </div>
   </div>
-<% else %>
 
+<% else %>
+  <div class="container">
+    <div class="card-section-title">
+      <h2>Cocorico ! Tellement d'activité dans ta ville ! <br> Regarde ce qu'Hexagone a dégoté pour toi : </h3>
+    </div>
+  </div>
   <% if params[:query_shops] == "events" %>
     <div class="container">
       <div class="row">
@@ -92,9 +139,5 @@
         </div>
       </div>
     </div>
-
-
-
-
   <% end %>
 <% end %>

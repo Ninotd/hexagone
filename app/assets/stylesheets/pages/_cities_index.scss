@@ -30,9 +30,9 @@
 .card-section-title{
   display: flex;
   align-items: baseline;
-  h3 {
+  h3, h2 {
     font-weight: bold;
-    color: #696969;
+    color: rgba(0, 0, 0, 0.85);
   }
   p{
     opacity: 0;
@@ -40,7 +40,7 @@
     margin-left: 10px;
     font-size: 16px;
     font-weight: bolder;
-    color: #696969;
+    color: rgba(0, 0, 0, 0.85);
   }
   &:hover{
     p{
@@ -48,7 +48,7 @@
       margin-left: 10px;
       font-size: 16px;
       font-weight: bolder;
-      color: #696969;
+      color: rgba(0, 0, 0, 0.85);
     }
   }
 }
