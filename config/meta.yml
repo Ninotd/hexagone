@@ -1,0 +1,4 @@
+meta_product_name: "Hexagone"
+meta_title: "Hexagone - L'actualité de tes commerçants préférés"
+meta_description: "(Re)Découvre ton centre ville et ses commerces"
+meta_image: "cover.jpg"                       # should exist in `app/assets/images/`
