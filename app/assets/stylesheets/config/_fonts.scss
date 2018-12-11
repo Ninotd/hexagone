@@ -9,6 +9,30 @@
 $body-font: "Fira Sans", "sans-serif";
 $headers-font: "Muli", "sans-serif";
 
+html{
+  h1{
+  font-size: 56px;
+  }
+  h2{
+    font-size: 32px;
+  }
+
+  h3{
+    font-size: 24px;
+  }
+
+  h4{
+    font-size: 16px;
+  }
+
+  h5{
+    font-size: 14px;
+  }
+
+  p{
+    font-size: 12px;
+  }
+}
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

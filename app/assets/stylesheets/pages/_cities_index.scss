@@ -31,6 +31,7 @@
   display: flex;
   align-items: baseline;
   h3 {
+    font-weight: bold;
     color: #696969;
   }
   p{
@@ -39,7 +40,6 @@
     margin-left: 10px;
     font-size: 16px;
     font-weight: bolder;
-    text-decoration: underline;
     color: #696969;
   }
   &:hover{
@@ -48,14 +48,36 @@
       margin-left: 10px;
       font-size: 16px;
       font-weight: bolder;
-      text-decoration: underline;
       color: #696969;
     }
   }
 }
 
+.card-section-explanatory-p{
+  p{
+    color: #696969;
+  }
+}
+
 .wrapper-des-cards{
   margin-top: 15px !important;
+}
+
+.wrapper-des-section-titles{
+ margin-top: 25px !important;
+ margin-bottom: 15px !important;
+ padding: 0px 110px;
+}
+
+.container-des-section-titles{
+  margin-top: 25px !important;
+  margin-bottom: 15px !important;
+  padding: 0px 25px;
+}
+
+.wrapper-des-shops{
+  margin-top: 15px !important;
+  padding: 0px 100px;
 }
 
 

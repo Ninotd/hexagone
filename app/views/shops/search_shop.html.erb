@@ -1,7 +1,12 @@
 
-<div class="container-search">
+<div class="container container-search">
   <h2><strong>Votre recherche est présentée par ... </strong></h2>
   <h2 class="underline-details">Les offres que vous recherchez</h2>
+  <%= link_to request.referer.present? ? request.referer : search_cities_path(query: @city.name) do %>
+    <div>
+        <p> <i class="fas fa-arrow-circle-left"></i>Retour</p>
+    </div>
+  <% end %>
 </div>
 
 <% if @filtered_results.empty? %>
@@ -23,52 +28,73 @@
     </div>
     <div class="events-with-slick">
       <% @events.each do |event| %>
-        <%= link_to city_shop_path(@city, event.shop) do %>
-          <div class="event-free_card hover-on-card-to-description">
-            <div class="event-info_section">
-              <div class="event-free_header hover-on-card-to-description">
-                <h3><strong><%= event.category %></strong></h3>
-                <h5><%= event.shop.name %></h5>
-                <h5><%= event.name %></h5>
-                <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
-                <p><%= event.description %></p>
-              </div>
-            </div>
-            <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
-          </div>
-        <% end %>
+      <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
       <% end %>
     </div>
   </div>
 <% else %>
+
   <% if params[:query_shops] == "events" %>
-    <div class="events-no-slick col-xs-12">
-      <% @filtered_results.each do |event| %>
-        <div class="col-xs-12 col-sm-4">
-          <%= render partial: 'shared/search_show_event_card', locals: {event: event} %>
-        </div>
-      <% end %>
+    <div class="container">
+      <div class="row">
+        <% @filtered_results.each do |event| %>
+          <div class="col-xs-12 col-sm-4">
+            <%= render partial: 'shared/search_show_event_card', locals: {event: event} %>
+          </div>
+        <% end %>
+      </div>
     </div>
+
   <% elsif params[:query_shops] == "offers" %>
-    <div class="events-no-slick col-xs-12">
-      <% @filtered_results.each do |event| %>
-        <div class="col-xs-12 col-sm-4 check-that-bottom-margin">
-          <%= link_to city_shop_path(@city, event.shop) do %>
-            <div class="event-free_card hover-on-card-to-description">
-              <div class="event-info_section">
-                <div class="event-free_header hover-on-card-to-description">
-                  <h3><strong><%= event.category %></strong></h3>
-                  <h5><%= event.shop.name %></h5>
-                  <h5><%= event.name %></h5>
-                  <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
-                  <p><%= event.description %></p>
+
+    <div class="container">
+      <div class="row">
+        <div class="events-no-slick col-xs-12">
+          <% @filtered_results.each do |event| %>
+            <div class="col-xs-12 col-sm-4 check-that-bottom-margin">
+              <%= link_to city_shop_path(@city, event.shop) do %>
+                <div class="event-free_card hover-on-card-to-description">
+                  <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
+                    <div class="event-shop-name">
+                      <h4><%= event.shop.name %></h4>
+                    </div>
+                    <div class="event-offer-name">
+                      <h3 class="h4-title-on-card"><%= event.name %></h3>
+                    </div>
+                    <div class="event-offer-date">
+                      <h4>Jusqu'au <%= event.end_date.day %>/<%= event.end_date.month%>/<%= event.end_date.year %></h4>
+                    </div>
+                    <div class="event-offer-description">
+                      <p><%= event.description %></p>
+                    </div>
+                  </div>
                 </div>
+              <% end %>
+              <div class="add-to-calendar-offer-link-on-search">
+                <% if current_user.calendars.where(event_id: event.id) == [] %>
+                  <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
+                    <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
+                      <div class="button-to-calendar-description">
+                        Ajouter au calendrier
+                      </div>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button background-green">
+                      <i class="fas fa-check"></i>
+                    </button>
+                  <% end %>
+                <% else %>
+                  <button type="button" class="btn btn-secondary add-to-calendar-button background-green"><i class="fas fa-check"></i></button>
+                <% end %>
               </div>
-              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
             </div>
           <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
+
+
+
+
   <% end %>
 <% end %>
