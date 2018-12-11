@@ -186,6 +186,23 @@ a:hover, a:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  .button-to-calendar-description {
+    position: absolute;
+    right: 36px;
+    font-size: 12px;
+    font-weight: lighter;
+    overflow: hidden;
+    width: 0;
+    transition: width 0.3s ease;
+    background: black;
+  }
+
+  &:hover{
+    .button-to-calendar-description {
+      width: 120px;
+    }
+  }
 }
 
 .add-to-calendar-button:hover {
@@ -263,4 +280,8 @@ a:hover, a:focus {
   top: 10px;
   right: 10px;
   opacity: 0.6;
+}
+
+.margin-top-bottom-10\% {
+  margin: 10px 0px;
 }
