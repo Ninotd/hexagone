@@ -130,7 +130,7 @@ a:hover, a:focus {
 
 .evenement-card {
   height: 257px;
-  width: 375px;
+  width: 100%;
   color: white;
   position: relative;
   border-radius: 3px;
@@ -139,20 +139,12 @@ a:hover, a:focus {
 .evenement-card-description {
   position: absolute;
   bottom: 16px;
-  left: 24px;
-  h2 {
-    font-size: 24px;
-    font-weight: 400;
-    margin: 0;
-    text-shadow: 0px 1px 1px black;
-    padding-right: 10px;
-    width: auto;
-  }
+  width: 100%;
+  padding: 10px;
   h3 {
     font-weight: normal;
     font-size: 16px;
     margin: 0;
-    padding-top: 10px;
     text-shadow: 0px 1px 1px black;
     padding-right: 10px;
     width: auto;
@@ -161,12 +153,13 @@ a:hover, a:focus {
 
 .evenement-card-category {
   background-color: black;
-  width: 170px;
-  height: 50px;
+  width: 130px;
+  height: 35px;
   h3 {
     font-size: 16px;
-    font-weight: lighter;
+    font-weight: bold;
     margin: 0;
+    text-transform: uppercase;
   }
   display: flex;
   align-items: center;
@@ -179,7 +172,7 @@ a:hover, a:focus {
 .add-to-calendar-link {
   position: absolute;
   top: 14px;
-  right: 25px;
+  right: 10px;
   opacity: 0.6;
 }
 
@@ -211,10 +204,8 @@ a:hover, a:focus {
     // display: none;
     transition: opacity 0.6s;
   }
-  .event-date-hidden {
-    opacity: 0;
-    // display: none;
-    transition: opacity 0.6s;
+  .event-date {
+    opacity: 1;
   }
   transition: transform 1s;
   &:hover {
@@ -222,16 +213,18 @@ a:hover, a:focus {
       // display: block;
       opacity: 1;
     }
-    .event-date-hidden {
-      // display: block;
-      opacity: 1;
-    }
     transform: translate(0px, -7px);
+    .evenement-card-category{
+      padding-top: 5px;
+      transition: padding-top 0.6s;
+    }
+    .evenement-card-description{
+      background-color: black;
+    }
   }
 }
 
-
-.event-date-hidden {
+.event-date {
    position: absolute;
    top: 60px;
    left: 28px;
@@ -241,4 +234,12 @@ a:hover, a:focus {
     color: white;
     text-shadow: 0px 1px 1px black;
    }
+}
+
+.evenement-date-description{
+  position: absolute;
+  top: 40px;
+  left: 24px;
+  width: 130px;
+  text-align: center;
 }

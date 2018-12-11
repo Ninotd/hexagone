@@ -4,10 +4,7 @@
     display: none;
   }
   &:hover {
-    h3 {
-      display: none;
-    }
-    h5 {
+    h4 {
       display: none;
     }
     p {
@@ -19,6 +16,11 @@
       padding: 10px;
     }
   }
+}
+
+.h4-title-on-card{
+  font-weight: bold !important;
+  text-transform: uppercase;
 }
 
 .card-category {
