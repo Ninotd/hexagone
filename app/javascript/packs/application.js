@@ -1,5 +1,6 @@
 import 'mapbox-gl/dist/mapbox-gl.css'
 import "bootstrap";
+import { activeTabs } from '../components/calendar_tabs';
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 initUpdateNavbarOnScroll();
@@ -28,8 +29,9 @@ initShopChat();
 
 initUpdateNavbarOnScroll();
 initAutocomplete();
-
+new activeTabs();
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
