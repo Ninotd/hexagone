@@ -2,15 +2,20 @@
 <div class="col-xs-12 col-sm-4 offer-card-link">
   <%= link_to city_shop_path(@city, event.shop) do %>
     <div class="event-free_card hover-on-card-to-description">
-      <div class="event-info_section">
-        <div class="event-free_header hover-on-card-to-description">
-          <h4 class="h4-title-on-card"><%= event.shop.name %></h4>
-          <h4><%= event.name %></h4>
-          <h4>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h4>
+      <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
+        <div class="event-shop-name">
+          <h4><%= event.shop.name %></h4>
+        </div>
+        <div class="event-offer-name">
+          <h3 class="h4-title-on-card"><%= event.name %></h3>
+        </div>
+        <div class="event-offer-date">
+          <h4>Jusqu'au <%= event.end_date.day %>/<%= event.end_date.month%>/<%= event.end_date.year %></h4>
+        </div>
+        <div class="event-offer-description">
           <p><%= event.description %></p>
         </div>
       </div>
-      <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
     </div>
   <% end %>
   <div class="add-to-calendar-offer-link">
