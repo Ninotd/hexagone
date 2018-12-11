@@ -1,4 +1,6 @@
 import Typed from 'typed.js';
+
+
 const loadDynamicBannerText = () => {
   const userNameBox = document.getElementById("user-name-to-hide");
   if (userNameBox) {

@@ -1,0 +1,52 @@
+.container-tab-calendar{
+  margin-top: 150px;
+}
+
+.calendars-tabs {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  li.active {
+    color: $main;
+    border-bottom: 2px solid $main;
+    background-color: rgba($main, 0.1);
+  }
+  li {
+    padding: 0;
+  }
+}
+
+.tab-calendar {
+  padding: 12px 70px !important;
+  color: $gray-dark;
+  background-color: #f4f2f2;
+  font-size: 15px;
+}
+
+.tab-radius-middle {
+  border-top: 1px solid $gray-light;
+  border-bottom: 1px solid $gray-light;
+  border-right: 1px solid $gray-light;
+}
+
+.tab-radius-left {
+  border: 1px solid $gray-light;
+  border-radius: 6px 0px 0px 6px;
+}
+
+.tab-radius-right {
+  border-top: 1px solid $gray-light;
+  border-bottom: 1px solid $gray-light;
+  border-right: 1px solid $gray-light;
+  border-radius: 0px 6px 6px 0px;
+}
+
+.calendars-tab-content {
+  display: none;
+  margin-top: 40px;
+}
+
+.calendars-tab-content.active {
+  display: block;
+}
+

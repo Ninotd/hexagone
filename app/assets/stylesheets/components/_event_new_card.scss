@@ -204,8 +204,16 @@ a:hover, a:focus {
     // display: none;
     transition: opacity 0.6s;
   }
-  .event-date {
-    opacity: 1;
+
+  .add-to-calendar-link-on-search-event {
+    opacity: 0;
+    // display: none;
+    transition: opacity 0.6s;
+  }
+  .event-date-hidden {
+    opacity: 0;
+    // display: none;
+    transition: opacity 0.6s;
   }
   transition: transform 1s;
   &:hover {
@@ -213,6 +221,10 @@ a:hover, a:focus {
       // display: block;
       opacity: 1;
     }
+    .add-to-calendar-link-on-search-event {
+      opacity: 1;
+    }
+
     transform: translate(0px, -7px);
     .evenement-card-category{
       padding-top: 5px;
@@ -242,4 +254,15 @@ a:hover, a:focus {
   left: 24px;
   width: 130px;
   text-align: center;
+
+.evenement-card-width-100\% {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.add-to-calendar-link-on-search-event {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  opacity: 0.6;
 }

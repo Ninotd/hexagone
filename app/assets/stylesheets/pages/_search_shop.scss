@@ -5,6 +5,12 @@
 
 .container-search{
   margin-top: 60px;
+  p {
+    color: $main;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .slick-prev:before {

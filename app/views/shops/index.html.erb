@@ -1,7 +1,7 @@
 <% @shops.each do |shop| %>
   <div class="shop-cards__item">
     <div class="shop-card">
-      <div class="shop-card__image shop-card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path shop.shop_photos.first.photo, crop: :fill %>');"></div>
+      <div class="shop-card__image shop-card__image--fence" style="background-image: url('<%= cl_image_path shop.shop_photos.first.photo, :width=>360, :height=>240, :crop=>"scale" %>');"></div>
       <div class="shop-card__content">
         <div class="shop-card__title">Catégorie : <%= shop.category %></div>
         <p class="shop-card__text">Boutique : <%= shop.name %></p>

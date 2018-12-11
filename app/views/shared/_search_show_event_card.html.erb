@@ -2,7 +2,7 @@
 
 <div class="evenement-card-link">
   <%= link_to city_shop_path(@city, event.shop) do %>
-    <div class="evenement-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
+    <div class="evenement-card evenement-card-width-100%" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
       <div class="evenement-card-description">
         <h2><%= event.name %></h2>
         <h3><%= event.shop.name %></h3>
@@ -12,10 +12,14 @@
       </div>
     </div>
   <% end %>
-
-  <div class="search-add-to-calendar-link">
-    <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post do %>
-      <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Ajouter au calendrier</p>">+</button>
+  <div class="add-to-calendar-link-on-search-event">
+    <% if current_user.calendars.where(event_id: event.id) == [] %>
+      <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
+        <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Ajouter au calendrier</p>"><i class="fas fa-plus"></i></button>
+        <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button background-green" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>L'évènement est dans ton calendrier</p>"><i class="fas fa-check"></i></button>
+      <% end %>
+    <% else %>
+      <button type="button" class="btn btn-secondary add-to-calendar-button background-green" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>L'évènement est dans ton calendrier</p>"><i class="fas fa-check"></i></button>
     <% end %>
   </div>
 </div>
