@@ -1,19 +1,19 @@
 .shop-show-main{
   text-align: center;
-   border-bottom: 1px solid black;
-   position: relative;
-   padding-bottom: 20px;
-
+  border-bottom: 1px solid black;
+  position: relative;
+  padding-bottom: 15px;
 }
 
 .open-status {
   background-color:#4EA155;
   font-size: 10px;
+  margin-left: 10px;
   border-radius: 3px;
   color: white;
   padding: 2px 5px;
-  display: inline-block;
-  p {
+  max-height: 17px;
+  p.open {
     margin-bottom: 0px;
     text-transform: uppercase;
   }
@@ -24,27 +24,24 @@
 }
 
 .info-map {
-  align-items:center;
   display: flex;
-  padding: 15px;
+  margin-top: 30px;
 }
 
-.shop-info{
-  padding: 5px;
-
+.address-open{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  & p {
+    margin-bottom: 0px;
+  }
 }
+
 
 .shop-feed {
   padding: 10px;
-  margin-right: 10px;
 }
 
-.event-card-feed {
-  border: 1px solid rgba(0, 0, 0, .1);
-  margin: 5px;
-  padding: 5px;
-  display: flex;
-}
 
 .banner-shop {
   height: 50vh
@@ -110,12 +107,26 @@
 
 .container-shop {
   margin: 0 auto;
-  width: 970px;
+  width: 670px;
 }
 
 .add-fav {
   display: flex;
-  align-items: center;
+  justify-content: flex-end;
+  align-items:center;
+  & p {
+    margin-bottom:0px;
+    margin-right: 5px;
+    font-size: 14px;
+  }
+}
+
+.add-favs {
+  color: grey;
+  transition: 0.4s ease;
+  & :hover {
+    color: $fourth;
+  }
 }
 
 .fa-plus-circle{
@@ -127,15 +138,116 @@
   width: 50%
 }
 
-.info{
-width : 50%;
-padding-left: 20px;
-& p.info-title {
- font-size: 13px;
- margin-bottom: 3px;
-& p.white {
-  color: white;
-}
-}
+.info {
+  padding: 10px 10px;
+  background-color:#EEEDED;
+  width : 50%;
+  & p.info-title {
+   font-size: 13px;
+   margin-bottom: 3px;
+  }
+  & p.white {
+    color: black;
+  }
 }
 
+.add-shop-show {
+  padding: 0px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+  z-index: 500;
+  border: 2px solid white;
+  & :hover{
+    color: white
+  }
+}
+
+.btn-primary {
+  width: 100px;
+  background-color:$fourth;
+  border: 1px solid $fourth;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.shop-show-event{
+  width: 100%;
+  margin-bottom: 20px;
+  & h5{
+    margin-bottom: 30px;
+  }
+}
+
+.shop-show-offers{
+  width: 100%;
+  margin-bottom: 20px;
+  & h5{
+    margin-bottom: 30px;
+    margin-top: 50px;
+  }
+}
+
+
+
+.shop-content{
+  & .row {
+    margin: 0 auto;
+
+  }
+}
+
+.evenement-card-show {
+  height: 257px;
+  color: white;
+  position: relative;
+  border-radius: 3px;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+}
+
+.add-to-calendar-link{
+  display: flex;
+}
+
+
+
+.event-modal-footer {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.btn-modal {
+  background-color:$fourth;
+  color: white;
+  border-radius: 4px;
+}
+
+.left-btn {
+  margin-left: 20px;
+}
+
+.photo-event-gallery{
+  height: 50%;
+  margin-bottom: 30px;
+}
+
+.event-modal-description{
+  height: 50%;
+  margin: 0px 30px;
+  text-align: justify;
+}
+
+
+// .background {
+//   background-color:#132238;
+//   color: white
+// }

@@ -24,7 +24,10 @@ class ShopsController < ApplicationController
   end
 
   def show
+
     @city = City.find(params[:city_id])
+    @shop_events = @shop.events.where(category: "Evènement")
+    @shop_offers = @shop.events.where(category: "Bon plan")
     @markers = [{
         lng: @shop.longitude,
         lat: @shop.latitude
@@ -47,17 +50,31 @@ class ShopsController < ApplicationController
   end
 
   def search_shop
-    @results = PgSearch.multisearch(params[:query_shops])
-    # splitter les results entre events et shops
+    @filtered_results = []
     @city = City.find(params[:city_id])
-    @shops = []
-    @events = []
-    @results.each do |result|
-      if result.searchable.class.to_s  == "Shop"
-        @shops << result.searchable
-      elsif result.searchable.class.to_s == "Event"
-        @events << result.searchable
+    if params[:query_shops] == "events"
+      @results = Event.where(category: "Evènement")
+      @results.each do |result|
+        @filtered_results << result
       end
+    elsif params[:query_shops] == "offers"
+      @results = Event.where(category: "Bon plan")
+      @results.each do |result|
+        @filtered_results << result
+      end
+    else
+      @results = PgSearch.multisearch(params[:query_shops])
+      @shops = []
+      @events = []
+      @results.each do |result|
+        if result.searchable.class.to_s == "Shop"
+          @shops << result.searchable
+        elsif result.searchable.class.to_s == "Event"
+          @events << result.searchable
+        end
+    end
+    # splitter les results entre events et shops
+
     end
     @months = {
       "1" => 'janvier',

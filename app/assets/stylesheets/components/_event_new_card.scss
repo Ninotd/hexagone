@@ -179,7 +179,7 @@ a:hover, a:focus {
 .add-to-calendar-link {
   position: absolute;
   top: 14px;
-  right: 7px;
+  right: 25px;
   opacity: 0.6;
 }
 
@@ -193,6 +193,9 @@ a:hover, a:focus {
   font-weight: bold;
   z-index: 500;
   border: 2px solid white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .add-to-calendar-button:hover {
@@ -208,12 +211,34 @@ a:hover, a:focus {
     // display: none;
     transition: opacity 0.6s;
   }
+  .event-date-hidden {
+    opacity: 0;
+    // display: none;
+    transition: opacity 0.6s;
+  }
   transition: transform 1s;
   &:hover {
     .add-to-calendar-link {
       // display: block;
       opacity: 1;
     }
+    .event-date-hidden {
+      // display: block;
+      opacity: 1;
+    }
     transform: translate(0px, -7px);
   }
+}
+
+
+.event-date-hidden {
+   position: absolute;
+   top: 60px;
+   left: 28px;
+   width: 150px;
+   p {
+    font-size: 10px;
+    color: white;
+    text-shadow: 0px 1px 1px black;
+   }
 }

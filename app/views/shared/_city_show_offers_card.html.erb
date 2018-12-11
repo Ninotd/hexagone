@@ -1,14 +1,27 @@
-<%= link_to city_shop_path(@city, event.shop) do %>
-  <div class="event-free_card hover-on-card-to-description">
-    <div class="event-info_section">
-      <div class="event-free_header hover-on-card-to-description">
-        <h3><strong><%= event.category %></strong></h3>
-        <h5>Boutique : <%= event.shop.name %></h5>
-        <h5><%= event.name %></h5>
-        <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
-        <p><%= event.description %></p>
+
+<div class="col-xs-12 col-sm-4 offer-card-link">
+  <%= link_to city_shop_path(@city, event.shop) do %>
+    <div class="event-free_card hover-on-card-to-description">
+      <div class="event-info_section">
+        <div class="event-free_header hover-on-card-to-description">
+          <h3><strong><%= event.category %></strong></h3>
+          <h5><%= event.shop.name %></h5>
+          <h5><%= event.name %></h5>
+          <h5>Jusqu'au <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
+          <p><%= event.description %></p>
+        </div>
       </div>
+      <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
     </div>
-    <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
+  <% end %>
+  <div class="add-to-calendar-offer-link">
+    <% if current_user.calendars.where(event_id: event.id) == [] %>
+      <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
+        <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>Ajouter au calendrier</p>">+</button>
+        <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>L'évènement est dans ton calendrier</p>"><i class="fas fa-check"></i></button>
+      <% end %>
+    <% else %>
+      <button type="button" class="btn btn-secondary add-to-calendar-button" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p style='font-size:10px;font-weight:lighter;text-align:center;'>L'évènement est dans ton calendrier</p>"><i class="fas fa-check"></i></button>
+    <% end %>
   </div>
-<% end %>
+</div>
