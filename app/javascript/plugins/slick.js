@@ -11,6 +11,8 @@ const initSlick = () => {
       slidesToShow: 3,
       swipeToSlide: true,
       infinite: true,
+      prevArrow: '<i class="fas fa-angle-left"></i>',
+      nextArrow: '<i class="fas fa-angle-right"></i>',
       // autoplay: true,
       // autoplaySpeed: 3000,
       responsive: [
