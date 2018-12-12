@@ -13,10 +13,10 @@ EventPhoto.destroy_all
 puts 'Creating Fontainebleau'
 fontainebleau = City.create!(name: "Fontainebleau")
 
-puts 'Creating 54 shops owner'
+puts 'Creating 61 shops owner'
 user_name = 1
 Users = []
-54.times do
+61.times do
   user = User.new(
     email: "#{user_name}@gmail.com",
     password: "hexagon",
@@ -29,7 +29,7 @@ Users = []
 end
 
 puts 'Creating 10 users'
-user_name = 55
+user_name = 62
 10.times do
   user = User.new(
     email: "#{user_name}@gmail.com",
@@ -42,6 +42,119 @@ user_name = 55
 end
 
 puts 'Creating 54 shops'
+
+shop = Shop.new(
+  name: "KOKO SHOP",
+  description: "Prêt à porter pour femmes & hommes - sneakers & accessoires : Faguo, Puma, Nike, Adidas, Arkk, Diadora, Dr.Martens, Vans, Schmoove, Heroine, Patagonia...",
+  category: "Mode",
+  address: "19 rue de France, 77300 Fontainebleau",
+  phone_number: "06 24 54 67 48",
+  user: Users[54],
+  city: City.find_by(name: "Fontainebleau")
+  )
+shop.save!
+shop_photo = ShopPhoto.new(
+  shop: shop
+  )
+shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/16997933_929650947177124_7171395841048529656_n.jpg?_nc_cat=104&_nc_ht=scontent-bru2-1.xx&oh=285b7b35b35b147f708f567f26590e38&oe=5CA0CFA3"
+shop_photo.save!
+
+shop = Shop.new(
+  name: "STOR'AGE",
+  description: "Prêt à porter pour femmes & hommes - sneakers & accessoires : Fusalp, The North Face, Freeman Porter, Sessun, Franklin Marshall, Veja, Reebok, Nike, Adidas...",
+  category: "Mode",
+  address: "24 rue de France, 77300 Fontainebleau",
+  phone_number: "06 56 34 25 56",
+  user: Users[55],
+  city: City.find_by(name: "Fontainebleau")
+  )
+shop.save!
+shop_photo = ShopPhoto.new(
+  shop: shop
+  )
+shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/45867956_2552989474742905_1748544051637911552_o.jpg?_nc_cat=100&_nc_ht=scontent-bru2-1.xx&oh=981ddb03601654b9107e84e0ac010079&oe=5C96B4E5"
+shop_photo.save!
+
+shop = Shop.new(
+  name: "IT SHOP",
+  description: "magasin de vêtements, chaussures et accessoires pour hommes et femmes: CANADA GOOSE/ NEW BALANCE/ NIKE / CARHARTT / BLEU DE PANAME...",
+  category: "Mode",
+  address: "23 rue grande, 77300 Fontainebleau",
+  phone_number: "06 36 27 19 46",
+  user: Users[56],
+  city: City.find_by(name: "Fontainebleau")
+  )
+shop.save!
+shop_photo = ShopPhoto.new(
+  shop: shop
+  )
+shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/16388420_1584261488255393_1958615439647836913_n.jpg?_nc_cat=102&_nc_ht=scontent-bru2-1.xx&oh=9567e7a529f969e22969e3e7d9304074&oe=5C933FA0"
+shop_photo.save!
+
+shop = Shop.new(
+  name: "BLACK & WHITE",
+  description: "Toutes les dernières tendances streetwear : New Balance, Nike, Adidas, Reebok...",
+  category: "Mode",
+  address: "18 rue grande, 77300 Fontainebleau",
+  phone_number: "06 43 57 34 90",
+  user: Users[57],
+  city: City.find_by(name: "Fontainebleau")
+  )
+shop.save!
+shop_photo = ShopPhoto.new(
+  shop: shop
+  )
+shop_photo.remote_photo_url = "http://www.urbanpeak.fr/upload/images/shop-inside(1).jpg"
+shop_photo.save!
+
+shop = Shop.new(
+    name: "Fromagerie Barthélémy",
+    description: "Maître-fromager et un ardent défenseur de la diversité gastronomique française, Roland Barthélemy est un homme de passion qui est tombé dans la marmite quand il était petit… ",
+    category: "Alimentation",
+    address: "92 Rue Grande, 77300 Fontainebleau",
+    phone_number: "01 64 22 21 64",
+    user: Users[58],
+    city: City.find_by(name: "Fontainebleau")
+    )
+  shop.save!
+  shop_photo = ShopPhoto.new(
+    shop: shop
+    )
+  shop_photo.remote_photo_url = "http://4.bp.blogspot.com/-142n-pBKjbc/VdRHdPLD9iI/AAAAAAAAUnU/0LBJpoOZwtM/s1600/barth%25C3%25A9l%25C3%25A9my-6251.jpg"
+  shop_photo.save!
+
+shop = Shop.new(
+    name: "Les Terroirs De France",
+    description: "Fromager affineur de père en fils depuis trois générations, Christophe Lefebvre vous propose un large choix de fromages de nos régions ainsi que de pays étrangers.Avec son épouse Anne, ils vous accueillent avec plaisir dans leur boutique du 41 rue des Sablons.",
+    category: "Alimentation",
+    address: "41 Rue des Sablons, 77300 Fontainebleau",
+    phone_number: "01 64 22 50 80",
+    user: Users[59],
+    city: City.find_by(name: "Fontainebleau")
+    )
+  shop.save!
+  shop_photo = ShopPhoto.new(
+    shop: shop
+    )
+  shop_photo.remote_photo_url = "http://www.les-terroirs-de-france.com/img/slide5.jpg"
+  shop_photo.save!
+
+shop = Shop.new(
+    name: "Philippe Olivier",
+    description: "Issu d'une famille de collecteurs, affineurs et marchands de fromages depuis 1907, Philippe & Romain Olivier n’ont cessé de cultiver et de perfectionner les techniques et les secrets de cet art qu'est l'affinage !",
+    category: "Alimentation",
+    address: "19 Rue des Sablons, 77300 Fontainebleauu",
+    phone_number: "01 64 22 67 25",
+    user: Users[60],
+    city: City.find_by(name: "Fontainebleau")
+    )
+  shop.save!
+  shop_photo = ShopPhoto.new(
+    shop: shop
+    )
+  shop_photo.remote_photo_url = "https://www.shopinlens.fr/wp-content/uploads/2015/07/No%C3%ABl-Lens-2014-600x400.jpg"
+  shop_photo.save!
+
 file = File.join(File.dirname(__FILE__), "scraping_results.csv")
 count = 0
 CSV.foreach(file, headers: :first_row, header_converters: :symbol) do |row|
@@ -64,6 +177,136 @@ CSV.foreach(file, headers: :first_row, header_converters: :symbol) do |row|
 end
 
 puts 'Creating 20 events'
+
+event = Event.new(
+  name: "Exclusivités Scotch & Soda",
+  description: "Samedi 15 décembre, nous vous présentons les dernières nouveautés Scotch & Soda.",
+  category: "Evènement",
+  shop: Shop.find_by(name: "IT SHOP"),
+  start_date: Date.new(2018,12,15),
+  end_date: Date.new(2018,12,15),
+  shop_category: Shop.find_by(name: "IT SHOP").category
+  )
+event.save!
+event_photo = EventPhoto.new(
+  event: event
+  )
+event_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/47109532_2448850275129839_1800696417879064576_n.jpg?_nc_cat=109&_nc_ht=scontent-bru2-1.xx&oh=61bf27af931608f76ba0bb1be1d3e174&oe=5C94F529"
+event_photo.save!
+
+event = Event.new(
+  name: "-10\% collection Nike",
+  description: "Avant Noël, profitez de 10\% de réduction sur l'ensemble de nos chaussures Nike.",
+  category: "Bon plan",
+  shop: Shop.find_by(name: "IT SHOP"),
+  start_date: Date.new(2018,12,15),
+  end_date: Date.new(2018,12,22),
+  shop_category: Shop.find_by(name: "IT SHOP").category
+  )
+event.save!
+event_photo = EventPhoto.new(
+  event: event
+  )
+event_photo.remote_photo_url = "https://www.lesitedelasneaker.com/wp-content/images/2017/05/nike-be-true-2017-collection-release-date.jpg"
+event_photo.save!
+
+event = Event.new(
+  name: "-20\% Nike Air Max",
+  description: "Ce samedi 15 décembre uniquement, toutes nos Nike Air Max sont en promotion",
+  category: "Bon plan",
+  shop: Shop.find_by(name: "STOR'AGE"),
+  start_date: Date.new(2018,12,15),
+  end_date: Date.new(2018,12,15),
+  shop_category: Shop.find_by(name: "STOR'AGE").category
+  )
+event.save!
+event_photo = EventPhoto.new(
+  event: event
+  )
+event_photo.remote_photo_url = "https://www.lesitedelasneaker.com/wp-content/images/2014/08/nike-air-max-lunar-90-suit-tie-collection-0.jpg"
+event_photo.save!
+
+event = Event.new(
+  name: "Ventes privées mode Nike",
+  description: "Du 15 au 22 décembre, nos pull et t-shirt Nike sont à prix réduits.",
+  category: "Bon plan",
+  shop: Shop.find_by(name: "KOKO SHOP"),
+  start_date: Date.new(2018,12,15),
+  end_date: Date.new(2018,12,22),
+  shop_category: Shop.find_by(name: "KOKO SHOP").category
+  )
+event.save!
+event_photo = EventPhoto.new(
+  event: event
+  )
+event_photo.remote_photo_url = "https://images.nike.com/is/image/DotCom/pwp_sheet2?$NIKE_PWPx3$&$img0=804389_451&$img1=804389_010&$img2=804389_063"
+event_photo.save!
+
+event = Event.new(
+  name: "Inauguration Black&White",
+  description: "Samedi 22 décembre, à l'occasion de l'inauguration de la boutique Black&White, venez découvrir tous nos produits: Nike, New Balance, etc.",
+  category: "Evènement",
+  shop: Shop.find_by(name: "BLACK & WHITE"),
+  start_date: Date.new(2018,12,22),
+  end_date: Date.new(2018,12,22),
+  shop_category: Shop.find_by(name: "BLACK & WHITE").category
+  )
+event.save!
+event_photo = EventPhoto.new(
+  event: event
+  )
+event_photo.remote_photo_url = "http://www.urbanpeak.fr/upload/images/shop-inside(1).jpg"
+event_photo.save!
+
+event = Event.new(
+  name: "Lancement prêt à porter Nike",
+  description: "Vous connaissiez notre collection de chaussures Nike, désormais vous pourrez trouver les dernières tendances prêt-à-porter Nike dans votre magasin Stor'age",
+  category: "Evènement",
+  shop: Shop.find_by(name: "STOR'AGE"),
+  start_date: Date.new(2018,12,29),
+  end_date: Date.new(2018,12,29),
+  shop_category: Shop.find_by(name: "STOR'AGE").category
+  )
+event.save!
+event_photo = EventPhoto.new(
+  event: event
+  )
+event_photo.remote_photo_url = "https://i1.adis.ws/i/jpl/jd_213860_d?qlt=80&w=600&h=765&v=1"
+event_photo.save!
+
+event = Event.new(
+    name: "Dégustation thés & fromages",
+    description: "Dégustation de thés et de fromages Français
+     Le samedi 15 Décembre 2018 de 18h30 à 21h00.
+La dégustation animée par Roland Barthélemy, fondateur de la fromagerie Barthélémy vous proposera de découvrir les terroirs de thés et de les associer aux terroirs de fromages français.",
+    category: "Evènement",
+    shop: Shop.find_by(name: "Fromagerie Barthélémy"),
+    start_date: Date.new(2018,12,15),
+    end_date: Date.new(2018,12,15),
+    shop_category: Shop.find_by(name: "Fromagerie Barthélémy").category
+    )
+  event.save!
+  event_photo = EventPhoto.new(
+    event: event
+    )
+  event_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/47680721_2296375570596705_4204689102072709120_o.jpg?_nc_cat=104&_nc_ht=scontent-bru2-1.xx&oh=66f85e740f55a406207ca0917b6a79b2&oe=5CA9CFFD"
+  event_photo.save!
+
+event = Event.new(
+    name: "Offre Vin",
+    description: "Venez nombreux profiter de l'offre 1 bouteille de vin offerte pour tout plateau de fromage acheté",
+    category: "Bon plan",
+    shop: Shop.find_by(name: "Fromagerie Barthélémy"),
+    start_date: Date.new(2018,12,15),
+    end_date: Date.new(2018,12,21),
+    shop_category: Shop.find_by(name: "Fromagerie Barthélémy").category
+    )
+  event.save!
+  event_photo = EventPhoto.new(
+    event: event
+    )
+  event_photo.remote_photo_url = "https://static.pourdebon.com/images/476-355/a53c87795cea6036d8346dafcbb82b1f/1917224.jpeg"
+  event_photo.save!
 
 event = Event.new(
   name: "Nouvelle collection Desigual",
