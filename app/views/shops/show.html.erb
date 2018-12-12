@@ -35,7 +35,7 @@
       <h2><%= @shop.name %></h2>
       </div>
       <div class="desc">
-         <p> <%= "Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they’re not explicitly required. Add and customize as you see fit.Be sure to set a unique id on the .carousel for optional controls, especially if you’re using multiple carousels on a single page."%> </p>
+         <p> <%= @shop.description %> </p>
       </div>
     </div>
     <div class="shop-main-info-message">
@@ -69,39 +69,43 @@
       <h3 class="black-headers">Les évènements organisés par <%= @shop.name %></h3>
       <div class="row">
         <div class="col-sm-4">
-          <% @shop_events.each do |event| %>
-          <div class="evenement-card-link" data-toggle="modal" data-target="#EventModal">
-            <div class="evenement-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
-              <div class="evenement-card-category">
-                <h3><%= event.shop.category %></h3>
+          <% if @shop_events == [] %>
+            <p><%= @shop.name%> n'a pas d'évènements programmés</p>
+          <% else %>
+            <% @shop_events.each do |event| %>
+              <div class="evenement-card-link" data-toggle="modal" data-target="#exampleModal">
+                <div class="evenement-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
+                  <div class="evenement-card-category">
+                    <h3><%= event.shop.category %></h3>
+                  </div>
+                  <div class="evenement-card-description">
+                    <h3><%= event.name %></h2>
+                    <h3><%= event.shop.name %></h3>
+                  </div>
+                  <div class="evenement-date-description">
+                    <p><i class="far fa-clock"></i> Le <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p>
+                  </div>
+                </div>
+                <div class="add-to-calendar-link">
+                  <% if current_user.calendars.where(event_id: event.id) == [] %>
+                    <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
+                      <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
+                        <div class="button-to-calendar-description">
+                          Ajouter au calendrier
+                        </div>
+                          <i class="fas fa-plus"></i>
+                      </button>
+                      <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button background-green">
+                        <i class="fas fa-check"></i>
+                      </button>
+                    <% end %>
+                  <% else %>
+                    <button type="button" class="btn btn-secondary add-to-calendar-button background-green"><i class="fas fa-check"></i></button>
+                  <% end %>
+                </div>
               </div>
-              <div class="evenement-card-description">
-                <h3><%= event.name %></h2>
-                <h3><%= event.shop.name %></h3>
-              </div>
-              <div class="evenement-date-description">
-                <p><i class="far fa-clock"></i> Le <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p>
-              </div>
-            </div>
-            <div class="add-to-calendar-link">
-              <% if current_user.calendars.where(event_id: event.id) == [] %>
-                <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
-                  <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
-                    <div class="button-to-calendar-description">
-                      Ajouter au calendrier
-                    </div>
-                      <i class="fas fa-plus"></i>
-                  </button>
-                  <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button background-green">
-                    <i class="fas fa-check"></i>
-                  </button>
-                <% end %>
-              <% else %>
-                <button type="button" class="btn btn-secondary add-to-calendar-button background-green"><i class="fas fa-check"></i></button>
-              <% end %>
-            </div>
-          </div>
-          <%= render partial: 'shared/modal_event', locals: {event: event} %>
+              <%= render 'shared/modal_event', event: event %>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -110,40 +114,44 @@
       <h3 class="black-headers">Les offres proposées par <%= @shop.name %> </h3>
       <div class="row">
         <div class="col-sm-4">
-          <% @shop_offers.each do |event| %>
-          <div class="offer-card-link">
-            <div class="event-free_card" data-toggle="modal" data-target="#exampleModal">
-              <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
-                <div class="event-shop-name">
-                  <h4><%= event.shop.name %></h4>
+          <% if @shop_offers == [] %>
+            <p><%= @shop.name %> n'a pas d'offres en cours ou à venir </p>
+          <% else %>
+            <% @shop_offers.each do |event| %>
+              <div class="offer-card-link">
+                <div class="event-free_card" data-toggle="modal" data-target="#EventModal">
+                  <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
+                    <div class="event-shop-name">
+                      <h4><%= event.shop.name %></h4>
+                    </div>
+                    <div class="event-offer-name">
+                      <h3 class="h4-title-on-card"><%= event.name %></h3>
+                    </div>
+                    <div class="event-offer-date">
+                      <h4>Jusqu'au <%= event.end_date.day %>/<%= event.end_date.month%>/<%= event.end_date.year %></h4>
+                    </div>
+                  </div>
                 </div>
-                <div class="event-offer-name">
-                  <h3 class="h4-title-on-card"><%= event.name %></h3>
-                </div>
-                <div class="event-offer-date">
-                  <h4>Jusqu'au <%= event.end_date.day %>/<%= event.end_date.month%>/<%= event.end_date.year %></h4>
+                <div class="add-to-calendar-offer-link special-for-show">
+                  <% if current_user.calendars.where(event_id: event.id) == [] %>
+                    <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
+                      <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
+                        <div class="button-to-calendar-description">
+                          Ajouter au calendrier
+                        </div>
+                          <i class="fas fa-plus"></i>
+                      </button>
+                      <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button background-green">
+                        <i class="fas fa-check"></i>
+                      </button>
+                    <% end %>
+                  <% else %>
+                    <button type="button" class="btn btn-secondary add-to-calendar-button background-green"><i class="fas fa-check"></i></button>
+                  <% end %>
                 </div>
               </div>
-            </div>
-            <div class="add-to-calendar-offer-link special-for-show">
-              <% if current_user.calendars.where(event_id: event.id) == [] %>
-                <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
-                  <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
-                    <div class="button-to-calendar-description">
-                      Ajouter au calendrier
-                    </div>
-                      <i class="fas fa-plus"></i>
-                  </button>
-                  <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button background-green">
-                    <i class="fas fa-check"></i>
-                  </button>
-                <% end %>
-              <% else %>
-                <button type="button" class="btn btn-secondary add-to-calendar-button background-green"><i class="fas fa-check"></i></button>
-              <% end %>
-            </div>
-          </div>
-          <%= render partial: 'shared/modal_offers', locals: {event: event} %>
+              <%= render 'shared/modal_offers', event: event %>
+            <% end %>
           <% end %>
         </div>
       </div>
