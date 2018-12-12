@@ -76,13 +76,13 @@
 
 .shop-description{
   min-width:70%;
-
 }
 
 .shop-main-info-message{
   min-width: 30%;
-  height: 300px;
+  height: 100px;
   margin-top: 80px;
+  position: relative;
 }
 
 .info-singular{
@@ -100,43 +100,54 @@
 }
 
 .shop-main-info{
-  position: relative;
+  margin-left: 20px;
+  h6 {
+    margin-top: 0 !important;
+  }
 }
 
-.send-message{
+.send-message-show{
   position: absolute;
   background-color: $fourth;
   display: flex;
   color: white;
   padding: 15px 15px;
-  bottom: 138px;
-  right: 130px;
-  a{
+  bottom: 154px;
+  right: 118px;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+  &:hover{
     color: white;
-    display: flex;
-    align-items: center;
-    i {
+    transform: scale(1.1);
+  }
+
+  i {
       margin-left: 10px;
     }
-  }
+
   p {
     margin-bottom:0px;
     font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
   }
+
+}
+
+.send-message-link{
+    color: white;
+    display: flex;
+    align-items: center;
+
+
 }
 
 .title-open {
   display: flex;
 
-  h4 {
-    margin-bottom: Opx !important;
-    background-color:#4EA155;
-    font-size: 12px;
-    margin-top: 40px;
-    margin-left: 10px;
-    border-radius: 2px;
-    padding: 2px 5px;
-    color: white;
+  h2 {
+    color: black;
   }
 }
 
@@ -146,12 +157,62 @@
   max-width: 80%;
 }
 
-h3 {
+.black-headers  {
   margin-bottom: 30px;
   font-weight: bold;
+  color: black;
+
 }
 
+.special-for-show{
+
+  button{
+  margin-right: 15px;
+  }
+}
+
+.other-shops {
+  margin-top: 20px;
+}
+
+.info-singular-open{
+  h4 {
+    margin-bottom: Opx !important;
+    background-color:#4EA155;
+    font-size: 12px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-radius: 2px;
+    padding: 2px 5px;
+    color: white;
+  }
+}
 // modals
+
+.event-modal-description {
+  padding: 15px 30px;
+  text-align: justify
+}
+.event-modal-footer{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.btn-modal {
+  background-color: $fourth;
+  border-radius: 50px;
+  padding: 15px 20px;
+  i{
+    color: white;
+    font-size: 25px;
+  }
+
+}
+
+.left-btn{
+  margin-left: 15px;
+}
 
 
 

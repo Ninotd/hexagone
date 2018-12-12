@@ -1,8 +1,13 @@
 <div class="all-page">
+  <div class="link-to-back">
+    <%= link_to city_shop_path(City.find_by(name: "Fontainebleau"), params[:shop_id]) do %>
+        <p> <i class="fas fa-arrow-circle-left"></i> Retourner au magasin</p>
+    <% end %>
+  </div>
   <Div class="container">
 
     <div class="messagerie-header">
-      <p>Messagerie avec vos clients préférés </p>
+      <p>Messagerie d'Hexagone pour te rapprocher de tes commerçants !</p>
     </div>
 
     <Div class="messagerie">
