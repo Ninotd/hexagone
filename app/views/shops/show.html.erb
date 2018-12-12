@@ -74,7 +74,7 @@
           <% else %>
             <% @shop_events.each do |event| %>
               <div class="evenement-card-link" data-toggle="modal" data-target="#exampleModal">
-                <div class="evenement-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
+                <div class="evenement-card for_modal" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
                   <div class="evenement-card-category">
                     <h3><%= event.shop.category %></h3>
                   </div>
@@ -119,7 +119,7 @@
           <% else %>
             <% @shop_offers.each do |event| %>
               <div class="offer-card-link">
-                <div class="event-free_card" data-toggle="modal" data-target="#EventModal">
+                <div class="event-free_card for_modal" data-toggle="modal" data-target="#EventModal">
                   <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
                     <div class="event-shop-name">
                       <h4><%= event.shop.name %></h4>

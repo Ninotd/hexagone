@@ -39,9 +39,13 @@ const initSlick = () => {
 
 const initSlick2 = () => {
   $(document).ready(function(){
-    console.log("lol")
-    $('.modal-slick').slick();
+   $('.for_modal').on('click', () => {
+      setTimeout(() => {
+        $('.modal-slick').slick();
+      }, 200)
+   });
   });
 }
 
-export { initSlick, initSlick2}
+
+export { initSlick, initSlick2 }
