@@ -3,7 +3,7 @@ class Shop < ApplicationRecord
   belongs_to :city
   has_many :events, dependent: :destroy
   has_many :shop_photos, dependent: :destroy
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
 
