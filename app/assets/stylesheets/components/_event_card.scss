@@ -1,25 +1,4 @@
-.hover-on-card-to-description {
-  position: relative;
-  p {
-    display: none;
-  }
-  &:hover {
-    h3 {
-      display: none;
-    }
-    p {
-      display: block;
-      width: 80%;
-      color: white;
-      text-shadow: 0px 1px 1px black;
-    }
-  }
-}
 
-.h4-title-on-card{
-  font-weight: bold !important;
-  text-transform: uppercase;
-}
 
 .card-category {
   position: absolute;
