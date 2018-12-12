@@ -51,9 +51,8 @@ class CalendarsController < ApplicationController
   end
 
   def destroy
-    calendar = Calendar.find(params[:id])
-    calendar.destroy
-    redirect_to calendars_path
+    @calendar = Calendar.find(params[:id])
+    @calendar.destroy
   end
 
 end
