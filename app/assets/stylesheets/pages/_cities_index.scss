@@ -73,6 +73,11 @@
   left: 10px;
   color: $fourth;
   text-shadow: 0px 1px 1px #bbbbbb;
+  opacity: 0.5;
+  &:hover{
+    opacity:1;
+    cursor: pointer;
+  }
 }
 
 .fa-angle-right{
@@ -83,6 +88,11 @@
   right: 10px;
   color: $fourth;
   text-shadow: 0px 1px 1px #bbbbbb;
+  opacity: 0.5;
+  &:hover{
+    opacity:1;
+    cursor: pointer;
+  }
 }
 
 .wrapper-des-section-titles{

@@ -251,8 +251,22 @@ a:hover, a:focus {
     background: $main;
   }
 
+  .button-to-calendar-description-on-city-show {
+    position: absolute;
+    right: 50px;
+    font-size: 12px;
+    font-weight: lighter;
+    overflow: hidden;
+    width: 0;
+    transition: width 0.3s ease;
+    background: $main;
+  }
+
   &:hover{
     .button-to-calendar-description {
+      width: 120px;
+    }
+    .button-to-calendar-description-on-city-show {
       width: 120px;
     }
   }
@@ -277,6 +291,11 @@ a:hover, a:focus {
     // display: none;
     transition: opacity 0.6s;
   }
+  .add-to-calendar-link-on-city-show {
+    opacity: 0;
+    // display: none;
+    transition: opacity 0.6s;
+  }
   .event-date-hidden {
     opacity: 0;
     // display: none;
@@ -291,9 +310,7 @@ a:hover, a:focus {
     .add-to-calendar-link-on-search-event {
       opacity: 1;
     }
-
     transform: translate(0px, 0px);
-
     .evenement-card-description{
       background-color: $main;
       transition: background-color 0.6s;
@@ -331,6 +348,12 @@ a:hover, a:focus {
   top: 10px;
   right: 10px;
   opacity: 0.6;
+}
+
+.add-to-calendar-link-on-city-show {
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 
 .margin-top-bottom-10\% {
