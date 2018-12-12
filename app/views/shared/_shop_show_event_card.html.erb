@@ -1,0 +1,32 @@
+  <div class="evenement-card-link padding-on-new-shop-show-card" data-toggle="modal" data-target="#exampleModal">
+    <div class="evenement-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
+      <div class="evenement-card-category">
+        <h3><%= event.shop.category %></h3>
+      </div>
+      <div class="evenement-card-description">
+        <h3><%= event.name %></h2>
+        <h3><%= event.shop.name %></h3>
+      </div>
+      <div class="evenement-date-description">
+        <p><i class="far fa-clock"></i> Le <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p>
+      </div>
+    </div>
+    <div class="add-to-calendar-link-on-city-show">
+      <% if current_user.calendars.where(event_id: event.id) == [] %>
+        <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
+          <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
+            <div class="button-to-calendar-description">
+              Ajouter au calendrier
+            </div>
+              <i class="fas fa-plus"></i>
+          </button>
+          <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button background-green">
+            <i class="fas fa-check"></i>
+          </button>
+        <% end %>
+      <% else %>
+        <button type="button" class="btn btn-secondary add-to-calendar-button background-green"><i class="fas fa-check"></i></button>
+      <% end %>
+    </div>
+  </div>
+  <%= render 'shared/modal_event', event: event %>
