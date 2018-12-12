@@ -18,7 +18,7 @@
       </div>
     </div>
   <% end %>
-  <div class="add-to-calendar-offer-link special-for-show">
+  <div class="add-to-calendar-offer-link">
     <% if current_user.calendars.where(event_id: event.id) == [] %>
       <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
         <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
