@@ -9,7 +9,7 @@
           <h5>A partir du <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></h5>
         </div>
       </div>
-      <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
+      <div class="event-blur_back" style="background-image: url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');"></div>
     </div>
   <% end %>
 </div>

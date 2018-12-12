@@ -1,7 +1,7 @@
 <div class="col-xs-12 col-sm-4" data-calendar-id="<%= calendar.id %>">
   <div class="evenement-card-link">
     <%= link_to city_shop_path(@city, event.shop) do %>
-      <div class="evenement-card margin-top-bottom-10%" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill, gravity: :center; %>');">
+      <div class="evenement-card margin-top-bottom-10%" style="background-image: url('<%= cl_image_path event.event_photos.first.photo, :crop=>"scale" %>');">
         <div class="evenement-card-category">
           <h3><%= event.shop.category %></h3>
         </div>
