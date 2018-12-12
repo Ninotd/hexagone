@@ -1,5 +1,5 @@
 .all-page{
-  background-color: #F8F7FC;
+  background-color: $background;
   height: 100vh;
 }
 
@@ -35,6 +35,7 @@ font-weight: bold
 
 .message-all {
   padding-top: 15px;
+  padding-right: 10px;
   & a{
     text-decoration: none;
     color: Black;
@@ -52,7 +53,6 @@ font-weight: bold
   box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
   transition:all 0.3s ease;
   &:hover{
-    background-color: $gray;
     transform: scale(1.1);
   }
 }
@@ -98,7 +98,8 @@ font-weight: bold
   border-bottom-width: 0;
   overflow: scroll;
   margin-top: 15px;
-  height: calc(100vh - 70px - 45px - 61px - 30px);
+  height: calc(90vh - 70px - 45px - 61px - 30px);
+  border-left: 1px solid rgba(220,224,244,0.4);
 
 }
 
@@ -124,7 +125,8 @@ font-weight: bold
 
 #message_content{
   height:50px;
-  width: 65vw;
+  width: 45vw;
+  margin-left: 100px;
 }
 
 .time-sent {
@@ -146,6 +148,7 @@ input.form-control {
   box-shadow: none;
   font-size: 14px;
   color: #868686;
+
   &:focus {
     outline: none;
     border: 1px solid blue;
@@ -162,4 +165,14 @@ input.form-control {
       font-weight: bold;
     }
   }
+}
+
+.active-conv {
+  background-color: $gray ;
+}
+.messagerie-all {
+  margin-bottom: 30px;
+  border: 2px solid rgba(220,224,244,0.4);
+  padding-left: 10px;
+  margin-top: 30px;
 }
