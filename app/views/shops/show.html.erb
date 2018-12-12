@@ -70,7 +70,6 @@
       <div class="row">
         <div class="col-sm-4">
           <% @shop_events.each do |event| %>
-
           <%= render partial: 'shared/modal_event', locals: {event: event} %>
           <% end %>
         </div>
@@ -81,7 +80,6 @@
       <div class="row">
         <div class="col-sm-4">
           <% @shop_offers.each do |event| %>
-
           <%= render partial: 'shared/modal_offers', locals: {event: event} %>
           <% end %>
         </div>
