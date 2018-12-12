@@ -40,9 +40,9 @@
       <div class="container">
         <div class="row">
           <% @event_calendars.each do |calendar| %>
-            <div class="col-xs-12 col-sm-4">
+
               <%= render partial: 'shared/event_card_tab', locals: {event: calendar.event, calendar: calendar} %>
-            </div>
+
           <% end %>
         </div>
       </div>
@@ -61,9 +61,7 @@
         <div class="row">
           <div class="events-no-slick col-xs-12">
             <% @offer_calendars.each do |calendar| %>
-              <div class="col-xs-12 col-sm-4 check-that-bottom-margin">
-                <%= render partial: 'shared/offer_card_tab', locals: {event: calendar.event, calendar: calendar} %>
-              </div>
+              <%= render partial: 'shared/offer_card_tab', locals: {event: calendar.event, calendar: calendar} %>
             <% end %>
           </div>
         </div>

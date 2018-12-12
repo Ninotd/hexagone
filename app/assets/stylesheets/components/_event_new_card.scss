@@ -149,7 +149,7 @@ a:hover, a:focus {
 }
 
 .evenement-card-category {
-  background-color: black;
+  background-color: $main;
   width: 130px;
   height: 35px;
   h3 {
@@ -179,7 +179,7 @@ a:hover, a:focus {
   width: 30px;
   border-radius: 50%;
   color: white;
-  background-color: black;
+  background-color: $main;
   font-weight: bold;
   z-index: 500;
   border: 2px solid white;
@@ -195,7 +195,7 @@ a:hover, a:focus {
     overflow: hidden;
     width: 0;
     transition: width 0.3s ease;
-    background: black;
+    background: $main;
   }
 
   &:hover{
@@ -245,7 +245,7 @@ a:hover, a:focus {
       transition: padding-top 0.6s;
     }
     .evenement-card-description{
-      background-color: black;
+      background-color: $main;
     }
   }
 }
