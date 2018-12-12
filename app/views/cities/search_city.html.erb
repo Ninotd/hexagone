@@ -1,5 +1,5 @@
 <%= render 'shared/banner_cities' %>
-
+<br>
 <div class="wrapper wrapper-des-section-titles">
   <div class="check-offers">
     <%= link_to search_shop_cities_path(query_shops: "offers", city_id: @city.id) do %>
@@ -20,6 +20,7 @@
     <% end %>
   </div>
 </div>
+<br>
 
 <div class="wrapper wrapper-des-section-titles">
   <div class="check-events best-events">
@@ -41,8 +42,9 @@
     <% end %>
   </div>
 </div>
-
+<br>
 <div class="wrapper wrapper-des-section-titles">
+  <hr>
   <div class="shops-all">
     <div class="card-section-title">
       <h3>Boutiques</h3>
