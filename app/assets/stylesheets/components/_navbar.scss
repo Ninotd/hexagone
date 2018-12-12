@@ -43,7 +43,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: $third !important;
+  color: white !important;
   text-decoration: none;
 }
 
@@ -63,7 +63,7 @@
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
-  color: black !important;
+  color: white !important;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';
@@ -83,7 +83,7 @@
   a, .fa-plus-circle {
     color: white;
     &:hover {
-      color: $third;
+      color: white;
       opacity: 0.6;
     }
   }
