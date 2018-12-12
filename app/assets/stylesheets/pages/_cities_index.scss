@@ -61,6 +61,37 @@
 
 .wrapper-des-cards{
   margin-top: 15px !important;
+  position: relative;
+}
+
+.fa-angle-left{
+  position: absolute;
+  z-index: 10;
+  top: 35%;
+  font-size: 50px;
+  left: 10px;
+  color: $fourth;
+  text-shadow: 0px 1px 1px #bbbbbb;
+  opacity: 0.5;
+  &:hover{
+    opacity:1;
+    cursor: pointer;
+  }
+}
+
+.fa-angle-right{
+  position: absolute;
+  z-index: 10;
+  top: 35%;
+  font-size: 50px;
+  right: 10px;
+  color: $fourth;
+  text-shadow: 0px 1px 1px #bbbbbb;
+  opacity: 0.5;
+  &:hover{
+    opacity:1;
+    cursor: pointer;
+  }
 }
 
 .wrapper-des-section-titles{
