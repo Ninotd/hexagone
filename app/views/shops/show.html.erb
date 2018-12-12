@@ -37,12 +37,13 @@
       <p> <%= @shop.description %> </p>
     </div>
 
+
     <div class="new-shop-offers">
       <h3 class="black-headers">Les promotions proposées par <%= @shop.name %></h3>
       <div class="row">
         <div class="col-sm-6">
           <% if @shop_offers == [] %>
-            <p><%= @shop.name %> n'a pas d'offres en cours ou à venir </p>
+            <p><%= @shop.name %> n'a pas d'promos en cours ou à venir </p>
           <% else %>
             <% @shop_offers.each do |event| %>
               <%= render partial: 'shared/shop_show_offer_card', locals: {event: event} %>

@@ -6,7 +6,7 @@ function setActive(array, element) {
 }
 
 function activeTabs() {
-  const tabs = document.querySelectorAll('.calendars-tabs li');
+  const tabs = document.querySelectorAll('.calendars-tabs > div > div');
   tabs.forEach((tab) => {
     tab.addEventListener('click', (e) => {
       setActive(tabs, e.currentTarget);
