@@ -10,15 +10,14 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Ma ville", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Mes boutiques", favorites_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Mes évènements", calendars_path, target: "_blank", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Ma ville", search_cities_path(query: "Fontainebleau"), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Ma sélection", calendars_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <% if current_user.messages != []  %>
-         <%= link_to "Messages", new_shop_user_message_path(Message.where(user: current_user).last.shop,current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+         <%= link_to "Ma messagerie", new_shop_user_message_path(Message.where(user: current_user).last.shop,current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <% elsif current_user.shops != [] %>
           <%  if current_user.shops.first.messages != [] %>
-              <%= link_to "Messages", new_shop_user_message_path(current_user.shops.first, Message.where(shop:current_user.shops.first).last.user), class: "navbar-wagon-item navbar-wagon-link" %>
+              <%= link_to "Ma messagerie", new_shop_user_message_path(current_user.shops.first, Message.where(shop:current_user.shops.first).last.user), class: "navbar-wagon-item navbar-wagon-link" %>
           <% else %>
           <% end %>
       <% else %>
@@ -26,7 +25,7 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= image_tag "http://kitt.lewagon.com/placeholder/users/victordesjardins", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
