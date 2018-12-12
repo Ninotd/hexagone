@@ -5,7 +5,7 @@
     <% end %>
   </div>
   <Div class="container">
-
+    <div class="messagerie-all">
     <div class="messagerie-header">
       <p>Messagerie d'Hexagone pour te rapprocher de tes commerçants !</p>
     </div>
@@ -23,59 +23,7 @@
 
 
         <div class="message-all">
-
-          <% if current_user == @sender %>
-            <% all_shops_message = current_user.messages.sort{|a,b| b.created_at <=> a.created_at}.map {|message| message.shop.name} %>
-            <%  all_shops_message.uniq.each do |shop| %>
-            <% shopp = Shop.find_by(name: shop) %>
-              <%= link_to new_shop_user_message_path(shopp, current_user.id) do %>
-                <div class="person-recap">
-                  <% if shopp.shop_photos == []  %>
-                    <img src="https://makerepo.com/assets/default-avatar-19cf8cebb96b4d8beff4ef9cad0e5903d288c778c503777332a57085a65371be.png" alt="", class= "avatar">
-                  <% else %>
-                    <%= cl_image_tag shopp.shop_photos.first.photo, class: "avatar"%>
-                  <% end %>
-                  <div class="preview">
-                    <div class="talking-to-name">
-                       <p> <%= shopp.name %> </p>
-                    </div>
-                    <div class="last-message-preview">
-                      <% last_message = shopp.messages.where(user: current_user).last %>
-                      <% if last_message.content.length > 30 %>
-                      <p> <%= last_message.content[0,30] + "..." %> </p>
-                      <% else %>
-                      <p> <%= last_message.content%> </p>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-          <% else  %>
-            <% all_user_with_me = @shop.messages.map {|message| message.user.email} %>
-            <% all_user_messages = all_user_with_me - [current_user.email] %>
-            <% all_user_messages.uniq.each do |user|%>
-              <% talking_user = User.find_by(email: user) %>
-              <%= link_to new_shop_user_message_path(@shop,talking_user) do %>
-                <div class="person-recap">
-                  <% if talking_user.photo == []  %>
-                    <img src="https://makerepo.com/assets/default-avatar-19cf8cebb96b4d8beff4ef9cad0e5903d288c778c503777332a57085a65371be.png" alt=""class= "avatar">
-                  <% else %>
-                    <%= cl_image_tag talking_user.photo, class: "avatar"%>
-                  <% end %>
-                  <div class="preview">
-                    <div class="talking-to-name">
-                       <p> <%= talking_user.first_name %> </p>
-                    </div>
-                    <div class="last-message-preview">
-                      <% last_message = @messages.last %>
-                      <p> <%= last_message.content[0,30] %> </p>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-          <% end %>
+          <%= render "messages/message_list", shop_actual: @shop%>
         </div>
       </div>
 
@@ -99,14 +47,14 @@
         <div id="shop-chat" data-shop-id="<%= @shop.id %>" data-current-id="<%= current_user.id %>" data-user-id="<%= @sender.id %>">
           <div class="send-message">
             <%= simple_form_for [@shop, @sender, @message], remote: true do |f| %>
-              <%= f.input :content, class:"form-control", label: false, placeholder: "Votre message ..." %>
-              <%= f.submit "Envoyer",  id: "create-message"%>
+              <%= f.input :content, :as => :string,class:"form-control", label: false, placeholder: "Votre message ..." %>
             <% end %>
           </div>
         </div>
 
       </Div>
     </Div>
+    </div>
   </div>
 </div>
 

@@ -1,9 +1,21 @@
-var messagesContainer = document.querySelector('.message-feed');
-var messages = document.querySelectorAll(".message-content");
-
-messagesContainer.insertAdjacentHTML('beforeend', '<%= j render "message", message: @message, user_is_messages_author: true %>')
-var lastMessage = messages[messages.length - 1];
-if (lastMessage !== undefined) {
-  lastMessage.scrollIntoView();
+function refreshMessage() {
+  const messagesContainer = document.querySelector('.message-feed');
+  const messages = document.querySelectorAll(".message-content");
+  messagesContainer.insertAdjacentHTML('beforeend', '<%= j render "message", message: @message, user_is_messages_author: true %>')
+  const lastMessage = messages[messages.length - 1];
+  if (lastMessage !== undefined) {
+    lastMessage.scrollIntoView();
+  }
+  document.getElementById('message_content').value = '';
 }
-document.getElementById('message_content').value = '';
+
+function refreshMessagesList() {
+  console.log('test')
+  const messageList = document.querySelector('.message-all');
+  messageList.innerHTML = "";
+  messageList.outerHTML = '<%= j render "message_list", shop_actual: @shop %>';
+  console.log(messageList);
+}
+
+refreshMessage();
+refreshMessagesList();

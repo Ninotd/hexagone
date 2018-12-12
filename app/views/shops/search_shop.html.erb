@@ -1,23 +1,35 @@
-<div class="wrapper container-search">
-  <%= link_to request.referer.present? ? request.referer : search_cities_path(query: @city.name) do %>
-      <p> <i class="fas fa-arrow-circle-left"></i> Retour</p>
-  <% end %>
-</div>
-
 <% if @filtered_results.empty? %>
   <div class="wrapper wrapper-des-section-titles">
     <div class="card-section-title">
       <h2>Cocorico ! Tellement d'activité dans ta ville ! <br> Regarde ce qu'Hexagone a dégoté pour toi : </h3>
     </div>
   </div>
+  <!-- les promos -->
+  <div class="wrapper wrapper-des-section-titles">
+    <div class="check-offers">
+        <div class="card-section-title">
+          <h3>Les promotions</h3>
+        </div>
+        <div class="card-section-explanatory-p">
+          <p>Pour ne plus rien laisser passer !</p>
+        </div>
+    </div>
+  </div>
+  <div class="wrapper wrapper-des-cards">
+    <div class="row events-with-slick">
+      <% @offers.each do |event| %>
+        <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
+      <% end %>
+    </div>
+  </div>
   <!-- les evenements -->
   <div class="wrapper wrapper-des-section-titles">
     <div class="check-events best-events">
         <div class="card-section-title">
-            <h3>Voici les évènements que nous te proposons de découvrir !</h3>
+            <h3>Les évènements</h3>
         </div>
         <div class="card-section-explanatory-p">
-          <p>Dans cette section, tu peux voir le résultat des <strong>évènements</strong> en cours ou à venir qui correspondent à ta recherche. Tu peux cliquer sur la carte pour accéder à plus d'informations. <br> Avec Hexagone, tu (re)découvres tes commerçants !</p>
+          <p>Pour élargir ta connaissance de ta ville et de ses commerçants !</p>
         </div>
     </div>
   </div>
@@ -38,32 +50,14 @@
       </div>
     </div>
   <% end %>
-  <!-- les promos -->
-  <div class="wrapper wrapper-des-section-titles">
-    <div class="check-offers">
-        <div class="card-section-title">
-          <h3>Et les promos que nous te demandons de ne pas rater !</h3>
-        </div>
-        <div class="card-section-explanatory-p">
-          <p>Dans cette section, tu peux voir le résultat des <strong>promos</strong> en cours ou à venir qui correspondent à ta recherche. Tu peux cliquer sur la carte pour accéder à plus d'informations. <br> Avec Hexagone, tu es le/la gourou des promos de ta ville !</p>
-        </div>
-    </div>
-  </div>
-  <div class="wrapper wrapper-des-cards">
-    <div class="row events-with-slick">
-      <% @offers.each do |event| %>
-        <%= render partial: 'shared/city_show_offers_card', locals: {event: event} %>
-      <% end %>
-    </div>
-  </div>
   <!-- les boutiques -->
   <div class="wrapper wrapper-des-section-titles">
     <div class="shops-all">
       <div class="card-section-title">
-        <h3>Pour rappel, voici les boutiques qui cernent ta recherche</h3>
+        <h3>Les boutiques qui cernent ta recherche</h3>
       </div>
       <div class="card-section-explanatory-p">
-        <p>Dans cette section, on t'a listé l'ensemble des boutiques, si possible indépendantes, qui correspondent à ta recherche. <br> Avec Hexagone, tu apprends à connaître l'offre commerçante de ta ville !</p>
+        <p>Au cas où tu ne les connais pas toutes !</p>
       </div>
     </div>
   </div>

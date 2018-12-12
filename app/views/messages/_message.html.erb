@@ -1,13 +1,14 @@
 <div class="message <%= user_is_messages_author ? "right" : "" %>">
-  <% if message.user.photo.nil? %>
-  <img src="https://makerepo.com/assets/default-avatar-19cf8cebb96b4d8beff4ef9cad0e5903d288c778c503777332a57085a65371be.png" alt="", class= "avatar">
+  <% if message.user.shops == [] %>
+  <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/35287779_10217197400545694_4993141077805367296_n.jpg?_nc_cat=102&_nc_ht=scontent-bru2-1.xx&oh=cff50e54fb264a7b79eb024cb4dfe9c6&oe=5CA9A8D5" alt="", class= "avatar">
   <% else %>
+    <%= cl_image_tag message.user.shops.first.shop_photos.first.photo, class: "avatar"%>
   <% end %>
   <div class="message-content">
      <%= message.content %>
   </div>
   <div class="time-sent">
-    <p> <%= message.created_at %></p>
+    <p> <%= message.created_at.strftime("%b %e, %H:%M") %></p>
   </div>
 </div>
 
