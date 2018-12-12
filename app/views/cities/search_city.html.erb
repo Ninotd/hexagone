@@ -1,14 +1,14 @@
 <%= render 'shared/banner_cities' %>
-
+<br>
 <div class="wrapper wrapper-des-section-titles">
   <div class="check-offers">
     <%= link_to search_shop_cities_path(query_shops: "offers", city_id: @city.id) do %>
       <div class="card-section-title">
-        <h3>Offres</h3>
-        <p><i class="fas fa-arrow-alt-circle-right"></i> Toutes les offres</p>
+        <h3>Promos</h3>
+        <p><i class="fas fa-arrow-alt-circle-right"></i> Toutes les promos</p>
       </div>
       <div class="card-section-explanatory-p">
-        <p>Check les <strong>offres</strong> de tes commerçants et deviens l'expert(e) bons plans auprès de tes amis ! <br>Dans cette section, tu peux voir un aperçu des offres commerciales en cours ou à venir. Tu peux aussi voir toutes les offres en cliquant sur le titre de la rubrique. <br> Avec Hexagone, tu es le/la gourou des promos de ta ville !</p>
+        <p>Check les <strong>promos</strong> de tes commerçants et deviens l'expert(e) bons plans auprès de tes amis ! <br>Dans cette section, tu peux voir un aperçu des promos commerciales en cours ou à venir. Tu peux aussi voir toutes les promos en cliquant sur le titre de la rubrique. <br> Avec Hexagone, tu es le/la gourou des promos de ta ville !</p>
       </div>
     <% end %>
   </div>
@@ -20,6 +20,7 @@
     <% end %>
   </div>
 </div>
+<br>
 
 <div class="wrapper wrapper-des-section-titles">
   <div class="check-events best-events">
@@ -41,8 +42,9 @@
     <% end %>
   </div>
 </div>
-
+<br>
 <div class="wrapper wrapper-des-section-titles">
+  <hr>
   <div class="shops-all">
     <div class="card-section-title">
       <h3>Boutiques</h3>

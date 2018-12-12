@@ -17,7 +17,6 @@ class FavoritesController < ApplicationController
       end
       # redirect_to search_cities_path(query: city.name)
     else
-      flash[:alert] = "Cette boutique est déjà dans vos favoris"
       city = City.find(params[:city_id])
       redirect_to search_cities_path(query: city.name)
     end

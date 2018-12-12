@@ -17,13 +17,32 @@
   text-decoration: none;
 }
 
+.hover-on-card-to-description {
+  position: relative;
+  p {
+    display: none;
+  }
+  &:hover {
+    h2,h5 {
+      display: none;
+    }
+    p {
+      display: block;
+      width: 100%;
+      color: white;
+      text-shadow: 0px 1px 1px black;
+    }
+  }
+}
+
 .event-free_card{
   position: relative;
   display: block;
   height: 200px;
   overflow: hidden;
   transition: all 0.4s;
-  h4, h3{
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  h2, h3, h4, h5{
     color: white;
     text-shadow: 0px 1px 1px black;
   }
@@ -42,21 +61,47 @@
   }
   .event-offer-name{
     position: absolute;
-    left: 10px;
+    bottom: 16px;
+    width: 100%;
+    padding: 10px;
+    height: 80px;
+    background-color: rgba(19,33,56,0.5);
+    transition: background-color 0.6s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    h3 {
+      font-weight: normal;
+      font-size: 16px;
+      margin: 0;
+      text-shadow: 0px 1px 1px black;
+      padding-right: 10px;
+      width: auto;
+    }
+    h2{
+      margin-top: 0;
+    }
   }
   .event-offer-date{
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    top: 10px;
+    left: 10px;
+    h3{
+      margin-top: 0;
+    }
   }
-  .event-shop-name{
+
+  .event-shop-name-anchor{
     position: absolute;
     bottom: 10px;
     left: 10px;
+    margin-top: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .event-offer-description{
     position: absolute;
-    top: 10px;
+    top: 60px;
     left: 10px;
   }
 }
@@ -125,6 +170,14 @@ a:hover, a:focus {
   justify-content: space-around;
 }
 
+.content-changes-hovered{
+  h2, p{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
 .evenement-card {
   height: 257px;
   width: 100%;
@@ -138,6 +191,7 @@ a:hover, a:focus {
   bottom: 16px;
   width: 100%;
   padding: 10px;
+  transition: background-color 0.6s;
   h3 {
     font-weight: normal;
     font-size: 16px;
@@ -198,8 +252,22 @@ a:hover, a:focus {
     background: $main;
   }
 
+  .button-to-calendar-description-on-city-show {
+    position: absolute;
+    right: 50px;
+    font-size: 12px;
+    font-weight: lighter;
+    overflow: hidden;
+    width: 0;
+    transition: width 0.3s ease;
+    background: $main;
+  }
+
   &:hover{
     .button-to-calendar-description {
+      width: 120px;
+    }
+    .button-to-calendar-description-on-city-show {
       width: 120px;
     }
   }
@@ -213,6 +281,7 @@ a:hover, a:focus {
 .evenement-card-link {
   padding-left: 0px;
   padding-right: 0px;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   .add-to-calendar-link {
     opacity: 0;
     // display: none;
@@ -220,6 +289,11 @@ a:hover, a:focus {
   }
 
   .add-to-calendar-link-on-search-event {
+    opacity: 0;
+    // display: none;
+    transition: opacity 0.6s;
+  }
+  .add-to-calendar-link-on-city-show {
     opacity: 0;
     // display: none;
     transition: opacity 0.6s;
@@ -238,14 +312,10 @@ a:hover, a:focus {
     .add-to-calendar-link-on-search-event {
       opacity: 1;
     }
-
-    transform: translate(0px, -7px);
-    .evenement-card-category{
-      padding-top: 5px;
-      transition: padding-top 0.6s;
-    }
+    transform: translate(0px, 0px);
     .evenement-card-description{
       background-color: $main;
+      transition: background-color 0.6s;
     }
   }
 }
@@ -280,6 +350,12 @@ a:hover, a:focus {
   top: 10px;
   right: 10px;
   opacity: 0.6;
+}
+
+.add-to-calendar-link-on-city-show {
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 
 .margin-top-bottom-10\% {

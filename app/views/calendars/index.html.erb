@@ -1,71 +1,88 @@
-<div class="container-tab-calendar">
-  <ul class="list-inline text-center calendars-tabs">
-    <li class="tab-calendar active tab-radius-left" data-target="tabs-infos">Informations</li>
-    <li class="tab-calendar tab-radius-middle" data-target="tabs-shops">Magasins</li>
-    <li class="tab-calendar tab-radius-middle" data-target="tabs-events">Événements</li>
-    <li class="tab-calendar tab-radius-right" data-target="tabs-deals">Bons Plans</li>
-  </ul>
-</div>
+<div class="container tab-container-lg">
 
-<div class="container text-center">
-  <div class="calendars-tab-content active " id="tabs-infos">
-    <%= link_to "Mettre à jour mes informations", edit_user_registration_path %>
-    <%= cl_image_tag current_user.photo, height: 300, width: 400, crop: :fill %>
-  </div>
-
-  <div class="calendars-tab-content" id="tabs-shops">
-    <% if @favorites == [] %>
-      <div class="tab-deal-title">
-        <h4>Personnalises ta page en ajoutant tes <strong> magasins </strong> préférés !</h4>
-        <%#= link_to "offers", "http://hexagone.site/cities/city?query=#{@city.id}"%>
-        <%= link_to "+ de magasins", "http://localhost:3000/cities/city?query=#{@city.id}"%>
+    <div class="row text-center calendars-tabs">
+      <div class="col-md-3">
+        <div class="tab-calendar active tab-radius-left" data-target="tabs-deals">Promos</div>
       </div>
-    <% else %>
-      <div class="shop-cards relative-position">
-        <% @favorites.each do |favorite| %>
-          <%= render partial: 'shared/shop_card_tab', locals: {shop: favorite.shop, favorite: favorite} %>
-        <% end %>
+      <div class="col-md-3">
+        <div class="tab-calendar tab-radius-middle" data-target="tabs-shops">Boutiques</div>
       </div>
-    <% end %>
-  </div>
-
-  <div class="calendars-tab-content" id="tabs-events">
-    <% if @event_calendars == [] %>
-      <div class="tab-deal-title">
-        <h4>Personnalises ta page en ajoutant les <strong> évènements </strong> que tu ne veux pas louper !</h4>
-        <%#= link_to "offers", "http://hexagone.site/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
-        <%= link_to "+ d'évènements", "http://localhost:3000/cities/shops?city_id=#{@city.id}&query_shops=events"%>
+      <div class="col-md-3">
+        <div class="tab-calendar tab-radius-middle" data-target="tabs-events">Événements</div>
       </div>
-    <% else %>
-      <div class="container">
-        <div class="row">
-          <% @event_calendars.each do |calendar| %>
-
-              <%= render partial: 'shared/event_card_tab', locals: {event: calendar.event, calendar: calendar} %>
-
-          <% end %>
-        </div>
+      <div class="col-md-3">
+        <div class="tab-calendar tab-radius-right" data-target="tabs-infos">Informations</div>
       </div>
-    <% end %>
-  </div>
+    </div>
 
-  <div class="calendars-tab-content " id="tabs-deals">
-    <% if @offer_calendars == [] %>
-      <div class="tab-deal-title">
-        <h4>Personnalises ta page en ajoutant les meilleures <strong> bons plans </strong> du moment !</h4>
-        <%#= link_to "offers", "http://hexagone.site/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
-        <%= link_to "+ de bons plans", "http://localhost:3000/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
-      </div>
-    <% else %>
-      <div class="container">
-        <div class="row">
-          <div class="events-no-slick col-xs-12">
-            <% @offer_calendars.each do |calendar| %>
-              <%= render partial: 'shared/offer_card_tab', locals: {event: calendar.event, calendar: calendar} %>
-            <% end %>
+
+  <div class="row text-center calendar-tabs-content">
+    <!-- <div class="col-md-4"> -->
+      <div class="calendars-tab-content active" id="tabs-deals">
+        <% if @offer_calendars == [] %>
+          <div class="tab-deal-title">
+            <h4>Personnalises ta page en ajoutant les meilleures <strong> promos </strong> du moment !</h4>
+            <%#= link_to "offers", "http://hexagone.site/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
+            <%= link_to "+ de bons plans", "http://localhost:3000/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
+          </div>
+        <% else %>
+          <div class="container-tab-content">
+            <div class="row">
+              <div class="events-no-slick col-xs-12">
+                <% @offer_calendars.each do |calendar| %>
+                  <%= render partial: 'shared/offer_card_tab', locals: {event: calendar.event, calendar: calendar} %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
+      <% end %>
+    <!-- </div>
+
+    <div class="col-md-4"> -->
+      <div class="calendars-tab-content" id="tabs-shops">
+        <% if @favorites == [] %>
+          <div class="tab-deal-title">
+            <h4>Personnalises ta page en ajoutant tes <strong> boutiques </strong> préférés !</h4>
+            <%#= link_to "offers", "http://hexagone.site/cities/city?query=#{@city.id}"%>
+            <%= link_to "+ de boutiques", "http://localhost:3000/cities/city?query=#{@city.id}"%>
+          </div>
+        <% else %>
+          <div class="shop-cards relative-position">
+            <% @favorites.each do |favorite| %>
+              <%= render partial: 'shared/shop_card_tab', locals: {shop: favorite.shop, favorite: favorite} %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    <!-- </div>
+
+    <div class="col-md-4"> -->
+      <div class="calendars-tab-content" id="tabs-events">
+        <% if @event_calendars == [] %>
+          <div class="tab-deal-title">
+            <h4>Personnalises ta page en ajoutant les <strong> évènements </strong> que tu ne veux pas louper !</h4>
+            <%#= link_to "offers", "http://hexagone.site/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
+            <%= link_to "+ d'évènements", "http://localhost:3000/cities/shops?city_id=#{@city.id}&query_shops=events"%>
+          </div>
+        <% else %>
+          <div class="container">
+            <div class="row">
+              <% @event_calendars.each do |calendar| %>
+                <%= render partial: 'shared/event_card_tab', locals: {event: calendar.event, calendar: calendar} %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <!-- </div>
+
+    <div class="col-md-4"> -->
+      <div class="calendars-tab-content" id="tabs-infos">
+        <%= link_to "Mettre à jour mes informations", edit_user_registration_path %>
+        <%= cl_image_tag current_user.photo, height: 300, width: 400, crop: :fill %>
+      </div>
+    <!-- </div> -->
+
   </div>
 </div>
