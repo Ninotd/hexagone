@@ -28,6 +28,9 @@ initGallery();
 import { initShopChat} from '../plugins/action_cable'
 initShopChat();
 
+import { scrollButtonHomepage} from '../components/scroll_homepage'
+scrollButtonHomepage();
+
 
 initUpdateNavbarOnScroll();
 initAutocomplete();
