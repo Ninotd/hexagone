@@ -18,7 +18,7 @@
     </div>
   <% end %>
   <div class="add-to-calendar-offer-link-on-search">
-    <%= link_to calendar_path(calendar), method: :delete, remote: true do %>
+    <%= link_to calendar_path(calendar), method: :delete, data: { confirm: "Etes-vous sûr de supprimer cette promos ?" }, remote: true do %>
       <button type="button" data-shop-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
         <div class="button-to-calendar-description">
           Supprimer du calendrier

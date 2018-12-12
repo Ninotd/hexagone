@@ -36,7 +36,6 @@ class CalendarsController < ApplicationController
     if search_calendar == []
       calendar = Calendar.new(event_id: params[:event_id], user_id: current_user.id)
       calendar.save
-      flash[:notice] = "Cette offre a été ajouté à votre calendrier"
       city = City.find(params[:city_id])
       respond_to do |format|
         format.html { search_cities_path(query: city.name) }
@@ -44,7 +43,6 @@ class CalendarsController < ApplicationController
       end
       # redirect_to search_cities_path(query: city.name)
     else
-      flash[:alert] = "Cette offre est déjà dans votre calendrier"
       city = City.find(params[:city_id])
       redirect_to search_cities_path(query: city.name)
     end

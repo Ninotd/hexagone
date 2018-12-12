@@ -111,11 +111,11 @@
       </div>
     </div>
     <div class="shop-offers">
-      <h3 class="black-headers">Les offres proposées par <%= @shop.name %> </h3>
+      <h3 class="black-headers">Les promos proposées par <%= @shop.name %> </h3>
       <div class="row">
         <div class="col-sm-4">
           <% if @shop_offers == [] %>
-            <p><%= @shop.name %> n'a pas d'offres en cours ou à venir </p>
+            <p><%= @shop.name %> n'a pas d'promos en cours ou à venir </p>
           <% else %>
             <% @shop_offers.each do |event| %>
               <div class="offer-card-link">

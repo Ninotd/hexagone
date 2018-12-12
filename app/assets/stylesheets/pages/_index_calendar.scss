@@ -1,26 +1,28 @@
-.container-tab-calendar{
-  margin-top: 150px;
+.tab-container-lg{
+  margin-top: 130px;
 }
 
 .calendars-tabs {
   cursor: pointer;
   display: flex;
   justify-content: center;
-  li.active {
+  margin-bottom: 0px !important;
+  div.active {
     color: $main;
-    border-bottom: 2px solid $main;
+    border-bottom: 1px solid $main;
     background-color: rgba($main, 0.1);
   }
-  li {
-    padding: 0;
+  > div {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
 }
 
 .tab-calendar {
-  padding: 10px 100px !important;
   color: $gray-dark;
   background-color: #f4f2f2;
   font-size: 15px;
+  padding: 11px;
 }
 
 .tab-radius-middle {
@@ -31,14 +33,14 @@
 
 .tab-radius-left {
   border: 1px solid $gray-light;
-  border-radius: 6px 0px 0px 6px;
+  border-radius: 6px 0px 0px 0px;
 }
 
 .tab-radius-right {
   border-top: 1px solid $gray-light;
   border-bottom: 1px solid $gray-light;
   border-right: 1px solid $gray-light;
-  border-radius: 0px 6px 6px 0px;
+  border-radius: 0px 6px 0px 0px;
 }
 
 .calendars-tab-content {
@@ -50,6 +52,18 @@
   display: block;
 }
 
-.tab-deal-title {
+.calendar-tabs-content {
+  border-bottom: 1px solid $gray-light;
+  border-left: 1px solid $gray-light;
+  border-right: 1px solid $gray-light;
+  margin-bottom: 20px;
+  padding-bottom: 25px;
+  background-color: white;
+  border-radius: 0px 0px 6px 6px;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+}
 
+.container-tab-content {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
