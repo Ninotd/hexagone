@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="add-to-favorite-link">
-    <%= link_to favorite_path(favorite), method: :delete, data: { confirm: "Etes-vous sûr de supprimer cette boutique ?" }, remote: true do %>
+    <%= link_to favorite_path(favorite), method: :delete, data: { confirm: "Etes-vous sûr de vouloir supprimer cette boutique ?" }, remote: true do %>
       <button type="button" data-shop-id="<%= shop.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
         <div class="button-to-calendar-description">
           Supprimer des favoris

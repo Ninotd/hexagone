@@ -59,7 +59,7 @@ a:hover{
 }
 
 .card-section-explanatory-p{
-  p{
+  h4{
     color: #696969;
   }
 }
@@ -75,7 +75,7 @@ a:hover{
   top: 35%;
   font-size: 50px;
   left: 10px;
-  color: $fourth;
+  color: white;
   text-shadow: 0px 1px 1px #bbbbbb;
   opacity: 0.5;
   &:hover{
@@ -90,7 +90,7 @@ a:hover{
   top: 35%;
   font-size: 50px;
   right: 10px;
-  color: $fourth;
+  color: white;
   text-shadow: 0px 1px 1px #bbbbbb;
   opacity: 0.5;
   &:hover{

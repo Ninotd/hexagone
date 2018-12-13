@@ -16,7 +16,7 @@
     <% end %>
 
     <div class="add-to-calendar-link">
-      <%= link_to calendar_path(calendar), method: :delete, data: { confirm: "Etes-vous sûr de supprimer cet évênement ?" }, remote: true do %>
+      <%= link_to calendar_path(calendar), method: :delete, data: { confirm: "Etes-vous sûr de vouloir supprimer cet évênement ?" }, remote: true do %>
         <button type="button" data-shop-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
           <div class="button-to-calendar-description">
             Supprimer du calendrier
