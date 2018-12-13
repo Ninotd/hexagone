@@ -16,14 +16,14 @@
     </div>
 
 
-  <div class="row text-center calendar-tabs-content">
+  <div class="row calendar-tabs-content">
     <!-- <div class="col-md-4"> -->
       <div class="calendars-tab-content active" id="tabs-deals">
         <% if @offer_calendars == [] %>
           <div class="tab-deal-title">
             <h4>Personnalises ta page en ajoutant les meilleures <strong> promos </strong> du moment !</h4>
             <%#= link_to "offers", "http://hexagone.site/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
-            <%= link_to "+ de bons plans", "http://localhost:3000/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
+            <%= link_to "+ de bons plans", search_cities_path(query: "Fontainebleau")%>
           </div>
         <% else %>
           <div class="container-tab-content">
@@ -45,7 +45,7 @@
           <div class="tab-deal-title">
             <h4>Personnalises ta page en ajoutant tes <strong> boutiques </strong> préférés !</h4>
             <%#= link_to "offers", "http://hexagone.site/cities/city?query=#{@city.id}"%>
-            <%= link_to "+ de boutiques", "http://localhost:3000/cities/city?query=#{@city.id}"%>
+            <%= link_to "+ de boutiques", search_cities_path(query: "Fontainebleau")%>
           </div>
         <% else %>
           <div class="shop-cards relative-position">
@@ -63,7 +63,7 @@
           <div class="tab-deal-title">
             <h4>Personnalises ta page en ajoutant les <strong> évènements </strong> que tu ne veux pas louper !</h4>
             <%#= link_to "offers", "http://hexagone.site/cities/shops?city_id=#{@city.id}&query_shops=offers"%>
-            <%= link_to "+ d'évènements", "http://localhost:3000/cities/shops?city_id=#{@city.id}&query_shops=events"%>
+            <%= link_to "+ d'évènements", search_cities_path(query: "Fontainebleau")%>
           </div>
         <% else %>
           <div class="container">

@@ -118,3 +118,40 @@
   }
 }
 
+.add-to-calendar-offer-link-on-search-shop {
+  position: absolute;
+  top: 5px;
+  right: 18px;
+  z-index: 200;
+}
+
+.add-to-calendar-offer-link-for-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 200;
+}
+
+.offer-card-link {
+  padding-left: 0px;
+  padding-right: 0px;
+  .add-to-calendar-offer-link-on-search-shop {
+    opacity: 0;
+    // display: none;
+    transition: opacity 0.6s;
+  }
+  .add-to-calendar-offer-link-for-delete {
+    opacity: 0;
+    // display: none;
+    transition: opacity 0.6s;
+  }
+  &:hover {
+    .add-to-calendar-offer-link-on-search-shop {
+      // display: block;
+      opacity: 1;
+    }
+    .add-to-calendar-offer-link-for-delete {
+      opacity: 1;
+    }
+  }
+}

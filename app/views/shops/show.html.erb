@@ -71,18 +71,9 @@
     <div class="new-shop-other">
       <h3 class="black-headers">Vous pourriez aussi aimer ... </h3>
       <div class="row">
-          <% similar_events = Shop.where(category: @shop.category ) %>
-          <% similar_events.each do |shop| %>
-          <div class="col-sm-6 other-shops">
-            <div class="shop-card">
-              <div class="shop-card__image shop-card__image--fence" style="background-image: url('<%= cl_image_path shop.shop_photos.first.photo, :width=>360, :height=>240, :crop=>"scale" %>');"></div>
-              <div class="shop-card__content">
-                <div class="shop-card__title"> <%= shop.name %> </div>
-                <p class="shop-card__text"> <%= shop.category %> </p>
-                <%= link_to "Voir cette boutique", city_shop_path(@city, shop), class: "shop-btn shop-btn--block shop-card__btn" %>
-              </div>
-            </div>
-          </div>
+        <% similar_events = Shop.where(category: @shop.category ) %>
+        <% similar_events.each do |shop| %>
+          <%= render partial: 'shared/shop_card', locals: {shop: shop} %>
         <% end %>
       </div>
     </div>
@@ -118,7 +109,7 @@
           <h3 class="black-headers" >Accès</h3>
           <div class="shop-map">
             <div id="map"
-              style="width: 100%; height: 180px"
+              style="width: 100%; height: 340px"
               data-markers="<%= @markers.to_json %>"
               data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
             </div>
