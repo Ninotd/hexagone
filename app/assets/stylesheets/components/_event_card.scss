@@ -69,6 +69,12 @@
   z-index: 200;
 }
 
+.add-to-calendar-offer-link-on-shop-show {
+  position: absolute;
+  top: 7px;
+  right: -90px;
+  z-index: 200;
+}
 
 .offer-card-link {
   padding-left: 0px;
@@ -91,6 +97,17 @@
   }
   &:hover {
     .add-to-calendar-offer-link-on-city-show {
+      // display: block;
+      opacity: 1;
+    }
+  }
+  .add-to-calendar-offer-link-on-shop-show {
+    opacity: 0;
+    // display: none;
+    transition: opacity 0.6s;
+  }
+  &:hover {
+    .add-to-calendar-offer-link-on-shop-show {
       // display: block;
       opacity: 1;
     }

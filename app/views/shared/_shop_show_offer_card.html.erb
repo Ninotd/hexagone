@@ -1,5 +1,5 @@
 <div class="offer-card-link padding-on-new-shop-show-card">
-  <div class="event-free_card hover-on-card-to-description for_modal" data-toggle="modal" data-target="#EventModal">
+  <div class="event-free_card hover-on-card-to-description for_modal width-for-shop-show" data-toggle="modal" data-target="#EventModal">
     <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
       <div class="event-offer-name">
         <div class="content-changes-hovered">
@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-  <div class="add-to-calendar-offer-link-on-city-show special-for-show">
+  <div class="add-to-calendar-offer-link-on-shop-show special-for-show">
     <% if current_user.calendars.where(event_id: event.id) == [] %>
       <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
         <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
