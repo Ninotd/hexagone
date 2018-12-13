@@ -41,6 +41,15 @@ user_name = 62
   user_name += 1
 end
 
+puts 'creating real victor'
+user = User.new(
+  email: "victor.desjardins@gmail.com",
+  password: "hexagon",
+  first_name: "Victor",
+  last_name: "Desjardins"
+  )
+user.save!
+
 puts 'Creating 54 shops'
 
 shop = Shop.new(
@@ -73,13 +82,13 @@ shop.save!
 shop_photo = ShopPhoto.new(
   shop: shop
   )
-shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/16388420_1584261488255393_1958615439647836913_n.jpg?_nc_cat=102&_nc_ht=scontent-bru2-1.xx&oh=9567e7a529f969e22969e3e7d9304074&oe=5C933FA0"
+shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t31.0-8/30052441_2109100629104807_638907946733794331_o.jpg?_nc_cat=110&_nc_ht=scontent-bru2-1.xx&oh=1cca0531faa90fff4ea300f265c93435&oe=5CAD1C1A"
 shop_photo.save!
 
 shop_photo = ShopPhoto.new(
   shop: shop
   )
-shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t31.0-8/30052441_2109100629104807_638907946733794331_o.jpg?_nc_cat=110&_nc_ht=scontent-bru2-1.xx&oh=1cca0531faa90fff4ea300f265c93435&oe=5CAD1C1A"
+shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/16388420_1584261488255393_1958615439647836913_n.jpg?_nc_cat=102&_nc_ht=scontent-bru2-1.xx&oh=9567e7a529f969e22969e3e7d9304074&oe=5C933FA0"
 shop_photo.save!
 
 
@@ -241,7 +250,9 @@ event_photo.save!
 
 event = Event.new(
   name: "-20\% Sneakers",
-  description: "Ce samedi 15 décembre uniquement, toutes nos sneakers sont en promotion",
+  description: "Ce samedi 15 décembre uniquement, toutes nos sneakers sont en promotion.
+  Parmi ces Sneakers, retrouvez vos marques préférées comme Nike, Reebook, New Balance. Toutes les chaussures sont disponibles en tailles enfant ainsi qu'en tailles adulte.
+  ",
   category: "Bon plan",
   shop: Shop.find_by(name: "IT SHOP"),
   start_date: Date.new(2018,12,15),
@@ -252,7 +263,12 @@ event.save!
 event_photo = EventPhoto.new(
   event: event
   )
-event_photo.remote_photo_url = "https://www.lesitedelasneaker.com/wp-content/images/2014/08/nike-air-max-lunar-90-suit-tie-collection-0.jpg"
+event_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/37011800_2223648910983311_7143967533211582464_n.jpg?_nc_cat=107&_nc_ht=scontent-bru2-1.xx&oh=3527c760e6335dc6e7d608c1ba6a0acc&oe=5C9BDC5B"
+event_photo.save!
+event_photo = EventPhoto.new(
+  event: event
+  )
+event_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/35391608_2179113042103565_3241936439956471808_n.jpg?_nc_cat=111&_nc_ht=scontent-bru2-1.xx&oh=48b5bb7407aeedd608008a64556644ce&oe=5CAC264D"
 event_photo.save!
 
 event = Event.new(
@@ -289,7 +305,7 @@ event_photo.save!
 
 event = Event.new(
   name: "Lancement prêt à porter Nike",
-  description: "Vous connaissiez notre collection de chaussures Nike et autres sneakers, désormais vous pourrez trouver les dernières tendances prêt-à-porter Nike dans votre magasin Stor'age",
+  description: "Vous connaissiez notre collection de chaussures Nike, désormais vous pourrez trouver les dernières tendances prêt-à-porter Nike dans votre magasin Stor'age",
   category: "Evènement",
   shop: Shop.find_by(name: "STOR'AGE"),
   start_date: Date.new(2018,12,29),
@@ -307,7 +323,7 @@ event = Event.new(
     name: "Dégustation vins & fromages",
     description: "Dégustation de vins et de fromages Français
      Le samedi 15 Décembre 2018 de 18h30 à 21h00.
-La dégustation animée par Roland Barthélemy, fondateur de la fromagerie Barthélémy vous proposera de découvrir les terroirs de thés et de les associer aux terroirs de fromages français.",
+La dégustation animée par Roland Barthélemy, fondateur de la fromagerie Barthélémy vous proposera de découvrir les terroirs de vins et de les associer aux terroirs de fromages français.",
     category: "Evènement",
     shop: Shop.find_by(name: "Fromagerie Barthélémy"),
     start_date: Date.new(2018,12,15),
@@ -322,7 +338,7 @@ La dégustation animée par Roland Barthélemy, fondateur de la fromagerie Barth
   event_photo.save!
 
 event = Event.new(
-    name: "Offre Vin",
+    name: "Offre Vin et Fromage",
     description: "Venez nombreux profiter de l'offre 1 bouteille de vin offerte pour tout plateau de fromage acheté",
     category: "Bon plan",
     shop: Shop.find_by(name: "Fromagerie Barthélémy"),
@@ -358,8 +374,8 @@ event = Event.new(
   description: "Présentation de la dernière collection Eva Kayan ce samedi 08 décembre à partir de 18h",
   category: "Evènement",
   shop: Shop.find_by(name: "1001 WOMEN"),
-  start_date: Date.new(2018,12,8),
-  end_date: Date.new(2018,12,8),
+  start_date: Date.new(2018,12,17),
+  end_date: Date.new(2018,12,17),
   shop_category: Shop.find_by(name: "1001 WOMEN").category
   )
 event.save!
@@ -374,8 +390,8 @@ event = Event.new(
   description: "Jusqu'au mercredi 12 décembre, bénéficiez de 20\% de réduction sur toute notre gamme de haut Elisa Cavaletti",
   category: "Bon plan",
   shop: Shop.find_by(name: "1001 WOMEN"),
-  start_date: Date.new(2018,12,6),
-  end_date: Date.new(2018,12,12),
+  start_date: Date.new(2018,12,15),
+  end_date: Date.new(2018,12,15),
   shop_category: Shop.find_by(name: "1001 WOMEN").category
   )
 event.save!
@@ -390,8 +406,8 @@ event = Event.new(
   description: "Profitez de 15\% de réduction sur toutes la collection Kenzo Home (draps, couettes, etc.)",
   category: "Bon plan",
   shop: Shop.find_by(name: "AGNES G"),
-  start_date: Date.new(2018,12,7),
-  end_date: Date.new(2018,12,13),
+  start_date: Date.new(2018,12,16),
+  end_date: Date.new(2018,12,17),
   shop_category: Shop.find_by(name: "AGNES G").category
   )
 event.save!
@@ -406,8 +422,8 @@ event = Event.new(
   description: "Toute la nouvelle collection de linge de maison Ralph Lauren est disponible dans bvotre boutique Agnès G",
   category: "Nouveauté",
   shop: Shop.find_by(name: "AGNES G"),
-  start_date: Date.new(2018,12,8),
-  end_date: Date.new(2019,1,10),
+  start_date: Date.new(2018,12,13),
+  end_date: Date.new(2019,1,20),
   shop_category: Shop.find_by(name: "AGNES G").category
   )
 event.save!
@@ -439,7 +455,7 @@ event = Event.new(
   category: "Bon plan",
   shop: Shop.find_by(name: "ALHENA"),
   start_date: Date.new(2018,12,7),
-  end_date: Date.new(2018,12,14),
+  end_date: Date.new(2018,12,17),
   shop_category: Shop.find_by(name: "ALHENA").category
   )
 event.save!
@@ -454,8 +470,8 @@ event = Event.new(
   description: "Venez découvrir nos dernières robes de soirées autour d'un cocktail organisé dans votre boutique Cario ce samedi 08 décembre dès 17h",
   category: "Evènement",
   shop: Shop.find_by(name: "CARIO"),
-  start_date: Date.new(2018,12,8),
-  end_date: Date.new(2018,12,8),
+  start_date: Date.new(2018,12,15),
+  end_date: Date.new(2018,12,25),
   shop_category: Shop.find_by(name: "CARIO").category
   )
 event.save!
@@ -502,8 +518,8 @@ event = Event.new(
   description: "Ce samedi 08 décembre, nous vous invitons à venir déguster nos dernières créations.",
   category: "Evènement",
   shop: Shop.find_by(name: "CHOCOLATE - TEA SALON Frederic Cassel"),
-  start_date: Date.new(2018,12,8),
-  end_date: Date.new(2018,12,8),
+  start_date: Date.new(2018,12,18),
+  end_date: Date.new(2018,12,18),
   shop_category: Shop.find_by(name: "CHOCOLATE - TEA SALON Frederic Cassel").category
   )
 event.save!
@@ -519,7 +535,7 @@ event = Event.new(
   category: "Bon plan",
   shop: Shop.find_by(name: "CHOCOLATE - TEA SALON Frederic Cassel"),
   start_date: Date.new(2018,12,6),
-  end_date: Date.new(2018,12,15),
+  end_date: Date.new(2018,12,18),
   shop_category: Shop.find_by(name: "CHOCOLATE - TEA SALON Frederic Cassel").category
   )
 event.save!
@@ -535,7 +551,7 @@ event = Event.new(
   category: "Bon plan",
   shop: Shop.find_by(name: "Chocolats de neuville"),
   start_date: Date.new(2018,12,8),
-  end_date: Date.new(2018,12,8),
+  end_date: Date.new(2018,12,28),
   shop_category: Shop.find_by(name: "Chocolats de neuville").category
   )
 event.save!
@@ -567,7 +583,7 @@ event = Event.new(
   category: "Evènement",
   shop: Shop.find_by(name: "DDF"),
   start_date: Date.new(2018,12,8),
-  end_date: Date.new(2018,12,8),
+  end_date: Date.new(2018,12,19),
   shop_category: Shop.find_by(name: "DDF").category
   )
 event.save!
@@ -583,7 +599,7 @@ event = Event.new(
   category: "Bon plan",
   shop: Shop.find_by(name: "In Blue"),
   start_date: Date.new(2018,12,7),
-  end_date: Date.new(2018,12,15),
+  end_date: Date.new(2018,12,20),
   shop_category: Shop.find_by(name: "In Blue").category
   )
 event.save!
@@ -599,7 +615,7 @@ event = Event.new(
   category: "Bon plan",
   shop: Shop.find_by(name: "Les Souliers de « Jyjy »"),
   start_date: Date.new(2018,12,7),
-  end_date: Date.new(2018,12,8),
+  end_date: Date.new(2018,12,28),
   shop_category: Shop.find_by(name: "Les Souliers de « Jyjy »").category
   )
 event.save!
@@ -615,7 +631,7 @@ event = Event.new(
   category: "Nouveauté",
   shop: Shop.find_by(name: "Les Souliers de « Jyjy »"),
   start_date: Date.new(2018,12,6),
-  end_date: Date.new(2019,1,5),
+  end_date: Date.new(2019,1,15),
   shop_category: Shop.find_by(name: "Les Souliers de « Jyjy »").category
   )
 event.save!

@@ -1,6 +1,9 @@
 <div class="message-all">
   <% if current_user == @sender %>
     <% all_shops_message = current_user.messages.sort{|a,b| b.created_at <=> a.created_at}.map {|message| message.shop.name} %>
+    <% if all_shops_message == [] %>
+      <p> Vous n'avez pas encore de messages </p>
+    <% else %>
     <%  all_shops_message.uniq.each do |shop| %>
     <% shopp = Shop.find_by(name: shop) %>
       <%= link_to new_shop_user_message_path(shopp, current_user.id) do %>
@@ -27,9 +30,11 @@
         </div>
       <% end %>
     <% end %>
+    <% end %>
   <% else  %>
     <% all_user_with_me = @shop.messages.map {|message| message.user.email} %>
     <% all_user_messages = all_user_with_me - [current_user.email] %>
+
     <% all_user_messages.uniq.each do |user|%>
       <% talking_user = User.find_by(email: user) %>
       <%= link_to new_shop_user_message_path(@shop,talking_user) do %>
