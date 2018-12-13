@@ -60,8 +60,8 @@ shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/169
 shop_photo.save!
 
 shop = Shop.new(
-  name: "STOR'AGE",
-  description: "Prêt à porter pour femmes & hommes - sneakers & accessoires : Fusalp, The North Face, Freeman Porter, Sessun, Franklin Marshall, Veja, Reebok, Nike, Adidas...",
+  name: "IT SHOP",
+  description: "Prêt à porter pour femmes & hommes - sneakers & accessoires : Fusalp, The North Face, Freeman Porter, Sessun, Franklin Marshall, Veja, Reebok, Nike, Sneakers, Adidas...",
   category: "Mode",
   address: "24 rue de France, 77300 Fontainebleau",
   phone_number: "06 56 34 25 56",
@@ -69,15 +69,29 @@ shop = Shop.new(
   city: City.find_by(name: "Fontainebleau")
   )
 shop.save!
+
 shop_photo = ShopPhoto.new(
   shop: shop
   )
-shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/45867956_2552989474742905_1748544051637911552_o.jpg?_nc_cat=100&_nc_ht=scontent-bru2-1.xx&oh=981ddb03601654b9107e84e0ac010079&oe=5C96B4E5"
+shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/16388420_1584261488255393_1958615439647836913_n.jpg?_nc_cat=102&_nc_ht=scontent-bru2-1.xx&oh=9567e7a529f969e22969e3e7d9304074&oe=5C933FA0"
+shop_photo.save!
+
+shop_photo = ShopPhoto.new(
+  shop: shop
+  )
+shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t31.0-8/30052441_2109100629104807_638907946733794331_o.jpg?_nc_cat=110&_nc_ht=scontent-bru2-1.xx&oh=1cca0531faa90fff4ea300f265c93435&oe=5CAD1C1A"
+shop_photo.save!
+
+
+shop_photo = ShopPhoto.new(
+  shop: shop
+  )
+shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/38905582_2277559505592251_2581324840099119104_n.jpg?_nc_cat=101&_nc_ht=scontent-bru2-1.xx&oh=c0838b9dd94d01ae8c53026ff00dd655&oe=5C96B713"
 shop_photo.save!
 
 shop = Shop.new(
-  name: "IT SHOP",
-  description: "magasin de vêtements, chaussures et accessoires pour hommes et femmes: CANADA GOOSE/ NEW BALANCE/ NIKE / CARHARTT / BLEU DE PANAME...",
+  name: "STOR'AGE",
+  description: "magasin de vêtements, chaussures (sneakers, sports, ville) et accessoires pour hommes et femmes: CANADA GOOSE/ NEW BALANCE/ NIKE / CARHARTT / BLEU DE PANAME...",
   category: "Mode",
   address: "23 rue grande, 77300 Fontainebleau",
   phone_number: "06 36 27 19 46",
@@ -88,12 +102,14 @@ shop.save!
 shop_photo = ShopPhoto.new(
   shop: shop
   )
-shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/16388420_1584261488255393_1958615439647836913_n.jpg?_nc_cat=102&_nc_ht=scontent-bru2-1.xx&oh=9567e7a529f969e22969e3e7d9304074&oe=5C933FA0"
+
+shop_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/45867956_2552989474742905_1748544051637911552_o.jpg?_nc_cat=100&_nc_ht=scontent-bru2-1.xx&oh=981ddb03601654b9107e84e0ac010079&oe=5C96B4E5"
 shop_photo.save!
+
 
 shop = Shop.new(
   name: "BLACK & WHITE",
-  description: "Toutes les dernières tendances streetwear : New Balance, Nike, Adidas, Reebok...",
+  description: "Toutes les dernières tendances streetwear, sneakers : New Balance, Nike, Adidas, Reebok...",
   category: "Mode",
   address: "18 rue grande, 77300 Fontainebleau",
   phone_number: "06 43 57 34 90",
@@ -122,6 +138,19 @@ shop = Shop.new(
     )
   shop_photo.remote_photo_url = "http://4.bp.blogspot.com/-142n-pBKjbc/VdRHdPLD9iI/AAAAAAAAUnU/0LBJpoOZwtM/s1600/barth%25C3%25A9l%25C3%25A9my-6251.jpg"
   shop_photo.save!
+
+  shop_photo = ShopPhoto.new(
+    shop: shop
+    )
+  shop_photo.remote_photo_url = "http://www.takemethere.fr/fp-1403688419-fp/post-img/3860-0.jpg"
+  shop_photo.save!
+
+  shop_photo = ShopPhoto.new(
+    shop: shop
+    )
+  shop_photo.remote_photo_url = "http://mag.lesgrandsducs.com/wp-content/uploads/2015/01/barth%C3%A9l%C3%A9my-6184.jpg"
+  shop_photo.save!
+
 
 shop = Shop.new(
     name: "Les Terroirs De France",
@@ -196,12 +225,12 @@ event_photo.save!
 
 event = Event.new(
   name: "-10\% collection Nike",
-  description: "Avant Noël, profitez de 10\% de réduction sur l'ensemble de nos chaussures Nike.",
+  description: "Avant Noël, profitez de 10\% de réduction sur l'ensemble de nos sneakers (Nike, Adidas, New Balance, ...).",
   category: "Bon plan",
-  shop: Shop.find_by(name: "IT SHOP"),
+  shop: Shop.find_by(name: "STOR'AGE"),
   start_date: Date.new(2018,12,15),
   end_date: Date.new(2018,12,22),
-  shop_category: Shop.find_by(name: "IT SHOP").category
+  shop_category: Shop.find_by(name: "STOR'AGE").category
   )
 event.save!
 event_photo = EventPhoto.new(
@@ -211,13 +240,13 @@ event_photo.remote_photo_url = "https://www.lesitedelasneaker.com/wp-content/ima
 event_photo.save!
 
 event = Event.new(
-  name: "-20\% Nike Air Max",
-  description: "Ce samedi 15 décembre uniquement, toutes nos Nike Air Max sont en promotion",
+  name: "-20\% Sneakers",
+  description: "Ce samedi 15 décembre uniquement, toutes nos sneakers sont en promotion",
   category: "Bon plan",
-  shop: Shop.find_by(name: "STOR'AGE"),
+  shop: Shop.find_by(name: "IT SHOP"),
   start_date: Date.new(2018,12,15),
   end_date: Date.new(2018,12,15),
-  shop_category: Shop.find_by(name: "STOR'AGE").category
+  shop_category: Shop.find_by(name: "IT SHOP").category
   )
 event.save!
 event_photo = EventPhoto.new(
@@ -228,7 +257,7 @@ event_photo.save!
 
 event = Event.new(
   name: "Ventes privées mode Nike",
-  description: "Du 15 au 22 décembre, nos pull et t-shirt Nike sont à prix réduits.",
+  description: "Du 15 au 22 décembre, nos pull, t-shirt et sneakers Nike sont à prix réduits.",
   category: "Bon plan",
   shop: Shop.find_by(name: "KOKO SHOP"),
   start_date: Date.new(2018,12,15),
@@ -260,7 +289,7 @@ event_photo.save!
 
 event = Event.new(
   name: "Lancement prêt à porter Nike",
-  description: "Vous connaissiez notre collection de chaussures Nike, désormais vous pourrez trouver les dernières tendances prêt-à-porter Nike dans votre magasin Stor'age",
+  description: "Vous connaissiez notre collection de chaussures Nike et autres sneakers, désormais vous pourrez trouver les dernières tendances prêt-à-porter Nike dans votre magasin Stor'age",
   category: "Evènement",
   shop: Shop.find_by(name: "STOR'AGE"),
   start_date: Date.new(2018,12,29),
@@ -271,12 +300,12 @@ event.save!
 event_photo = EventPhoto.new(
   event: event
   )
-event_photo.remote_photo_url = "https://i1.adis.ws/i/jpl/jd_213860_d?qlt=80&w=600&h=765&v=1"
+event_photo.remote_photo_url = "https://sporteluxe-wp.s3-ap-southeast-2.amazonaws.com/wp-content/uploads/2014/10/Reece-carter-4.jpg"
 event_photo.save!
 
 event = Event.new(
-    name: "Dégustation thés & fromages",
-    description: "Dégustation de thés et de fromages Français
+    name: "Dégustation vins & fromages",
+    description: "Dégustation de vins et de fromages Français
      Le samedi 15 Décembre 2018 de 18h30 à 21h00.
 La dégustation animée par Roland Barthélemy, fondateur de la fromagerie Barthélémy vous proposera de découvrir les terroirs de thés et de les associer aux terroirs de fromages français.",
     category: "Evènement",
@@ -289,7 +318,7 @@ La dégustation animée par Roland Barthélemy, fondateur de la fromagerie Barth
   event_photo = EventPhoto.new(
     event: event
     )
-  event_photo.remote_photo_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/47680721_2296375570596705_4204689102072709120_o.jpg?_nc_cat=104&_nc_ht=scontent-bru2-1.xx&oh=66f85e740f55a406207ca0917b6a79b2&oe=5CA9CFFD"
+  event_photo.remote_photo_url = "http://res.dallasnews.com/interactives/palate/texas-pairings/images/cheeseHero2400.jpg"
   event_photo.save!
 
 event = Event.new(
@@ -305,7 +334,7 @@ event = Event.new(
   event_photo = EventPhoto.new(
     event: event
     )
-  event_photo.remote_photo_url = "https://static.pourdebon.com/images/476-355/a53c87795cea6036d8346dafcbb82b1f/1917224.jpeg"
+  event_photo.remote_photo_url = "http://3.bp.blogspot.com/--frLU3yO5EI/Uff8L9UZKYI/AAAAAAAANvs/P20AfZaHtD8/s1600/DSC_0092.JPG"
   event_photo.save!
 
 event = Event.new(
@@ -337,7 +366,7 @@ event.save!
 event_photo = EventPhoto.new(
   event: event
   )
-event_photo.remote_photo_url = "http://www.tendance-rennes.com/images/rennes/1516712247-marque.jpg"
+event_photo.remote_photo_url = "http://www.starstyle.ph/wp-content/uploads/2018/08/Feature-cover3.jpg"
 event_photo.save!
 
 event = Event.new(
@@ -433,7 +462,7 @@ event.save!
 event_photo = EventPhoto.new(
   event: event
   )
-event_photo.remote_photo_url = "https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/41654898_890846821106165_7249589257285664768_o.jpg?_nc_cat=108&_nc_ht=scontent-cdt1-1.xx&oh=0c2c5d8268f79eb4cba573c94e94092e&oe=5C98259A"
+event_photo.remote_photo_url = "https://i2.cdscdn.com/pdt2/5/4/4/1/700x700/mp02983544/rw/robe-de-soiree-cocktail-ceremonie-club-robe-femme.jpg"
 event_photo.save!
 
 event = Event.new(
@@ -611,5 +640,13 @@ event_photo = EventPhoto.new(
   )
 event_photo.remote_photo_url = "https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/15542051_933943150069121_933521500318924786_n.jpg?_nc_cat=111&_nc_ht=scontent-cdt1-1.xx&oh=67ac9d8355d95560e13cfe0bbf3d348f&oe=5CA20BC8"
 event_photo.save!
+
+
+# Photo for Barthélémy and IT SHOP
+
+
+
+
+
 
 puts 'Finished!'

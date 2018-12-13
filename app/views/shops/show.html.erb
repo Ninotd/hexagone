@@ -1,25 +1,25 @@
-<% if @shop.shop_photos.count < 1 %>
+<% if @shop.shop_photos.count < 2 %>
 
-  <div class="banner-shop" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('@shop.shop_photos');">
+   <div class="banner-shop" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path @shop.shop_photos.first.photo.url %>');">
   </div>
 
  <% else  %>
-
+<% photo_three = @shop.shop_photos[0..2] %>
   <div id="lightgallery">
     <div class="g-photo" data-src="<%= @shop.shop_photos.first.photo.url %>">
-      <%= link_to @shop.shop_photos.first.photo.url do %>
-        <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill  %>
+      <%= link_to photo_three[1].photo.url do %>
+        <%= cl_image_tag photo_three[1].photo, height: 400, crop: :fill  %>
       <% end %>
       <div class="mask"></div>
     </div>
     <div class="g-photo" data-src="<%= @shop.shop_photos.first.photo.url %>">
-      <%= link_to @shop.shop_photos.first.photo.url, crop: :fill do %>
-        <%= cl_image_tag @shop.shop_photos.first.photo, width: 700, height: 400, crop: :fill  %>
+      <%= link_to photo_three.first.photo.url, crop: :fill do %>
+        <%= cl_image_tag photo_three.first.photo, width: 700, height: 400, crop: :fill  %>
         <% end %>
     </div>
     <div class="g-photo " data-src="<%= @shop.shop_photos.first.photo.url %>">
-      <%= link_to @shop.shop_photos.first.photo.url, crop: :fill do %>
-        <%= cl_image_tag @shop.shop_photos.first.photo, height: 400, crop: :fill%>
+      <%= link_to photo_three[2].photo.url, crop: :fill do %>
+        <%= cl_image_tag photo_three[2].photo, height: 400, crop: :fill%>
       <% end %>
       <div class="mask"></div>
     </div>
