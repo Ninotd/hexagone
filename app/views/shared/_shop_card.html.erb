@@ -1,10 +1,13 @@
 <div class="shop-cards__item col-xs-12 col-sm-4">
   <div class="shop-card">
     <div class="shop-card__image shop-card__image--fence" style="background-image: url('<%= cl_image_path shop.shop_photos.first.photo, :width=>360, :height=>240, :crop=>"scale" %>');"></div>
+    <div class="shop-card-category">
+      <h3><%= shop.category %></h3>
+    </div>
     <div class="shop-card__content">
       <div class="shop-card__title"> <%= shop.name %> </div>
-      <p class="shop-card__text"> <%= shop.category %> </p>
-      <%= link_to "Voir cette boutique", city_shop_path(@city, shop), class: "shop-btn shop-btn--block shop-card__btn" %>
+      <p class="shop-card__text"> <%= shop.address %> </p>
+      <%= link_to "Voir cette boutique", city_shop_path(@city, shop), class: "shop-btn shop-btn--block shop-card__btn hover-background-to-appear" %>
     </div>
   </div>
   <div class="add-to-favorite-link">
