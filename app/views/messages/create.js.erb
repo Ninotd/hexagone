@@ -13,7 +13,7 @@ function refreshMessagesList() {
   console.log('test')
   const messageList = document.querySelector('.message-all');
   messageList.innerHTML = "";
-  messageList.outerHTML = '<%= j render "message_list", shop_actual: @shop %>';
+  messageList.outerHTML = '<%= j render "message_list", shop_actual: @shop, sender: @sender %>';
   console.log(messageList);
 }
 

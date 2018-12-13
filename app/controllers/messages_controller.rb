@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     @sender = User.find(params[:user_id])
     @message = Message.new
     # Pour que s'affiche les messages du shop liés qu'à l'useur qui demande qq chose
-    @messages = @shop.messages.where(sender_id: params[:user_id])
+    @messages = @shop.messages.where(sender_id: params[:user_id]).order(created_at: :asc)
     @footer = false
     @navbar = true
   end
