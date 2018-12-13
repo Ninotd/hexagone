@@ -386,22 +386,6 @@ event_photo.remote_photo_url = "http://www.starstyle.ph/wp-content/uploads/2018/
 event_photo.save!
 
 event = Event.new(
-  name: "Elisa Cavaletti",
-  description: "Jusqu'au mercredi 12 décembre, bénéficiez de 20\% de réduction sur toute notre gamme de haut Elisa Cavaletti",
-  category: "Bon plan",
-  shop: Shop.find_by(name: "1001 WOMEN"),
-  start_date: Date.new(2018,12,15),
-  end_date: Date.new(2018,12,15),
-  shop_category: Shop.find_by(name: "1001 WOMEN").category
-  )
-event.save!
-event_photo = EventPhoto.new(
-  event: event
-  )
-event_photo.remote_photo_url = "http://www.michelsignature.com/wp-content/uploads/2015/05/elisa-cavaletti-logo.jpg"
-event_photo.save!
-
-event = Event.new(
   name: "-15\% - Kenzo Home",
   description: "Profitez de 15\% de réduction sur toutes la collection Kenzo Home (draps, couettes, etc.)",
   category: "Bon plan",
