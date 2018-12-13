@@ -23,32 +23,34 @@
     </div>
   </div>
   <!-- les evenements -->
-  <div class="wrapper wrapper-des-section-titles">
-    <div class="check-events best-events">
-        <div class="card-section-title">
-            <h3>Les évènements</h3>
-        </div>
-        <div class="card-section-explanatory-p">
-          <p>Pour élargir ta connaissance de ta ville et de ses commerçants !</p>
-        </div>
-    </div>
-  </div>
-  <% if @events.length < 3%>
-    <div class="wrapper wrapper-des-cards">
-      <div class="row events-with-slick evenement-card-flexbox left-align-slick">
-        <% @events.each do |event| %>
-          <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
-        <% end %>
+  <% if  @events.any? %>
+    <div class="wrapper wrapper-des-section-titles">
+      <div class="check-events best-events">
+          <div class="card-section-title">
+              <h3>Les évènements</h3>
+          </div>
+          <div class="card-section-explanatory-p">
+            <p>Pour élargir ta connaissance de ta ville et de ses commerçants !</p>
+          </div>
       </div>
     </div>
-  <% else %>
-    <div class="wrapper wrapper-des-cards">
-      <div class="row events-with-slick evenement-card-flexbox">
-        <% @events.each do |event| %>
-          <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
-        <% end %>
+    <% if @events.length < 3%>
+      <div class="wrapper wrapper-des-cards">
+        <div class="row events-with-slick evenement-card-flexbox left-align-slick">
+          <% @events.each do |event| %>
+            <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% else %>
+      <div class="wrapper wrapper-des-cards">
+        <div class="row events-with-slick evenement-card-flexbox">
+          <% @events.each do |event| %>
+            <%= render partial: 'shared/city_show_event_card', locals: {event: event} %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
   <!-- les boutiques -->
   <div class="wrapper wrapper-des-section-titles">
