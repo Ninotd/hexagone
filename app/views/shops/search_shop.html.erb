@@ -1,6 +1,6 @@
 <% if @filtered_results.empty? %>
   <div class="wrapper wrapper-des-section-titles">
-    <div class="card-section-title">
+    <div class="card-section-title margin-top-on-search-shop">
       <h2>Cocorico ! Tellement d'activité dans ta ville ! <br> Regarde ce qu'Hexagone a dégoté pour toi : </h3>
     </div>
   </div>
@@ -71,7 +71,7 @@
 
 <% else %>
   <div class="container">
-    <div class="card-section-title">
+    <div class="card-section-title margin-top-on-search-shop margin-bottom-on-search-shop">
       <h2>Cocorico ! Tellement d'activité dans ta ville ! <br> Regarde ce qu'Hexagone a dégoté pour toi : </h3>
     </div>
   </div>
@@ -92,43 +92,49 @@
       <div class="row">
         <div class="events-no-slick col-xs-12">
           <% @filtered_results.each do |event| %>
-            <div class="col-xs-12 col-sm-4 check-that-bottom-margin">
-              <%= link_to city_shop_path(@city, event.shop) do %>
-                <div class="event-free_card hover-on-card-to-description">
-                  <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path event.event_photos.first.photo, crop: :fill %>');">
-                    <div class="event-shop-name">
-                      <h4><%= event.shop.name %></h4>
-                    </div>
-                    <div class="event-offer-name">
-                      <h3 class="h4-title-on-card"><%= event.name %></h3>
-                    </div>
-                    <div class="event-offer-date">
-                      <h4>Jusqu'au <%= event.end_date.day %>/<%= event.end_date.month%>/<%= event.end_date.year %></h4>
-                    </div>
-                    <div class="event-offer-description">
+          <div class="col-xs-12 col-sm-4 offer-card-link padding-on-cards-search-shop">
+            <%= link_to city_shop_path(@city, event.shop) do %>
+              <div class="event-free_card hover-on-card-to-description">
+                <div class="event-blur_back" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('<%= cl_image_path event.event_photos.first.photo, :crop=>"scale" %>');">
+                  <div class="event-offer-name">
+                    <div class="content-changes-hovered">
+                      <h2 class="h4-title-on-card"><%= event.name %></h2>
                       <p><%= event.description %></p>
                     </div>
                   </div>
+                  <div class="event-shop-name-anchor">
+                    <h4>@
+                      <%= event.shop.name %>
+                      <% if event.shop.category %>
+                        - <%= event.shop.category %>
+                      <% end %>
+                    </h4>
+                  </div>
+                  <div class="event-offer-date">
+                    <h5><i class="fas fa-hourglass-end"></i> - <%= event.end_date.day %>/<%= event.end_date.month%>/<%= event.end_date.year %></h5>
+                  </div>
                 </div>
-              <% end %>
-              <div class="add-to-calendar-offer-link-on-search">
-                <% if current_user.calendars.where(event_id: event.id) == [] %>
-                  <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
-                    <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
-                      <div class="button-to-calendar-description">
-                        Ajouter au calendrier
-                      </div>
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button background-green">
-                      <i class="fas fa-check"></i>
-                    </button>
-                  <% end %>
-                <% else %>
-                  <button type="button" class="btn btn-secondary add-to-calendar-button background-green"><i class="fas fa-check"></i></button>
-                <% end %>
               </div>
+            <% end %>
+            <div class="add-to-calendar-offer-link-on-search-shop">
+              <% if current_user.calendars.where(event_id: event.id) == [] %>
+                <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post, remote: true do %>
+                  <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button js-calendar-button">
+                    <div class="button-to-calendar-description">
+                      Ajouter au calendrier
+                    </div>
+                      <i class="fas fa-plus"></i>
+                  </button>
+                  <button type="button" data-event-id="<%= event.id %>" class="btn btn-secondary add-to-calendar-button d-none js-calendar-button background-green">
+                    <i class="fas fa-check"></i>
+                  </button>
+                <% end %>
+              <% else %>
+                <button type="button" class="btn btn-secondary add-to-calendar-button background-green"><i class="fas fa-check"></i></button>
+              <% end %>
             </div>
+          </div>
+
           <% end %>
         </div>
       </div>

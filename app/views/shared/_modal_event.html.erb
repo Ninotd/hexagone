@@ -16,10 +16,10 @@
           </div>
         </div>
         <div class="event-modal-footer">
-          <%= link_to new_shop_user_message_path(@shop, current_user) do  %>
+          <%= link_to new_shop_user_message_path(@shop, current_user), method: :get do  %>
           <button type="button" class="btn-modal" data-dismiss="modal"> <i class="fas fa-envelope"></i> </button>
           <% end %>
-          <%= link_to city_shop_event_calendars_path(@city, event.shop, event) do %>
+          <%= link_to city_shop_event_calendars_path(@city, event.shop, event), method: :post do %>
           <button type="button" class="btn-modal left-btn"> <i class="fas fa-calendar-alt"></i> </button>
           <% end %>
         </div>

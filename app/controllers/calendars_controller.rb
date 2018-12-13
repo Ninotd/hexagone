@@ -30,7 +30,6 @@ class CalendarsController < ApplicationController
   end
 
   def create
-
     @event = Event.find(params[:event_id])
     search_calendar = current_user.calendars.where(event_id: params[:event_id])
     if search_calendar == []

@@ -288,6 +288,12 @@ a:hover, a:focus {
     transition: opacity 0.6s;
   }
 
+  .add-to-calendar-link-on-show-shop {
+    opacity: 0;
+    // display: none;
+    transition: opacity 0.6s;
+  }
+
   .add-to-calendar-link-on-search-event {
     opacity: 0;
     // display: none;
@@ -309,6 +315,11 @@ a:hover, a:focus {
       // display: block;
       opacity: 1;
     }
+
+    .add-to-calendar-link-on-show-shop {
+      opacity: 1;
+    }
+
     .add-to-calendar-link-on-search-event {
       opacity: 1;
     }
@@ -360,4 +371,15 @@ a:hover, a:focus {
 
 .margin-top-bottom-10\% {
   margin: 10px 0px;
+}
+
+.add-to-calendar-link-on-show-shop {
+  position: absolute;
+  top: 14px;
+  right: 21px;
+  opacity: 0.6;
+}
+
+.padding-on-my-profile-offer-card {
+  padding: 5px;
 }
