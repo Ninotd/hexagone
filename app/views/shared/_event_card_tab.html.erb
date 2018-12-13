@@ -7,10 +7,10 @@
         </div>
         <div class="evenement-card-description">
           <h3><%= event.name %></h2>
-          <h3><%= event.shop.name %></h3>
+          <h3>@<%= event.shop.name %></h3>
         </div>
         <div class="evenement-date-description">
-          <p><i class="far fa-clock"></i> Le <%= event.end_date.day %> <%= @months["#{event.end_date.month}"] %> <%= event.end_date.year %></p>
+          <p><i class="fas fa-unlock-alt"></i> - le <%=event.end_date.day%>/<%=event.end_date.month%>/<%=event.end_date.year%></p>
         </div>
       </div>
     <% end %>

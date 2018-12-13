@@ -110,9 +110,11 @@
 }
 
 .shop-card__text {
-  font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 1.25rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .add-to-favorite-link {
