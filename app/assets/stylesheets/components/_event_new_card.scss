@@ -158,10 +158,6 @@
   background: url("https://occ-0-2433-448.1.nflxso.net/art/cd5c9/3e192edf2027c536e25bb5d3b6ac93ced77cd5c9.jpg");
 }
 
-a:hover, a:focus {
-  text-decoration:none!important;
-  color: black!important
-}
 
 // Cards des nouveaux évènements
 
@@ -176,6 +172,7 @@ a:hover, a:focus {
     text-overflow: ellipsis;
     overflow: hidden;
   }
+
 }
 
 .evenement-card {
