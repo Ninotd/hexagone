@@ -338,7 +338,7 @@ La dégustation animée par Roland Barthélemy, fondateur de la fromagerie Barth
   event_photo.save!
 
 event = Event.new(
-    name: "Offre Vin et Fromage",
+    name: "Offre Vin et Raclette",
     description: "Venez nombreux profiter de l'offre 1 bouteille de vin offerte pour tout plateau de fromage acheté",
     category: "Bon plan",
     shop: Shop.find_by(name: "Fromagerie Barthélémy"),
